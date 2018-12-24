@@ -282,9 +282,56 @@
 <li><p>另外一个很好的技巧是牺牲一些性能，使用更高精度的深度缓冲。大部分深度缓冲的精度都是24位的，但现在大部分的显卡都支持32位的深度缓冲，这将会极大地提高精度。所以，牺牲掉一些性能，你就能获得更高精度的深度测试，减少深度冲突。</p>
 </li>
 </ul>
+<hr>
+<h2 id="模板测试-Stencil-testing"><a href="#模板测试-Stencil-testing" class="headerlink" title="模板测试(Stencil testing)"></a>模板测试(Stencil testing)</h2><ul>
+<li>一个模板缓冲中，（通常）每个模板值(Stencil Value)是8位的。所以每个像素/片段一共能有256种不同的模板值。我们可以将这些模板值设置为我们想要的值，然后当某一个片段有某一个模板值的时候，我们就可以选择丢弃或是保留这个片段了。<figure class="hljs highlight HTML"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs HTML"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"alert-green"</span>&gt;</span>每个窗口库都需要为你配置一个模板缓冲。GLFW自动做了这件事，所以我们不需要告诉GLFW来创建一个，但其它的窗口库可能不会默认给你创建一个模板库，所以记得要查看库的文档。<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="使用模板缓冲"><a href="#使用模板缓冲" class="headerlink" title="使用模板缓冲"></a>使用模板缓冲</h3><h4 id="大体步骤"><a href="#大体步骤" class="headerlink" title="大体步骤"></a>大体步骤</h4><ol>
+<li><p>启用模板缓冲的写入。可以启用GL_STENCIL_TEST来启用模板测试。和颜色和深度缓冲一样，你也需要在每次迭代之前清除模板缓冲。</p>
+<figure class="hljs highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c">glEnable(GL_STENCIL_TEST);<br>glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>和颜色和深度缓冲一样，你也需要在每次迭代之前清除模板缓冲。</p>
+</li>
+<li>禁用模板缓冲的写入。</li>
+<li>渲染（其它）物体，这次根据模板缓冲的内容丢弃特定的片段。</li>
+</ol>
+<h4 id="掩码设置"><a href="#掩码设置" class="headerlink" title="掩码设置"></a>掩码设置</h4><ul>
+<li>和深度测试的glDepthMask函数一样，模板缓冲也有一个类似的函数。glStencilMask允许我们设置一个位掩码(Bitmask)，它会与将要写入缓冲的模板值进行与(AND)运算。默认情况下设置的位掩码所有位都为1，不影响输出，但如果我们将它设置为0x00，写入缓冲的所有模板值最后都会变成0.这与深度测试中的glDepthMask(GL_FALSE)是等价的。</li>
+<li>大部分情况下你都只会使用0x00或者0xFF作为模板掩码(Stencil Mask)，但是知道有选项可以设置自定义的位掩码总是好的。<figure class="hljs highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c">glStencilMask(<span class="hljs-number">0xFF</span>); <span class="hljs-comment">// 每一位写入模板缓冲时都保持原样</span><br>glStencilMask(<span class="hljs-number">0x00</span>); <span class="hljs-comment">// 每一位在写入模板缓冲时都会变成0（禁用写入）</span><br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="模板函数"><a href="#模板函数" class="headerlink" title="模板函数"></a>模板函数</h4><h5 id="glStencilFunc"><a href="#glStencilFunc" class="headerlink" title="glStencilFunc"></a>glStencilFunc</h5><ul>
+<li>glStencilFunc决定模板与何值进行何种比较，且支持比较前进行掩码计算。</li>
+<li>glStencilFunc(GLenum func, GLint ref, GLuint mask)一共包含三个参数：<ol>
+<li>func：设置模板测试函数(Stencil Test Function)。这个测试函数将会应用到已储存的模板值上和glStencilFunc函数的ref值上。可用的选项有：GL_NEVER、GL_LESS、GL_LEQUAL、GL_GREATER、GL_GEQUAL、GL_EQUAL、GL_NOTEQUAL和GL_ALWAYS。它们的语义和深度缓冲的函数类似。</li>
+<li>ref：设置了模板测试的参考值(Reference Value)。模板缓冲的内容将会与这个值进行比较。</li>
+<li>mask：设置一个掩码，它将会与参考值和储存的模板值在测试比较它们之前进行与(AND)运算。初始情况下所有位都为1。</li>
+</ol>
+</li>
+</ul>
+<h5 id="glStencilOp"><a href="#glStencilOp" class="headerlink" title="glStencilOp"></a>glStencilOp</h5><ul>
+<li>glStencilOp告诉OpenGL如何更新缓冲。</li>
+<li><p>glStencilOp(GLenum sfail, GLenum dpfail, GLenum dppass)一共包含三个参数：</p>
+<ol>
+<li>sfail：模板测试失败时采取的行为。</li>
+<li>dpfail：模板测试通过，但深度测试失败时采取的行为。</li>
+<li>dppass：模板测试和深度测试都通过时采取的行为。</li>
+</ol>
+<p>|参数|描述|<br>|——|—-|<br>|GL_KEEP|保持当前储存的模板值|<br>|GL_ZERO|将模板值设置为0|<br>|GL_REPLACE|将模板值设置为glStencilFunc函数设置的ref值|<br>|GL_INCR|如果模板值小于最大值则将模板值加1|<br>|GL_INCR_WRAP|与GL_INCR一样，但如果模板值超过了最大值则归零|<br>|GL_DECR|如果模板值大于最小值则将模板值减1|<br>|GL_DECR_WRAP|与GL_DECR一样，但如果模板值小于0则将其设置为最大值|<br>|GL_INVERT|按位翻转当前的模板缓冲值|</p>
+</li>
+<li><p>默认情况下glStencilOp是设置为(GL_KEEP, GL_KEEP, GL_KEEP)的，所以不论任何测试的结果是如何，模板缓冲都会保留它的值。默认的行为不会更新模板缓冲，所以如果你想写入模板缓冲的话，你需要至少对其中一个选项设置不同的值。</p>
+</li>
+</ul>
 
     </main>
     <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/OpenGL/" rel="tag"><i class="fas fa-tags"></i>OpenGL</a>
+        
+      </div>
       
     </footer>
   </article>
@@ -367,7 +414,7 @@
     <hr>
     <div class="post-toc sidebar-item" id="toc-div">
       <div><i class="fas fa-list-ol"></i>文章目录</div>
-      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#深度测试-Depth-testing"><span class="toc-text">深度测试(Depth testing)</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#深度测试运行机制"><span class="toc-text">深度测试运行机制</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#深度缓冲"><span class="toc-text">深度缓冲</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#深度测试规则"><span class="toc-text">深度测试规则</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#深度测试时机"><span class="toc-text">深度测试时机</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#提前深度测试"><span class="toc-text">提前深度测试</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#深度测试函数"><span class="toc-text">深度测试函数</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#深度值"><span class="toc-text">深度值</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#深度值精度"><span class="toc-text">深度值精度</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#深度值可视化"><span class="toc-text">深度值可视化</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#深度冲突"><span class="toc-text">深度冲突</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#防止深度冲突"><span class="toc-text">防止深度冲突</span></a></li></ol></li></ol></li></ol></div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#深度测试-Depth-testing"><span class="toc-text">深度测试(Depth testing)</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#深度测试运行机制"><span class="toc-text">深度测试运行机制</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#深度缓冲"><span class="toc-text">深度缓冲</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#深度测试规则"><span class="toc-text">深度测试规则</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#深度测试时机"><span class="toc-text">深度测试时机</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#提前深度测试"><span class="toc-text">提前深度测试</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#深度测试函数"><span class="toc-text">深度测试函数</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#深度值"><span class="toc-text">深度值</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#深度值精度"><span class="toc-text">深度值精度</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#深度值可视化"><span class="toc-text">深度值可视化</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#深度冲突"><span class="toc-text">深度冲突</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#防止深度冲突"><span class="toc-text">防止深度冲突</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#模板测试-Stencil-testing"><span class="toc-text">模板测试(Stencil testing)</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#使用模板缓冲"><span class="toc-text">使用模板缓冲</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#大体步骤"><span class="toc-text">大体步骤</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#掩码设置"><span class="toc-text">掩码设置</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#模板函数"><span class="toc-text">模板函数</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-5"><a class="list-group-item toc-link" href="#glStencilFunc"><span class="toc-text">glStencilFunc</span></a></li><li class="toc-item toc-level-5"><a class="list-group-item toc-link" href="#glStencilOp"><span class="toc-text">glStencilOp</span></a></li></ol></li></ol></li></ol></li></ol></div>
     </div>
     
     
