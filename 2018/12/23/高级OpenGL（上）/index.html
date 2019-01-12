@@ -385,6 +385,227 @@
 <li><p><img src="/2018/12/23/高级OpenGL（上）/物体轮廓.jpg" alt="物体轮廓"></p>
 </li>
 </ul>
+<hr>
+<h2 id="混合-Blending"><a href="#混合-Blending" class="headerlink" title="混合(Blending)"></a>混合(Blending)</h2><ul>
+<li>OpenGL中，混合(Blending)通常是实现物体透明度(Transparency)的一种技术。透明就是说一个物体（或者其中的一部分）不是纯色(Solid Color)的，它的颜色是物体本身的颜色和它背后其它物体的颜色的不同强度结合。一个有色玻璃窗是一个透明的物体，玻璃有它自己的颜色，但它最终的颜色还包含了玻璃之后所有物体的颜色。这也是混合这一名字的出处，我们混合(Blend)（不同物体的）多种颜色为一种颜色。所以透明度能让我们看穿物体。</li>
+</ul>
+<h3 id="丢弃片段-discard"><a href="#丢弃片段-discard" class="headerlink" title="丢弃片段(discard)"></a>丢弃片段(discard)</h3><ul>
+<li>在绘制物体时，有些时候，我们会希望丢弃某些片段，如alpha为0的片段。</li>
+<li><p>GLSL给了我们discard命令，一旦被调用，它就会保证片段不会被进一步处理，所以就不会进入颜色缓冲。</p>
+<figure class="hljs highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#version 330 core</span><br>out vec4 FragColor;<br><br>in vec2 TexCoords;<br><br>uniform sampler2D texture1;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">()</span><br></span>&#123;             <br>    vec4 texColor = texture(texture1, TexCoords);<br>    <span class="hljs-keyword">if</span>(texColor.a &lt; <span class="hljs-number">0.1</span>)<br>        discard;<br>    FragColor = texColor;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><img src="/2018/12/23/高级OpenGL（上）/discard.png" alt="使用discard去掉alpha值小于1的片段"></p>
+</li>
+<li>从上图可以看出，采样纹理的边缘的时候，OpenGL会对边缘的值和纹理下一个重复的值进行插值，从而造成草头上有点绿。（这是因为它的环绕方式被设置为了GL_REPEAT，将纹理的环绕方式设置为GL_CLAMP_TO_EDGE即可解决）。<figure class="hljs highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c">glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);<br>glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="混合"><a href="#混合" class="headerlink" title="混合"></a>混合</h3><ul>
+<li>截至上面，我们对一个片段的操作均为要么丢弃，要么渲染，并未能做到渲染多个透明度级别的图像。</li>
+<li>OpenGL提供了glEnable(GL_BLEND)方法来启用混合，但我们需要告知OpenGL如何混合。</li>
+</ul>
+<h4 id="混合方程"><a href="#混合方程" class="headerlink" title="混合方程"></a>混合方程</h4><script type="math/tex; mode=display">\vec C_{result} = \vec C_{source} * \vec F_{source} + \vec C_{destination} * \vec F_{destination}</script><p>$\vec C_{source}$ ：源颜色向量，这是源自纹理的颜色向量。</p>
+<p>$\vec C_{destination}$ ：目标颜色向量。这是当前储存在颜色缓冲中的颜色向量。</p>
+<p>$\vec F_{destination}$ ：目标因子值，指定了alpha对目标颜色的影响。</p>
+<p>$\vec F_{source}$ ：源因子值，指定了alpha对源颜色的影响。</p>
+<p>$\vec C_{constant}$ ：常数颜色向量，通过glBlendColor函数来另外设置。</p>
+<ul>
+<li>片段着色器运行完成后，并且所有的测试都通过之后，这个混合方程(Blend Equation)才会应用到片段颜色输出与当前颜色缓冲中的值（当前片段之前储存的之前片段的颜色）上。源颜色和目标颜色将会由OpenGL自动设定，但源因子和目标因子的值可以由我们来决定。</li>
+</ul>
+<h4 id="混合使用"><a href="#混合使用" class="headerlink" title="混合使用"></a>混合使用</h4><ul>
+<li>在混合方程中，对于OpenGL而言，因子值是不知道的，我们将通过glBlendFunc(GLenum sfactor, GLenum dfactor)来设置源和目标因子。</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GL_ZERO</td>
+<td>因子等于0</td>
+</tr>
+<tr>
+<td>GL_ONE</td>
+<td>因子等于1</td>
+</tr>
+<tr>
+<td>GL_SRC_COLOR</td>
+<td>因子等于源颜色向量 $\vec C_{source}$</td>
+</tr>
+<tr>
+<td>GL_ONE_MINUS_SRC_COLOR</td>
+<td>因子等于1− $\vec C_{source}$</td>
+</tr>
+<tr>
+<td>GL_DST_COLOR</td>
+<td>因子等于目标颜色向量 $\vec C_{destination}$</td>
+</tr>
+<tr>
+<td>GL_ONE_MINUS_DST_COLOR</td>
+<td>因子等于1− $\vec C_{destination}$</td>
+</tr>
+<tr>
+<td>GL_SRC_ALPHA</td>
+<td>因子等于 $\vec C_{source}$ 的alpha分量</td>
+</tr>
+<tr>
+<td>GL_ONE_MINUS_SRC_ALPHA</td>
+<td>因子等于1− $\vec C_{source}$ 的alpha分量</td>
+</tr>
+<tr>
+<td>GL_DST_ALPHA</td>
+<td>因子等于 $\vec C_{destination}$ 的alpha分量</td>
+</tr>
+<tr>
+<td>GL_ONE_MINUS_DST_ALPHA</td>
+<td>因子等于1− $\vec C_{destination}$ 的alpha分量</td>
+</tr>
+<tr>
+<td>GL_CONSTANT_COLOR</td>
+<td>因子等于常数颜色向量 $\vec C_{constant}$</td>
+</tr>
+<tr>
+<td>GL_ONE_MINUS_CONSTANT_COLOR</td>
+<td>因子等于1− $\vec C_{constant}$</td>
+</tr>
+<tr>
+<td>GL_CONSTANT_ALPHA</td>
+<td>因子等于 $\vec C_{constant}$ 的alpha分量</td>
+</tr>
+<tr>
+<td>GL_ONE_MINUS_CONSTANT_ALPHA</td>
+<td>因子等于1− $\vec C_{constant}$ 的alpha分量</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>使用使用glBlendFuncSeparate为RGB和alpha通道分别设置不同的选项：<ul>
+<li>glBlendFuncSeparate(GLenum srcRGB, GLenum destRGB, GLenum srcAlpha, GLenum destAlpha)</li>
+</ul>
+</li>
+<li><p>使用glBlendEquation(GLenum mode)允许我们设置运算符，默认是相加。</p>
+<ul>
+<li>GL<em>FUNC_ADD：默认选项，将两个分量相加： $\vec C</em>{result}$ = Src + Dst</li>
+<li>GL<em>FUNC_SUBTRACT：将两个分量相减： $\vec C</em>{result}$ = Src − Dst</li>
+<li>GL<em>FUNC_REVERSE_SUBTRACT：将两个分量相减，但顺序相反： $\vec C</em>{result}$ = Dst − Src</li>
+</ul>
+</li>
+<li><p>使用混合渲染半透明纹理效果：</p>
+</li>
+<li><img src="/2018/12/23/高级OpenGL（上）/blending_withoutsort.png" alt="使用混合渲染半透明纹理效果"></li>
+<li>可以看到，最前面的窗口挡住了后面的一个窗口，这是由于深度测试与混合一起使用造成的问题。深度缓冲不会检查片段是否是透明的，所以透明的部分会和其它值一样写入到深度缓冲中。结果就是窗户的整个四边形不论透明度都会进行深度测试。即使透明的部分应该显示背后的窗户，深度测试仍然丢弃了它们。</li>
+<li>在不考虑旋转、缩放或者其它的变换，以及物体形状的情况下，我们通过对物体远近进行排序，逆序渲染，可以得到比较好的效果：</li>
+<li><img src="/2018/12/23/高级OpenGL（上）/blending_withsort.png" alt="使用混合渲染半透明纹理效果"></li>
+</ul>
+<hr>
+<h2 id="面剔除-Face-culling"><a href="#面剔除-Face-culling" class="headerlink" title="面剔除(Face culling)"></a>面剔除(Face culling)</h2><ul>
+<li>对于一个被渲染的物体，我们看不见其背面部分，这部分的渲染其实是没必要的，可以通过面剔除的方法来实现这种想法。</li>
+<li>OpenGL能够检查所有面向(Front Facing)观察者的面，并渲染它们，而丢弃那些背向(Back Facing)的面，节省我们很多的片段着色器调用（它们的开销很大！）。但我们仍要告诉OpenGL哪些面是正向面(Front Face)，哪些面是背向面(Back Face)。OpenGL使用了一个很聪明的技巧，分析顶点数据的环绕顺序(Winding Order)。</li>
+</ul>
+<h3 id="环绕顺序"><a href="#环绕顺序" class="headerlink" title="环绕顺序"></a>环绕顺序</h3><ul>
+<li>当我们定义一组三角形顶点时，我们会以特定的环绕顺序来定义它们，可能是顺时针(Clockwise)的，也可能是逆时针(Counter-clockwise)的。每个三角形由3个顶点所组成，我们会从三角形中间来看，为这3个顶点设定一个环绕顺序。</li>
+<li><img src="/2018/12/23/高级OpenGL（上）/faceculling_windingorder.png" alt="三角形顶点环绕顺序"></li>
+<li>每组组成三角形图元的三个顶点就包含了一个环绕顺序。OpenGL在渲染图元的时候将使用这个信息来决定一个三角形是一个正向三角形还是背向三角形。默认情况下，逆时针顶点所定义的三角形将会被处理为正向三角形。</li>
+<li>一般的，面向观察者视角所见的三角形为正向的。</li>
+<li><img src="/2018/12/23/高级OpenGL（上）/faceculling_frontback.png" alt="三角形顶点环绕顺序"></li>
+</ul>
+<h3 id="面剔除"><a href="#面剔除" class="headerlink" title="面剔除"></a>面剔除</h3><ul>
+<li>OpenGL提供glEnable(GL_CULL_FACE)方法供我们开启面剔除。</li>
+<li>我们还可以通过glCullFace方法来修改要剔除的面的类型：<ul>
+<li>GL_BACK：只剔除背向面。</li>
+<li>GL_FRONT：只剔除正向面。</li>
+<li>GL_FRONT_AND_BACK：剔除正向面和背向面。</li>
+</ul>
+</li>
+<li>OpenGL也提供了glFrontFace方法，供我们设定何种环绕顺序为正向面：<ul>
+<li>GL_CW：顺时针。</li>
+<li>GL_CCW：逆时针。</li>
+</ul>
+</li>
+<li>通过开启面剔除及设置正向面为顺时针方向，我们可以只渲染立方体背面：</li>
+<li><img src="/2018/12/23/高级OpenGL（上）/face_culling.png" alt="面剔除效果"></li>
+</ul>
+<hr>
+<h2 id="帧缓冲-Framebuffers"><a href="#帧缓冲-Framebuffers" class="headerlink" title="帧缓冲(Framebuffers)"></a>帧缓冲(Framebuffers)</h2><ul>
+<li>用于写入颜色值的颜色缓冲、用于写入深度信息的深度缓冲和允许我们根据一些条件丢弃特定片段的模板缓冲。这些缓冲结合起来叫做帧缓冲(Framebuffer)，它被储存在内存中。OpenGL允许我们定义我们自己的帧缓冲，也就是说我们能够定义我们自己的颜色缓冲，甚至是深度缓冲和模板缓冲。</li>
+</ul>
+<h3 id="创建帧缓冲"><a href="#创建帧缓冲" class="headerlink" title="创建帧缓冲"></a>创建帧缓冲</h3><ul>
+<li><p>帧缓冲的创建、使用、销毁步骤如下：</p>
+<figure class="hljs highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> fbo;<br><span class="hljs-comment">// 创建一个帧缓冲对象(Framebuffer Object, FBO)</span><br>glGenFramebuffers(<span class="hljs-number">1</span>, &amp;fbo);<br><span class="hljs-comment">// 绑定帧缓冲</span><br>glBindFramebuffer(GL_FRAMEBUFFER, fbo);<br><span class="hljs-comment">// 附加缓冲，颜色附件等操作...</span><br>...<br><span class="hljs-comment">// 检查帧缓冲是否完整</span><br>glCheckFramebufferStatus(GL_FRAMEBUFFER) == GL_FRAMEBUFFER_COMPLETE<br><span class="hljs-comment">// 再次激活默认帧缓冲</span><br>glBindFramebuffer(GL_FRAMEBUFFER, <span class="hljs-number">0</span>);<br><span class="hljs-comment">// 在完成所有的帧缓冲操作之后，删除这个帧缓冲对象</span><br>glDeleteFramebuffers(<span class="hljs-number">1</span>, &amp;fbo);<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>在创建完帧缓冲后，并不能马上进行使用，因为其是不完整的。一个完整的帧缓冲需要满足以下的条件：</p>
+<ul>
+<li>附加至少一个缓冲（颜色、深度或模板缓冲）。</li>
+<li>至少有一个颜色附件(Attachment)。</li>
+<li>所有的附件都必须是完整的（保留了内存）。</li>
+<li>每个缓冲都应该有相同的样本数。</li>
+</ul>
+</li>
+</ul>
+<h3 id="附件"><a href="#附件" class="headerlink" title="附件"></a>附件</h3><h4 id="为帧缓存创建纹理"><a href="#为帧缓存创建纹理" class="headerlink" title="为帧缓存创建纹理"></a>为帧缓存创建纹理</h4><ul>
+<li><p>当把一个纹理附加到帧缓冲的时候，所有的渲染指令将会写入到这个纹理中，就想它是一个普通的颜色/深度或模板缓冲一样。使用纹理的优点是，所有渲染操作的结果将会被储存在一个纹理图像中，我们之后可以在着色器中很方便地使用它。</p>
+<figure class="hljs highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> texture;<br>glGenTextures(<span class="hljs-number">1</span>, &amp;texture);<br>glBindTexture(GL_TEXTURE_2D, texture);<br><br>glTexImage2D(GL_TEXTURE_2D, <span class="hljs-number">0</span>, GL_RGB, SCREEN_WIDTH, SCREEN_HEIGHT, <span class="hljs-number">0</span>, GL_RGB, GL_UNSIGNED_BYTE, <span class="hljs-literal">NULL</span>);<br><br>glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);<br>glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>我们将其大小设置为屏幕大小（非必要，但后面的例子中会直接使用其替换整个窗口屏幕），数据传入NULL。</p>
+</li>
+<li>即，我们仅创建了一片内存，并没有对其进行数据填充。填充这个纹理将会在我们渲染到帧缓冲之后来进行。同样注意我们并不关心环绕方式或多级渐远纹理，我们在大多数情况下都不会需要它们。</li>
+<li><p>创建完纹理后，我们需要将其附加到帧缓冲上。</p>
+<figure class="hljs highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, texture, <span class="hljs-number">0</span>);<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>glFrameBufferTexture2D有以下的参数：</p>
+<ul>
+<li>target：帧缓冲的目标（绘制、读取或者两者皆有）</li>
+<li>attachment：我们想要附加的附件类型。当前我们正在附加一个颜色附件。注意最后的0意味着我们可以附加多个颜色附件。</li>
+<li>textarget：你希望附加的纹理类型</li>
+<li>texture：要附加的纹理本身</li>
+<li>level：多级渐远纹理的级别。我们将它保留为0。</li>
+</ul>
+</li>
+<li><p>除了颜色附件之外，我们还可以附加一个深度和模板缓冲纹理到帧缓冲对象中。要附加深度缓冲的话，我们将附件类型设置为GL_DEPTH_ATTACHMENT。注意纹理的格式(Format)和内部格式(Internalformat)类型将变为GL_DEPTH_COMPONENT，来反映深度缓冲的储存格式。要附加模板缓冲的话，你要将第二个参数设置为GL_STENCIL_ATTACHMENT，并将纹理的格式设定为GL_STENCIL_INDEX。</p>
+</li>
+<li><p>也可以将深度缓冲和模板缓冲附加为一个单独的纹理。纹理的每32位数值将包含24位的深度信息和8位的模板信息。使用GL_DEPTH_STENCIL_ATTACHMENT类型，并配置纹理的格式，让它包含合并的深度和模板值。</p>
+</li>
+<li>将一个深度和模板缓冲附加为一个纹理到帧缓冲的例子：<figure class="hljs highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c">glTexImage2D(<br>  GL_TEXTURE_2D, <span class="hljs-number">0</span>, GL_DEPTH24_STENCIL8, SCREEN_WIDTH, SCREEN_HEIGHT, <span class="hljs-number">0</span>,<br>  GL_DEPTH_STENCIL, GL_UNSIGNED_INT_24_8, <span class="hljs-literal">NULL</span><br>);<br><br>glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_TEXTURE_2D, texture, <span class="hljs-number">0</span>);<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="渲染缓冲对象附件"><a href="#渲染缓冲对象附件" class="headerlink" title="渲染缓冲对象附件"></a>渲染缓冲对象附件</h4><ul>
+<li>渲染缓冲对象(Renderbuffer Object)是在纹理之后引入到OpenGL中，作为一个可用的帧缓冲附件类型的，和纹理图像一样，渲染缓冲对象是一个真正的缓冲，即一系列的字节、整数、像素等。渲染缓冲对象附加的好处是，它会将数据储存为OpenGL原生的渲染格式，它是为离屏渲染到帧缓冲优化过的。</li>
+<li>渲染缓冲对象直接将所有的渲染数据储存到它的缓冲中，不会做任何针对纹理格式的转换，让它变为一个更快的可写储存介质。然而，渲染缓冲对象通常都是只写的，所以你不能读取它们（比如使用纹理访问）。当然你仍然还是能够使用 <em>glReadPixels</em> 来读取它，这会从当前绑定的帧缓冲，而不是附件本身，中返回特定区域的像素。</li>
+<li>因为它的数据已经是原生的格式了，当写入或者复制它的数据到其它缓冲中时是非常快的。所以，交换缓冲这样的操作在使用渲染缓冲对象时会非常快。我们在每个渲染迭代最后使用的glfwSwapBuffers，也可以通过渲染缓冲对象实现：只需要写入一个渲染缓冲图像，并在最后交换到另外一个渲染缓冲就可以了。渲染缓冲对象对这种操作非常完美。</li>
+<li><p>使用渲染缓冲对象：</p>
+<figure class="hljs highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> rbo;<br>glGenRenderbuffers(<span class="hljs-number">1</span>, &amp;rbo);<br><span class="hljs-comment">// 绑定这个渲染缓冲对象</span><br>glBindRenderbuffer(GL_RENDERBUFFER, rbo);<br><span class="hljs-comment">// 创建一个深度和模板渲染缓冲对象</span><br>glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, SCREEN_WIDTH, SCREEN_HEIGHT);<br><span class="hljs-comment">// 附加这个渲染缓冲对象</span><br>glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, rbo);<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>由于渲染缓冲对象通常都是只写的，它们会经常用于深度和模板附件，因为大部分时间我们都不需要从深度和模板缓冲中读取值，只关心深度和模板测试。我们需要深度和模板值用于测试，但不需要对它们进行采样，所以渲染缓冲对象非常适合它们。当我们不需要从这些缓冲中采样的时候，通常都会选择渲染缓冲对象，因为它会更优化一点。</p>
+</li>
+<li>渲染缓冲对象能为你的帧缓冲对象提供一些优化，但知道什么时候使用渲染缓冲对象，什么时候使用纹理是很重要的。通常的规则是，如果你不需要从一个缓冲中采样数据，那么对这个缓冲使用渲染缓冲对象会是明智的选择。如果你需要从缓冲中采样颜色或深度值等数据，那么你应该选择纹理附件。性能方面它不会产生非常大的影响的。</li>
+</ul>
+<h3 id="渲染到纹理"><a href="#渲染到纹理" class="headerlink" title="渲染到纹理"></a>渲染到纹理</h3><figure class="hljs highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// 创建一个帧缓冲对象，并绑定它</span><br><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> framebuffer;<br>glGenFramebuffers(<span class="hljs-number">1</span>, &amp;framebuffer);<br>glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);<br><br><span class="hljs-comment">// 生成纹理</span><br><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> texColorBuffer;<br>glGenTextures(<span class="hljs-number">1</span>, &amp;texColorBuffer);<br>glBindTexture(GL_TEXTURE_2D, texColorBuffer);<br>glTexImage2D(GL_TEXTURE_2D, <span class="hljs-number">0</span>, GL_RGB, <span class="hljs-number">800</span>, <span class="hljs-number">600</span>, <span class="hljs-number">0</span>, GL_RGB, GL_UNSIGNED_BYTE, <span class="hljs-literal">NULL</span>);<br>glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );<br>glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);<br>glBindTexture(GL_TEXTURE_2D, <span class="hljs-number">0</span>);<br><br><span class="hljs-comment">// 将它附加到当前绑定的帧缓冲对象</span><br>glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, texColorBuffer, <span class="hljs-number">0</span>);  <br><br><span class="hljs-comment">// 创建渲染缓冲对象作为深度和模板附件渲染缓冲对象</span><br><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> rbo;<br>glGenRenderbuffers(<span class="hljs-number">1</span>, &amp;rbo);<br>glBindRenderbuffer(GL_RENDERBUFFER, rbo);<br>glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, <span class="hljs-number">800</span>, <span class="hljs-number">600</span>);  <br>glBindRenderbuffer(GL_RENDERBUFFER, <span class="hljs-number">0</span>);<br><br><span class="hljs-comment">// 将渲染缓冲对象附加到帧缓冲的深度和模板附件</span><br>glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, rbo);<br><br><span class="hljs-comment">// 完整性检查</span><br><span class="hljs-keyword">if</span>(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)<br>    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"ERROR::FRAMEBUFFER:: Framebuffer is not complete!"</span> &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;<br><br><span class="hljs-comment">// 解绑帧缓冲</span><br>glBindFramebuffer(GL_FRAMEBUFFER, <span class="hljs-number">0</span>);<br><br><span class="hljs-comment">// render loop</span><br><span class="hljs-keyword">while</span> (!glfwWindowShouldClose(window))<br>&#123;<br>  glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);<br>  glClearColor(<span class="hljs-number">0.1f</span>, <span class="hljs-number">0.1f</span>, <span class="hljs-number">0.1f</span>, <span class="hljs-number">1.0f</span>);<br>  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); <span class="hljs-comment">// 我们现在不使用模板缓冲</span><br>  glEnable(GL_DEPTH_TEST);<br>  DrawScene();<br><br>  glBindFramebuffer(GL_FRAMEBUFFER, <span class="hljs-number">0</span>); <span class="hljs-comment">// 返回默认缓冲</span><br>  glClearColor(<span class="hljs-number">1.0f</span>, <span class="hljs-number">1.0f</span>, <span class="hljs-number">1.0f</span>, <span class="hljs-number">1.0f</span>);<br>  glClear(GL_COLOR_BUFFER_BIT);<br><br>  screenShader.use();<br>  glBindVertexArray(quadVAO);<br>  glDisable(GL_DEPTH_TEST);<br>  glBindTexture(GL_TEXTURE_2D, textureColorbuffer);<br>  glDrawArrays(GL_TRIANGLES, <span class="hljs-number">0</span>, <span class="hljs-number">6</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li><img src="/2018/12/23/高级OpenGL（上）/framebuffers_screen_texture.png" alt="渲染帧缓冲"></li>
+</ul>
+<h3 id="核效果"><a href="#核效果" class="headerlink" title="核效果"></a>核效果</h3><ul>
+<li><p>在一个纹理图像上做后期处理的另外一个好处是，我们可以从纹理的其它地方采样颜色值。比如说我们可以在当前纹理坐标的周围取一小块区域，对当前纹理值周围的多个纹理值进行采样。我们可以结合它们创建出很有意思的效果。</p>
+</li>
+<li><p>核(Kernel)（或卷积矩阵(Convolution Matrix)）是一个类矩阵的数值数组，它的中心为当前的像素，它会用它的核值乘以周围的像素值，并将结果相加变成一个值。所以，基本上我们是在对当前像素周围的纹理坐标添加一个小的偏移量，并根据核将结果合并。</p>
+</li>
+<li>通过核，我们可以实现锐化，边缘检测，模糊等效果。</li>
+<li>下面是核的一个例子：<script type="math/tex; mode=display">\begin{bmatrix} 2 & 2 & 2 \\ 2 & -15 & 2 \\ 2 & 2 & 2 \end{bmatrix}</script></li>
+</ul>
+<blockquote>
+<p>大部分核将所有的权重加起来之后都应该会等于1，如果它们加起来不等于1，这就意味着最终的纹理颜色将会比原纹理值更亮或者更暗了。</p>
+</blockquote>
+<ul>
+<li><p>片段着色器实现：</p>
+<figure class="hljs highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">const</span> <span class="hljs-keyword">float</span> offset = <span class="hljs-number">1.0</span> / <span class="hljs-number">300.0</span>;  <br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">()</span><br></span>&#123;<br>    vec2 offsets[<span class="hljs-number">9</span>] = vec2[](<br>        vec2(-offset,  offset), <span class="hljs-comment">// 左上</span><br>        vec2( <span class="hljs-number">0.0f</span>,    offset), <span class="hljs-comment">// 正上</span><br>        vec2( offset,  offset), <span class="hljs-comment">// 右上</span><br>        vec2(-offset,  <span class="hljs-number">0.0f</span>),   <span class="hljs-comment">// 左</span><br>        vec2( <span class="hljs-number">0.0f</span>,    <span class="hljs-number">0.0f</span>),   <span class="hljs-comment">// 中</span><br>        vec2( offset,  <span class="hljs-number">0.0f</span>),   <span class="hljs-comment">// 右</span><br>        vec2(-offset, -offset), <span class="hljs-comment">// 左下</span><br>        vec2( <span class="hljs-number">0.0f</span>,   -offset), <span class="hljs-comment">// 正下</span><br>        vec2( offset, -offset)  <span class="hljs-comment">// 右下</span><br>    );<br><br>    <span class="hljs-keyword">float</span> kernel[<span class="hljs-number">9</span>] = <span class="hljs-keyword">float</span>[](<br>        <span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>,<br>        <span class="hljs-number">-1</span>,  <span class="hljs-number">9</span>, <span class="hljs-number">-1</span>,<br>        <span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">-1</span><br>    );<br><br>    vec3 sampleTex[<span class="hljs-number">9</span>];<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">9</span>; i++)<br>    &#123;<br>        sampleTex[i] = vec3(texture(screenTexture, TexCoords.st + offsets[i]));<br>    &#125;<br>    vec3 col = vec3(<span class="hljs-number">0.0</span>);<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">9</span>; i++)<br>        col += sampleTex[i] * kernel[i];<br><br>    FragColor = vec4(col, <span class="hljs-number">1.0</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>边缘检测的效果：</p>
+</li>
+<li><img src="/2018/12/23/高级OpenGL（上）/kernel.jpg" alt="边缘检测"></li>
+</ul>
 
     </main>
     <footer class="post-footer">
@@ -476,7 +697,7 @@
     <hr>
     <div class="post-toc sidebar-item" id="toc-div">
       <div><i class="fas fa-list-ol"></i>文章目录</div>
-      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#深度测试-Depth-testing"><span class="toc-text">深度测试(Depth testing)</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#深度测试运行机制"><span class="toc-text">深度测试运行机制</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#深度缓冲"><span class="toc-text">深度缓冲</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#深度测试规则"><span class="toc-text">深度测试规则</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#深度测试时机"><span class="toc-text">深度测试时机</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#提前深度测试"><span class="toc-text">提前深度测试</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#深度测试函数"><span class="toc-text">深度测试函数</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#深度值"><span class="toc-text">深度值</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#深度值精度"><span class="toc-text">深度值精度</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#深度值可视化"><span class="toc-text">深度值可视化</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#深度冲突"><span class="toc-text">深度冲突</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#防止深度冲突"><span class="toc-text">防止深度冲突</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#模板测试-Stencil-testing"><span class="toc-text">模板测试(Stencil testing)</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#使用模板缓冲"><span class="toc-text">使用模板缓冲</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#大体步骤"><span class="toc-text">大体步骤</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#掩码设置"><span class="toc-text">掩码设置</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#模板函数"><span class="toc-text">模板函数</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-5"><a class="list-group-item toc-link" href="#glStencilFunc"><span class="toc-text">glStencilFunc</span></a></li><li class="toc-item toc-level-5"><a class="list-group-item toc-link" href="#glStencilOp"><span class="toc-text">glStencilOp</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#模板缓冲例子"><span class="toc-text">模板缓冲例子</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#物体轮廓"><span class="toc-text">物体轮廓</span></a></li></ol></li></ol></li></ol></div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#深度测试-Depth-testing"><span class="toc-text">深度测试(Depth testing)</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#深度测试运行机制"><span class="toc-text">深度测试运行机制</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#深度缓冲"><span class="toc-text">深度缓冲</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#深度测试规则"><span class="toc-text">深度测试规则</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#深度测试时机"><span class="toc-text">深度测试时机</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#提前深度测试"><span class="toc-text">提前深度测试</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#深度测试函数"><span class="toc-text">深度测试函数</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#深度值"><span class="toc-text">深度值</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#深度值精度"><span class="toc-text">深度值精度</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#深度值可视化"><span class="toc-text">深度值可视化</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#深度冲突"><span class="toc-text">深度冲突</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#防止深度冲突"><span class="toc-text">防止深度冲突</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#模板测试-Stencil-testing"><span class="toc-text">模板测试(Stencil testing)</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#使用模板缓冲"><span class="toc-text">使用模板缓冲</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#大体步骤"><span class="toc-text">大体步骤</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#掩码设置"><span class="toc-text">掩码设置</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#模板函数"><span class="toc-text">模板函数</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-5"><a class="list-group-item toc-link" href="#glStencilFunc"><span class="toc-text">glStencilFunc</span></a></li><li class="toc-item toc-level-5"><a class="list-group-item toc-link" href="#glStencilOp"><span class="toc-text">glStencilOp</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#模板缓冲例子"><span class="toc-text">模板缓冲例子</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#物体轮廓"><span class="toc-text">物体轮廓</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#混合-Blending"><span class="toc-text">混合(Blending)</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#丢弃片段-discard"><span class="toc-text">丢弃片段(discard)</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#混合"><span class="toc-text">混合</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#混合方程"><span class="toc-text">混合方程</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#混合使用"><span class="toc-text">混合使用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#面剔除-Face-culling"><span class="toc-text">面剔除(Face culling)</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#环绕顺序"><span class="toc-text">环绕顺序</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#面剔除"><span class="toc-text">面剔除</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#帧缓冲-Framebuffers"><span class="toc-text">帧缓冲(Framebuffers)</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#创建帧缓冲"><span class="toc-text">创建帧缓冲</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#附件"><span class="toc-text">附件</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#为帧缓存创建纹理"><span class="toc-text">为帧缓存创建纹理</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#渲染缓冲对象附件"><span class="toc-text">渲染缓冲对象附件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#渲染到纹理"><span class="toc-text">渲染到纹理</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#核效果"><span class="toc-text">核效果</span></a></li></ol></li></ol></div>
     </div>
     
     
@@ -519,7 +740,7 @@
     <div class="footer-container">
       <div class="footer-left">
         <div class="copyright">
-          <span class="author">MoriMiya</span><span class="year"><i class="far fa-copyright"></i>2018 - 2018</span><span class="creative-commons"><i class="fab fa-creative-commons"></i><a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">BY-SA 4.0</a></span>
+          <span class="author">MoriMiya</span><span class="year"><i class="far fa-copyright"></i>2018 - 2019</span><span class="creative-commons"><i class="fab fa-creative-commons"></i><a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">BY-SA 4.0</a></span>
         </div>
         
         <div class="busuanzi">
