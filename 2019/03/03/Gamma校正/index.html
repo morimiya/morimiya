@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#33363b">
+    <meta name="msapplication-TileColor" content="#33363b">
+    
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#33363b">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="MoriMiya" type="application/atom+xml">
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    
+    <script defer type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-MML-AM_CHTML"></script>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ["$","$"], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ["script", "noscript", "style", "textarea", "pre", "code"]
+      }
+    });
+    </script>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += " has-jax";
+      }
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>Gamma校正 | MoriMiya - Don't you want to be alive before you die?</title>
+  </head>
+  <body itemscope="" itemtype="http://schema.org/WebPage" lang="zh_CN" data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #33363b;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">MoriMiya</a></h1>
+        <h2 class="subtitle">Don't you want to be alive before you die?</h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/">首页</a></li>
+        
+        <li role="menuitem"><a href="/archives/">归档</a></li>
+        
+        <li role="menuitem"><a href="/categories/">分类</a></li>
+        
+        <li role="menuitem"><a href="/tags/">标签</a></li>
+        
+        <li role="menuitem"><a href="/about/">关于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card animate" itemscope="" itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/03/Gamma校正/">
+      <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="MoriMiya">
+       <meta itemprop="description" content="">
+       <meta itemprop="image" content="/images/myavatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="MoriMiya">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">Gamma校正</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2019-03-03T23:24:10+08:00">2019-03-03 23:24:10</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/OpenGL/" itemprop="url" rel="index"><span itemprop="name">OpenGL</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/OpenGL/Gamma校正/" itemprop="url" rel="index"><span itemprop="name">Gamma校正</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <blockquote>
+<p><a href="https://learnopengl-cn.github.io" target="_blank" rel="noopener">https://learnopengl-cn.github.io</a> Gamma校正学习笔记</p>
+<p>Gamma校正</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="灰阶"><a href="#灰阶" class="headerlink" title="灰阶"></a>灰阶</h2><ul>
+<li><img src="/2019/03/03/Gamma校正/gamma_correction_brightness.png" alt="灰阶图"></li>
+<li>第一行是人眼所感知的正常灰阶图，第二行是根据如光子数量所展现出来的物理世界真实的灰阶图。</li>
+<li>物理亮度和感知亮度的区别在于，物理亮度基于光子数量，感知亮度基于人的感觉，比如第二个灰阶里亮度0.1的光子数量是0.2的二分之一。</li>
+<li><p>通过上图表明，人眼对亮度的感知并不是线性的。人眼对亮度的感知值约为真实亮度值的2次幂。</p>
+</li>
+<li><p><img src="/2019/03/03/Gamma校正/gamma_correction_gamma_curves.png" alt="Gamma校正曲线"></p>
+</li>
+<li>CRT显示器亮度是电压的2.2次幂，与人眼的2次幂相当，因此物理亮度通过CRT显示器显示的效果与人眼相近，所以看起来效果是不错的。</li>
+<li>需要注意的是，在屋里线性空间或CRT校正后的曲线空间中，亮度的最小值都是0，最大值都为1，仅是中间部分的亮度被压低，但也因人眼对低亮度更敏感，所以压低亮度刚好符合人眼感知灰度图。</li>
+<li>由于此映射关系不是线性映射，在线性空间（gamma=1）中对亮度做倍数处理，其展现效果值并不是相同倍数（指数值结果上不同倍数，实际人眼感知上提高的是相同倍数），如在gamma=1的线性空间中对亮度0.5提高至1.0，其在gamma=2.2空间中的亮度变化则为0.218提高至1.0，约为4.5倍。</li>
+</ul>
+<h2 id="Gamma校正"><a href="#Gamma校正" class="headerlink" title="Gamma校正"></a>Gamma校正</h2><ul>
+<li>上面提到，gamma=2.2刚好是符合人眼感知的，为何我们仍需要进行gamma校正？因为我们在程序中设置颜色、光照等都是基于线性空间（gammma=1）来设置的，我们希望最终颜色在显示器中输出的结果与线性空间中计算到的一致。</li>
+<li>在将颜色显示到显示器之前，我们先对颜色应用Gamma校正曲线。线性的颜色显示在显示器上相当于降低了2.2次幂的亮度，所以Gamma校正便是对线性的颜色取1/2.2次幂。</li>
+</ul>
+<h3 id="OpenGL中使用Gamma校正"><a href="#OpenGL中使用Gamma校正" class="headerlink" title="OpenGL中使用Gamma校正"></a>OpenGL中使用Gamma校正</h3><h4 id="使用OpenGL内建的sRGB帧缓冲"><a href="#使用OpenGL内建的sRGB帧缓冲" class="headerlink" title="使用OpenGL内建的sRGB帧缓冲"></a>使用OpenGL内建的sRGB帧缓冲</h4><ul>
+<li>开启GL_FRAMEBUFFER_SRGB，可以告诉OpenGL每个后续的绘制命令里，在颜色储存到颜色缓冲之前先校正sRGB颜色。sRGB这个颜色空间大致对应于gamma2.2，它也是家用设备的一个标准。开启GL_FRAMEBUFFER_SRGB以后，每次片段着色器运行后续帧缓冲，OpenGL将自动执行gamma校正，包括默认帧缓冲。</li>
+<li><p>开启GL_FRAMEBUFFER_SRGB简单的调用glEnable就行：</p>
+<figure class="hljs highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">glEnable(GL_FRAMEBUFFER_SRGB);<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>我们只需要在最后一步进行gamma校正，如果在最后输出之前就进行gamma校正，所有的后续操作都是在操作不正确的颜色值。例如，如果你使用多个帧缓冲，你可能打算让两个帧缓冲之间传递的中间结果仍然保持线性空间颜色，只是给发送给显示器的最后的那个帧缓冲应用gamma校正。</p>
+</li>
+</ul>
+<h4 id="在片段着色器最后应用gamma校正"><a href="#在片段着色器最后应用gamma校正" class="headerlink" title="在片段着色器最后应用gamma校正"></a>在片段着色器最后应用gamma校正</h4><ul>
+<li><p>颜色在发送到帧缓冲前，其颜色就被校正了。</p>
+<figure class="hljs highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs glsl"><span class="hljs-type">void</span> main()<br>&#123;<br>    <span class="hljs-comment">// do super fancy lighting</span><br>    [...]<br>    <span class="hljs-comment">// apply gamma correction</span><br>    <span class="hljs-type">float</span> gamma = <span class="hljs-number">2.2</span>;<br>    fragColor.rgb = <span class="hljs-built_in">pow</span>(fragColor.rgb, <span class="hljs-type">vec3</span>(<span class="hljs-number">1.0</span>/gamma));<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>此方法繁琐的地方在于需要在每个片段着色器的最后都应用gamma校正。一个更简单的方案是在你的渲染循环中引入后处理阶段，在后处理四边形上应用gamma校正，这样你只要做一次就好了。</p>
+</li>
+</ul>
+<h3 id="sRGB纹理"><a href="#sRGB纹理" class="headerlink" title="sRGB纹理"></a>sRGB纹理</h3><ul>
+<li>由于我们绘制及编辑图像的时候是在应用了gamma校正的显示器中进行了，因此，制作出来的图像可以理解为已经进行过一次gamma校正了。对于这种图像纹理，如果我们再使用gamma校正，就相当于对其进行了两次gamma校正，其颜色结果整体上会偏亮很多。</li>
+<li><img src="/2019/03/03/Gamma校正/gamma_correction_srgbtextures.png" alt="对sRGB纹理进行gamma校正对比"></li>
+<li><p>OpenGL提供了GL_SRGB和GL_SRGB_ALPHA内部纹理格式，如果我们在OpenGL中创建了一个纹理，把它指定为以上两种sRGB纹理格式其中之一，OpenGL将自动把颜色校正到线性空间中，这样我们所使用的所有颜色值都是在线性空间中的了。我们可以这样把一个纹理指定为一个sRGB纹理：</p>
+<figure class="hljs highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">glTexImage2D(GL_TEXTURE_2D, <span class="hljs-number">0</span>, GL_SRGB, width, height, <span class="hljs-number">0</span>, GL_RGB, GL_UNSIGNED_BYTE, image);<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>因为不是所有纹理都是在sRGB空间中的所以当你把纹理指定为sRGB纹理时要格外小心。比如diffuse纹理，这种为物体上色的纹理几乎都是在sRGB空间中的。而为了获取光照参数的纹理，像specular贴图和法线贴图几乎都在线性空间中，所以如果你把它们也配置为sRGB纹理的话，光照就坏掉了。指定sRGB纹理时要当心。</p>
+</li>
+<li><p>直接对sRGB空间的颜色进行混合，会出现1+1&gt;2的效果，如下图中明显的相交光圈。将sRGB颜色映射回线性空间再进行混合，能得到合理的效果。这是因为，我们想要的是对输出的颜色值进行混合，而直接操作sRGB值相当于对输出的颜色值的自变量进行操作，而从自变量到输出颜色的过程并不是线性的，从而造成明显的光圈。即 $f=x^{2.2}$ ，sRGB即为x值，我们想要的是对f进行线性改变，因此对x做线性改变是不行的。</p>
+</li>
+<li><p><img src="/2019/03/03/Gamma校正/linearspot.jpg" alt="sRGB空间颜色混合"></p>
+</li>
+<li><img src="/2019/03/03/Gamma校正/gammaspot.jpg" alt="线性空间颜色混合"></li>
+</ul>
+<h3 id="衰减"><a href="#衰减" class="headerlink" title="衰减"></a>衰减</h3><ul>
+<li>此前，我们使用的光照衰减方程为：<script type="math/tex; mode=display">F_{att} = \frac{1.0}{K_{c} + K_{l} * d + K_{q} * d^2}</script></li>
+<li>该方程给予我们调整距离常数与距离的平方的常数，给了我们很大的自由性。</li>
+<li><p>真实的物理世界中，光照的衰减和光源的距离的平方成反比。</p>
+<figure class="hljs highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">float</span> attenuation = <span class="hljs-number">1.0</span> / (distance * distance);<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>然而，当我们使用这个衰减公式的时候，衰减效果总是过于强烈，光只能照亮一小圈，看起来并不真实。改用双曲线函数却能取到较好的效果：</p>
+<figure class="hljs highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">float</span> attenuation = <span class="hljs-number">1.0</span> / distance;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>双曲线比使用二次函数变体在不用gamma校正的时候看起来更真实，不过但我们开启gamma校正以后双曲线衰减看起来太弱了，符合物理的二次函数突然出现了更好的效果。下图显示了其中的不同：</p>
+</li>
+<li><img src="/2019/03/03/Gamma校正/gamma_correction_attenuation.png" alt="衰减对比"></li>
+<li><p>这种差异产生的原因是，光的衰减方程改变了亮度值，而且屏幕上显示出来的也不是线性空间，在显示器上效果最好的衰减方程，并不是符合物理的。想想平方衰减方程，如果我们使用这个方程，而且不进行gamma校正，显示在监视器上的衰减方程实际上将变成 $(1.0 / distance^2)^{2.2}$ 。若不进行gamma校正，将产生更强烈的衰减。这也解释了为什么双曲线不用gamma校正时看起来更真实，因为它实际变成了 $(1.0 / distance)^{2.2} = $1.0 / distance^{2.2}$ 。这和物理公式是很相似的。</p>
+</li>
+<li><p>gamma校正使你可以在线性空间中进行操作。因为线性空间更符合物理世界，大多数物理公式现在都可以获得较好效果，比如真实的光的衰减。你的光照越真实，使用gamma校正获得漂亮的效果就越容易。这也正是为什么当引进gamma校正时，建议只去调整光照参数的原因。</p>
+</li>
+</ul>
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/OpenGL/" rel="tag"><i class="fas fa-tags"></i>OpenGL</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2019/02/24/DXT压缩纹理格式/" rel="next" title="DXT压缩纹理格式"><i class="fas fa-angle-left"></i><span class="nav-title">DXT压缩纹理格式</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+    </div>
+  </nav>
+  
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control">
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/myavatar.png" alt="MoriMiya">
+  
+  <h1 class="author-name">MoriMiya</h1>
+  <h2 class="author-description"></h2>
+  <div class="site-count">
+    
+    <div class="archives-count">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">9</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="categories-count">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">9</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="tags-count">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">6</a></div>
+    </div>
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="/atom.xml"><i class="fas fa-rss"></i>RSS</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#灰阶"><span class="toc-text">灰阶</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#Gamma校正"><span class="toc-text">Gamma校正</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#OpenGL中使用Gamma校正"><span class="toc-text">OpenGL中使用Gamma校正</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#使用OpenGL内建的sRGB帧缓冲"><span class="toc-text">使用OpenGL内建的sRGB帧缓冲</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#在片段着色器最后应用gamma校正"><span class="toc-text">在片段着色器最后应用gamma校正</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#sRGB纹理"><span class="toc-text">sRGB纹理</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#衰减"><span class="toc-text">衰减</span></a></li></ol></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接<p></p></div>
+      <ul>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/morimiya" target="_blank">GitHub</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #33363b;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">MoriMiya</span><span class="year"><i class="far fa-copyright"></i>2018 - 2019</span><span class="creative-commons"><i class="fab fa-creative-commons"></i><a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">BY-SA 4.0</a></span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://pages.github.com/" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+</html>
