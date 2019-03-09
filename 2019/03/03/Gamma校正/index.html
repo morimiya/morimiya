@@ -192,7 +192,7 @@
 <li>物理亮度和感知亮度的区别在于，物理亮度基于光子数量，感知亮度基于人的感觉，比如第二个灰阶里亮度0.1的光子数量是0.2的二分之一。</li>
 <li><p>通过上图表明，人眼对亮度的感知并不是线性的。人眼对亮度的感知值约为真实亮度值的2次幂。</p>
 </li>
-<li><p><img src="/2019/03/03/Gamma校正/gamma_correction_gamma_curves.png" alt="Gamma校正曲线"></p>
+<li><p><img src="/2019/03/03/Gamma校正/gamma_correction_gamma_curves.png" style="width: 400px;" alt="Gamma校正曲线"></p>
 </li>
 <li>CRT显示器亮度是电压的2.2次幂，与人眼的2次幂相当，因此物理亮度通过CRT显示器显示的效果与人眼相近，所以看起来效果是不错的。</li>
 <li>需要注意的是，在屋里线性空间或CRT校正后的曲线空间中，亮度的最小值都是0，最大值都为1，仅是中间部分的亮度被压低，但也因人眼对低亮度更敏感，所以压低亮度刚好符合人眼感知灰度图。</li>
@@ -227,9 +227,9 @@
 </li>
 <li><p>直接对sRGB空间的颜色进行混合，会出现1+1&gt;2的效果，如下图中明显的相交光圈。将sRGB颜色映射回线性空间再进行混合，能得到合理的效果。这是因为，我们想要的是对输出的颜色值进行混合，而直接操作sRGB值相当于对输出的颜色值的自变量进行操作，而从自变量到输出颜色的过程并不是线性的，从而造成明显的光圈。即 $f=x^{2.2}$ ，sRGB即为x值，我们想要的是对f进行线性改变，因此对x做线性改变是不行的。</p>
 </li>
-<li><p><img src="/2019/03/03/Gamma校正/linearspot.jpg" alt="sRGB空间颜色混合"></p>
+<li><p><img src="/2019/03/03/Gamma校正/linearspot.jpg" style="width: 400px;" alt="sRGB空间颜色混合"></p>
 </li>
-<li><img src="/2019/03/03/Gamma校正/gammaspot.jpg" alt="线性空间颜色混合"></li>
+<li><img src="/2019/03/03/Gamma校正/gammaspot.jpg" style="width: 400px;" alt="线性空间颜色混合"></li>
 </ul>
 <h3 id="衰减"><a href="#衰减" class="headerlink" title="衰减"></a>衰减</h3><ul>
 <li>此前，我们使用的光照衰减方程为：<script type="math/tex; mode=display">F_{att} = \frac{1.0}{K_{c} + K_{l} * d + K_{q} * d^2}</script></li>
