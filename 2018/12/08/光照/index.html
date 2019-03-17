@@ -204,7 +204,7 @@
       <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
        <meta itemprop="name" content="MoriMiya">
        <meta itemprop="description" content="">
-       <meta itemprop="image" content="/images/avatar.png">
+       <meta itemprop="image" content="/images/myavatar.png">
       </span>
       <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
        <meta itemprop="name" content="MoriMiya">
@@ -226,6 +226,8 @@
           
           <i class="far fa-folder-open"></i><span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/OpenGL/" itemprop="url" rel="index"><span itemprop="name">OpenGL</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/OpenGL/光照/" itemprop="url" rel="index"><span itemprop="name">光照</span></a></span>
         </span>
+        
+        
         
         
       </div>
@@ -452,6 +454,40 @@
   </nav>
   
   
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div id="vcomments" class="vcomments"></div>
+  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    new Valine({
+      "el": "#vcomments",
+      "appId": "VDoaWS84zwOew1oV52zzYOwd-gzGzoHsz",
+      "appKey": "wion5JEuGPOkyUk0FdSzHo4E",
+      "verify": "false",
+      "notify": "false",
+      "avatar": "mm",
+      "meta": ["nick", "mail", "link"],
+      "pageSize": 10,
+      "lang": "zh-cn",
+      "visitor": "false",
+      "highlight": "true",
+      "placeholder": "在这里说点什么……",
+      "avatarForce": "false"
+    });
+  });
+  </script>
+  
+  
+</div>
+
+
+
+  
 </div>
 
           </div>
@@ -470,7 +506,7 @@
   
 <div class="info sidebar-item" id="info">
   
-  <img class="author-avatar" src="/images/avatar.png" alt="MoriMiya">
+  <img class="author-avatar" src="/images/myavatar.png" alt="MoriMiya">
   
   <h1 class="author-name">MoriMiya</h1>
   <h2 class="author-description"></h2>

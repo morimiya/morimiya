@@ -204,7 +204,7 @@
       <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
        <meta itemprop="name" content="MoriMiya">
        <meta itemprop="description" content="">
-       <meta itemprop="image" content="/images/avatar.png">
+       <meta itemprop="image" content="/images/myavatar.png">
       </span>
       <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
        <meta itemprop="name" content="MoriMiya">
@@ -226,6 +226,8 @@
           
           <i class="far fa-folder-open"></i><span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/OpenGL/" itemprop="url" rel="index"><span itemprop="name">OpenGL</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/OpenGL/Gamma校正/" itemprop="url" rel="index"><span itemprop="name">Gamma校正</span></a></span>
         </span>
+        
+        
         
         
       </div>
@@ -293,7 +295,7 @@
 <li><p>双曲线比使用二次函数变体在不用gamma校正的时候看起来更真实，不过但我们开启gamma校正以后双曲线衰减看起来太弱了，符合物理的二次函数突然出现了更好的效果。下图显示了其中的不同：</p>
 </li>
 <li><img src="/2019/03/03/Gamma校正/gamma_correction_attenuation.png" alt="衰减对比"></li>
-<li><p>这种差异产生的原因是，光的衰减方程改变了亮度值，而且屏幕上显示出来的也不是线性空间，在显示器上效果最好的衰减方程，并不是符合物理的。想想平方衰减方程，如果我们使用这个方程，而且不进行gamma校正，显示在监视器上的衰减方程实际上将变成 $(1.0 / distance^2)^{2.2}$ 。若不进行gamma校正，将产生更强烈的衰减。这也解释了为什么双曲线不用gamma校正时看起来更真实，因为它实际变成了 $(1.0 / distance)^{2.2} = $1.0 / distance^{2.2}$ 。这和物理公式是很相似的。</p>
+<li><p>这种差异产生的原因是，光的衰减方程改变了亮度值，而且屏幕上显示出来的也不是线性空间，在显示器上效果最好的衰减方程，并不是符合物理的。想想平方衰减方程，如果我们使用这个方程，而且不进行gamma校正，显示在监视器上的衰减方程实际上将变成 $(1.0 / distance^2)^{2.2}$ 。若不进行gamma校正，将产生更强烈的衰减。这也解释了为什么双曲线不用gamma校正时看起来更真实，因为它实际变成了 $(1.0 / distance)^{2.2} = 1.0 / distance^{2.2}$ 。这和物理公式是很相似的。</p>
 </li>
 <li><p>gamma校正使你可以在线性空间中进行操作。因为线性空间更符合物理世界，大多数物理公式现在都可以获得较好效果，比如真实的光的衰减。你的光照越真实，使用gamma校正获得漂亮的效果就越容易。这也正是为什么当引进gamma校正时，建议只去调整光照参数的原因。</p>
 </li>
@@ -326,6 +328,40 @@
   </nav>
   
   
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div id="vcomments" class="vcomments"></div>
+  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    new Valine({
+      "el": "#vcomments",
+      "appId": "VDoaWS84zwOew1oV52zzYOwd-gzGzoHsz",
+      "appKey": "wion5JEuGPOkyUk0FdSzHo4E",
+      "verify": "false",
+      "notify": "false",
+      "avatar": "mm",
+      "meta": ["nick", "mail", "link"],
+      "pageSize": 10,
+      "lang": "zh-cn",
+      "visitor": "false",
+      "highlight": "true",
+      "placeholder": "在这里说点什么……",
+      "avatarForce": "false"
+    });
+  });
+  </script>
+  
+  
+</div>
+
+
+
+  
 </div>
 
           </div>
@@ -344,7 +380,7 @@
   
 <div class="info sidebar-item" id="info">
   
-  <img class="author-avatar" src="/images/avatar.png" alt="MoriMiya">
+  <img class="author-avatar" src="/images/myavatar.png" alt="MoriMiya">
   
   <h1 class="author-name">MoriMiya</h1>
   <h2 class="author-description"></h2>
