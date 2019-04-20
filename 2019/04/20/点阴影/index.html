@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#33363b">
+    <meta name="msapplication-TileColor" content="#33363b">
+    
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#33363b">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="MoriMiya" type="application/atom+xml">
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/clipboard.min.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var cb = null;
+      var els = $(".post figure.highlight");
+      if (els.length) {
+        // Enabled Hexo highlight line number.
+        $(els).each(function (i, e) {
+          $(e).before("<button class=\"copy button\">复制</button>");
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              // nextElementSibling is figure,highlight.
+              // And following is the sequence of Hexo's internal
+              // highlight layout with line number.
+              return trigger.nextElementSibling.firstChild.firstChild.firstChild.lastChild.firstChild.firstChild;
+          }
+        });
+      } else {
+        // Disabled Hexo highlight line number.
+        els = $(".post pre code");
+        $(els).each(function (i, e) {
+          // Add button before pre, not code.
+          $(e).parent().before("<button class=\"copy button\">复制</button>");
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              // nextElementSibling is figure,highlight.
+              // And following is the sequence of Hexo's internal
+              // highlight layout without line number.
+              return trigger.nextElementSibling.firstChild;
+          }
+        });
+      }
+      cb.on("success", function (e) {
+        e.clearSelection();
+        var trigger = e.trigger;
+        // Change button text as a user tip.
+        trigger.innerHTML = "已复制";
+        $(trigger).addClass("copied");
+        // Change button text back;
+        setTimeout(function () {
+          trigger.innerHTML = "复制";
+          $(trigger).removeClass("copied");
+        }, 1500);
+      });
+    });
+    </script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>点阴影 | MoriMiya - Don't you want to be alive before you die?</title>
+  </head>
+  <body itemscope="" itemtype="http://schema.org/WebPage" lang="zh_CN" data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #33363b;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">MoriMiya</a></h1>
+        <h2 class="subtitle">Don't you want to be alive before you die?</h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/"><i class="fas fa-home"></i><span class="menu-text">首页</span></a></li>
+        
+        <li role="menuitem"><a href="/archives/"><i class="fas fa-archive"></i><span class="menu-text">归档</span></a></li>
+        
+        <li role="menuitem"><a href="/categories/"><i class="fas fa-th-list"></i><span class="menu-text">分类</span></a></li>
+        
+        <li role="menuitem"><a href="/tags/"><i class="fas fa-tags"></i><span class="menu-text">标签</span></a></li>
+        
+        <li role="menuitem"><a href="/about/"><i class="fas fa-user-edit"></i><span class="menu-text">关于</span></a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card animate" itemscope="" itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/20/点阴影/">
+      <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="MoriMiya">
+       <meta itemprop="description" content="">
+       <meta itemprop="image" content="/images/myavatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="MoriMiya">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">点阴影</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2019-04-20T14:31:06+08:00">2019-04-20 14:31:06</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/OpenGL/" itemprop="url" rel="index"><span itemprop="name">OpenGL</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/OpenGL/点阴影/" itemprop="url" rel="index"><span itemprop="name">点阴影</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <blockquote>
+<p><a href="https://learnopengl-cn.github.io" target="_blank" rel="noopener">https://learnopengl-cn.github.io</a> 点阴影学习笔记</p>
+<p><img src="/2019/04/20/点阴影/result.png" alt=""></p>
+</blockquote>
+<a id="more"></a>
+<ul>
+<li>在阴影映射中的光是定向光，而点阴影中的光将是点光源。其通过动态生成深度立方体贴图的方式来获得各个方向的深度值。这个技术叫做点光阴影，过去的名字是万向阴影贴图（omnidirectional shadow maps）技术。</li>
+</ul>
+<h2 id="生成深度立方体贴图"><a href="#生成深度立方体贴图" class="headerlink" title="生成深度立方体贴图"></a>生成深度立方体贴图</h2><ul>
+<li><img src="/2019/04/20/点阴影/point_shadows_diagram.png" alt=""></li>
+</ul>
+<h3 id="朴素的生成方式"><a href="#朴素的生成方式" class="headerlink" title="朴素的生成方式"></a>朴素的生成方式</h3><ul>
+<li>为创建一个光周围的深度值的立方体贴图，我们必须渲染场景6次：每次一个面。显然渲染场景6次需要6个不同的视图矩阵，每次把一个不同的立方体贴图面附加到帧缓冲对象上。</li>
+<li>在朴素的生成方式下，由于需要一个深度贴图下需要进行很多渲染调用，其性能会有一定的消耗。<figure class="hljs highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs c">GLuint depthCubemap;<br>glGenTextures(<span class="hljs-number">1</span>, &amp;depthCubemap);<br><br><span class="hljs-keyword">const</span> GLuint SHADOW_WIDTH = <span class="hljs-number">1024</span>, SHADOW_HEIGHT = <span class="hljs-number">1024</span>;<br>glBindTexture(GL_TEXTURE_CUBE_MAP, depthCubemap);<br><span class="hljs-keyword">for</span> (GLuint i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">6</span>; ++i)<br>        glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, <span class="hljs-number">0</span>, GL_DEPTH_COMPONENT,<br>                     SHADOW_WIDTH, SHADOW_HEIGHT, <span class="hljs-number">0</span>, GL_DEPTH_COMPONENT, GL_FLOAT, <span class="hljs-literal">NULL</span>);<br><br>glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_NEAREST);<br>glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_NEAREST);<br>glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);<br>glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);<br>glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);<br><br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">6</span>; i++)<br>&#123;<br>    GLuint face = GL_TEXTURE_CUBE_MAP_POSITIVE_X + i;<br>    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, face, depthCubemap, <span class="hljs-number">0</span>);<br>    BindViewMatrix(lightViewMatrices[i]);<br>    RenderScene();  <br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="利用几何着色器生成"><a href="#利用几何着色器生成" class="headerlink" title="利用几何着色器生成"></a>利用几何着色器生成</h3><ul>
+<li>几何着色器允许我们使用一次渲染过程来建立深度立方体贴图，可以使用glFramebufferTexture直接把立方体贴图附加成帧缓冲的深度附件。</li>
+<li>后文采用此种方式。<figure class="hljs highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c">glBindFramebuffer(GL_FRAMEBUFFER, depthMapFBO);<br>glFramebufferTexture(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, depthCubemap, <span class="hljs-number">0</span>);<br><span class="hljs-comment">// 显式告诉OpenGL这个帧缓冲对象不会渲染到一个颜色缓冲里</span><br>glDrawBuffer(GL_NONE);<br>glReadBuffer(GL_NONE);<br>glBindFramebuffer(GL_FRAMEBUFFER, <span class="hljs-number">0</span>);<br><br>glViewport(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, SHADOW_WIDTH, SHADOW_HEIGHT);<br>glBindFramebuffer(GL_FRAMEBUFFER, depthMapFBO);<br>glClear(GL_DEPTH_BUFFER_BIT);<br>ConfigureShaderAndMatrices();<br>RenderScene();<br>glBindFramebuffer(GL_FRAMEBUFFER, <span class="hljs-number">0</span>);<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="光空间的变换"><a href="#光空间的变换" class="headerlink" title="光空间的变换"></a>光空间的变换</h3><ul>
+<li>在选择使用几何着色器的方式来生产深度立方体贴图的方式下，我们需要将场景中的几何物体转换到光的视角下进行深度贴图的生成。</li>
+<li>立方体贴图具有6个面，故光的视角也有6个方向。由于是点光源，空间变换矩阵使用透视投影矩阵更加合理。</li>
+<li>每个方向的透视投影矩阵相同：</li>
+</ul>
+<figure class="hljs highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c">GLfloat aspect = (GLfloat)SHADOW_WIDTH/(GLfloat)SHADOW_HEIGHT;<br>GLfloat near = <span class="hljs-number">1.0f</span>;<br>GLfloat far = <span class="hljs-number">25.0f</span>;<br><span class="hljs-comment">// 90度我们才能保证视野足够大到可以合适地填满立方体贴图的一个面，立方体贴图的所有面都能与其他面在边缘对齐。</span><br>glm::mat4 shadowProj = glm::perspective(glm::radians(<span class="hljs-number">90.0f</span>), aspect, near, far);<br></code></pre></td></tr></table></figure>
+<ul>
+<li>由于观察方向不同，视图矩阵需要根据不同观察方向做调整，方向依次为右、左、上、下、近、远，直接保存PV矩阵相乘的结果供几何着色器后续使用：</li>
+</ul>
+<figure class="hljs highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;glm::mat4&gt; shadowTransforms;<br>shadowTransforms.push_back(shadowProj *<br>                 glm::lookAt(lightPos, lightPos + glm::vec3(<span class="hljs-number">1.0</span>,<span class="hljs-number">0.0</span>,<span class="hljs-number">0.0</span>), glm::vec3(<span class="hljs-number">0.0</span>,<span class="hljs-number">-1.0</span>,<span class="hljs-number">0.0</span>));<br>shadowTransforms.push_back(shadowProj *<br>                 glm::lookAt(lightPos, lightPos + glm::vec3(<span class="hljs-number">-1.0</span>,<span class="hljs-number">0.0</span>,<span class="hljs-number">0.0</span>), glm::vec3(<span class="hljs-number">0.0</span>,<span class="hljs-number">-1.0</span>,<span class="hljs-number">0.0</span>));<br>shadowTransforms.push_back(shadowProj *<br>                 glm::lookAt(lightPos, lightPos + glm::vec3(<span class="hljs-number">0.0</span>,<span class="hljs-number">1.0</span>,<span class="hljs-number">0.0</span>), glm::vec3(<span class="hljs-number">0.0</span>,<span class="hljs-number">0.0</span>,<span class="hljs-number">1.0</span>));<br>shadowTransforms.push_back(shadowProj *<br>                 glm::lookAt(lightPos, lightPos + glm::vec3(<span class="hljs-number">0.0</span>,<span class="hljs-number">-1.0</span>,<span class="hljs-number">0.0</span>), glm::vec3(<span class="hljs-number">0.0</span>,<span class="hljs-number">0.0</span>,<span class="hljs-number">-1.0</span>));<br>shadowTransforms.push_back(shadowProj *<br>                 glm::lookAt(lightPos, lightPos + glm::vec3(<span class="hljs-number">0.0</span>,<span class="hljs-number">0.0</span>,<span class="hljs-number">1.0</span>), glm::vec3(<span class="hljs-number">0.0</span>,<span class="hljs-number">-1.0</span>,<span class="hljs-number">0.0</span>));<br>shadowTransforms.push_back(shadowProj *<br>                 glm::lookAt(lightPos, lightPos + glm::vec3(<span class="hljs-number">0.0</span>,<span class="hljs-number">0.0</span>,<span class="hljs-number">-1.0</span>), glm::vec3(<span class="hljs-number">0.0</span>,<span class="hljs-number">-1.0</span>,<span class="hljs-number">0.0</span>));<br></code></pre></td></tr></table></figure>
+<h3 id="在着色器中将深度贴图生成"><a href="#在着色器中将深度贴图生成" class="headerlink" title="在着色器中将深度贴图生成"></a>在着色器中将深度贴图生成</h3><h4 id="顶点着色器"><a href="#顶点着色器" class="headerlink" title="顶点着色器"></a>顶点着色器</h4><ul>
+<li>简单地将顶点变换到世界空间，然后直接发送到几何着色器。<figure class="hljs highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs glsl"><span class="hljs-meta">#version 330 core</span><br><span class="hljs-keyword">layout</span> (<span class="hljs-keyword">location</span> = <span class="hljs-number">0</span>) <span class="hljs-keyword">in</span> <span class="hljs-type">vec3</span> position;<br><br><span class="hljs-keyword">uniform</span> <span class="hljs-type">mat4</span> model;<br><br><span class="hljs-type">void</span> main()<br>&#123;<br>    <span class="hljs-built_in">gl_Position</span> = model * <span class="hljs-type">vec4</span>(position, <span class="hljs-number">1.0</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="几何着色器"><a href="#几何着色器" class="headerlink" title="几何着色器"></a>几何着色器</h4><ul>
+<li>几何着色器以3个三角形的顶点作为输入，它还有一个光空间变换矩阵的uniform数组。几何着色器接下来会负责将顶点变换到光空间。</li>
+<li>当有一个附加到激活的帧缓冲的立方体贴图纹理时，在几何着色器中能通过gl_Layer指定将基本图形发送在立方体贴图的哪一个面。当不管它时，几何着色器就会像往常一样把它的基本图形发送到输送管道的下一阶段。</li>
+<li>通过把面的光空间变换矩阵乘以FragPos，将每个世界空间顶点变换到相关的光空间，生成每个三角形。注意，我们还要将最后的FragPos变量发送给片段着色器，我们需要计算一个深度值。<figure class="hljs highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs glsl"><span class="hljs-meta">#version 330 core</span><br><span class="hljs-keyword">layout</span> (<span class="hljs-keyword">triangles</span>) <span class="hljs-keyword">in</span>;<br><span class="hljs-keyword">layout</span> (<span class="hljs-keyword">triangle_strip</span>, <span class="hljs-keyword">max_vertices</span>=<span class="hljs-number">18</span>) <span class="hljs-keyword">out</span>;<br><br><span class="hljs-keyword">uniform</span> <span class="hljs-type">mat4</span> shadowMatrices[<span class="hljs-number">6</span>];<br><br><span class="hljs-keyword">out</span> <span class="hljs-type">vec4</span> FragPos; <span class="hljs-comment">// FragPos from GS (output per emitvertex)</span><br><br><span class="hljs-type">void</span> main()<br>&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> face = <span class="hljs-number">0</span>; face &lt; <span class="hljs-number">6</span>; ++face)<br>    &#123;<br>        <span class="hljs-built_in">gl_Layer</span> = face; <span class="hljs-comment">// built-in variable that specifies to which face we render.</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">3</span>; ++i) <span class="hljs-comment">// for each triangle's vertices</span><br>        &#123;<br>            FragPos = <span class="hljs-built_in">gl_in</span>[i].<span class="hljs-built_in">gl_Position</span>;<br>            <span class="hljs-built_in">gl_Position</span> = shadowMatrices[face] * FragPos;<br>            <span class="hljs-built_in">EmitVertex</span>();<br>        &#125;    <br>        <span class="hljs-built_in">EndPrimitive</span>();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="片段着色器"><a href="#片段着色器" class="headerlink" title="片段着色器"></a>片段着色器</h4><ul>
+<li>将来自几何着色器的FragPos、光的位置向量和视锥的远平面值作为输入。这里我们把fragment和光源之间的距离，映射到0到1的范围，把它写入为fragment的深度值。<figure class="hljs highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs glsl"><span class="hljs-meta">#version 330 core</span><br><span class="hljs-keyword">in</span> <span class="hljs-type">vec4</span> FragPos;<br><br><span class="hljs-keyword">uniform</span> <span class="hljs-type">vec3</span> lightPos;<br><span class="hljs-keyword">uniform</span> <span class="hljs-type">float</span> far_plane;<br><br><span class="hljs-type">void</span> main()<br>&#123;<br>    <span class="hljs-comment">// get distance between fragment and light source</span><br>    <span class="hljs-type">float</span> lightDistance = <span class="hljs-built_in">length</span>(FragPos.xyz - lightPos);<br><br>    <span class="hljs-comment">// map to [0;1] range by dividing by far_plane</span><br>    lightDistance = lightDistance / far_plane;<br><br>    <span class="hljs-comment">// write this as modified depth</span><br>    <span class="hljs-built_in">gl_FragDepth</span> = lightDistance;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="渲染出阴影"><a href="#渲染出阴影" class="headerlink" title="渲染出阴影"></a>渲染出阴影</h2><ul>
+<li><img src="/2019/04/20/点阴影/point_shadows.png" alt=""></li>
+<li>由于使用片段与光源位置的向量即可用于与深度值比大小来确定是否生成阴影，又能用来在立方体贴图上进行深度值采样，所以这里我们不再需要将片段位置转换至光空间就能完成比较和采样。</li>
+<li>closestDepth值现在在0到1的范围内了，所以我们先将其转换会0到far_plane的范围，这需要把它乘以far_plane。</li>
+<li>片段着色器部分截取：<figure class="hljs highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs glsl"><span class="hljs-meta">#version 330 core</span><br><span class="hljs-keyword">out</span> <span class="hljs-type">vec4</span> FragColor;<br><br><span class="hljs-keyword">in</span> VS_OUT &#123;<br>    <span class="hljs-type">vec3</span> FragPos;<br>    <span class="hljs-type">vec3</span> Normal;<br>    <span class="hljs-type">vec2</span> TexCoords;<br>&#125; fs_in;<br><br><span class="hljs-keyword">uniform</span> <span class="hljs-type">sampler2D</span> diffuseTexture;<br><span class="hljs-keyword">uniform</span> <span class="hljs-type">samplerCube</span> depthMap;<br><br><span class="hljs-keyword">uniform</span> <span class="hljs-type">vec3</span> lightPos;<br><span class="hljs-keyword">uniform</span> <span class="hljs-type">vec3</span> viewPos;<br><br><span class="hljs-keyword">uniform</span> <span class="hljs-type">float</span> far_plane;<br><br><span class="hljs-type">float</span> ShadowCalculation(<span class="hljs-type">vec3</span> fragPos)<br>&#123;<br>    <span class="hljs-comment">// Get vector between fragment position and light position</span><br>    <span class="hljs-type">vec3</span> fragToLight = fragPos - lightPos;<br>    <span class="hljs-comment">// Use the light to fragment vector to sample from the depth map    </span><br>    <span class="hljs-type">float</span> closestDepth = <span class="hljs-built_in">texture</span>(depthMap, fragToLight).r;<br>    <span class="hljs-comment">// It is currently in linear range between [0,1]. Re-transform back to original value</span><br>    closestDepth *= far_plane;<br>    <span class="hljs-comment">// Now get current linear depth as the length between the fragment and light position</span><br>    <span class="hljs-type">float</span> currentDepth = <span class="hljs-built_in">length</span>(fragToLight);<br>    <span class="hljs-comment">// Now test for shadows</span><br>    <span class="hljs-type">float</span> bias = <span class="hljs-number">0.05</span>;<br>    <span class="hljs-type">float</span> shadow = currentDepth -  bias &gt; closestDepth ? <span class="hljs-number">1.0</span> : <span class="hljs-number">0.0</span>;<br><br>    <span class="hljs-keyword">return</span> shadow;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="PCF"><a href="#PCF" class="headerlink" title="PCF"></a>PCF</h2><h3 id="向所有邻近方向取样平滑"><a href="#向所有邻近方向取样平滑" class="headerlink" title="向所有邻近方向取样平滑"></a>向所有邻近方向取样平滑</h3><ul>
+<li>由于万向阴影贴图基于传统阴影映射的原则，它便也继承了由解析度产生的非真实感，主要表现为锯齿严重，边缘锐利。如果你放大就会看到锯齿边了。PCF或称Percentage-closer filtering允许我们通过对fragment位置周围过滤多个样本，并对结果平均化。</li>
+<li>可以向邻近取样，获取平均值来使得影子边缘平滑。</li>
+<li><img src="/2019/04/20/点阴影/point_shadows_soft.png" alt=""><figure class="hljs highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs glsl"><span class="hljs-type">float</span> shadow = <span class="hljs-number">0.0</span>;<br><span class="hljs-type">float</span> bias = <span class="hljs-number">0.05</span>;<br><span class="hljs-type">float</span> samples = <span class="hljs-number">4.0</span>;<br><span class="hljs-type">float</span> <span class="hljs-keyword">offset</span> = <span class="hljs-number">0.1</span>;<br><span class="hljs-keyword">for</span>(<span class="hljs-type">float</span> x = -<span class="hljs-keyword">offset</span>; x &lt; <span class="hljs-keyword">offset</span>; x += <span class="hljs-keyword">offset</span> / (samples * <span class="hljs-number">0.5</span>))<br>&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">float</span> y = -<span class="hljs-keyword">offset</span>; y &lt; <span class="hljs-keyword">offset</span>; y += <span class="hljs-keyword">offset</span> / (samples * <span class="hljs-number">0.5</span>))<br>    &#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">float</span> z = -<span class="hljs-keyword">offset</span>; z &lt; <span class="hljs-keyword">offset</span>; z += <span class="hljs-keyword">offset</span> / (samples * <span class="hljs-number">0.5</span>))<br>        &#123;<br>            <span class="hljs-type">float</span> closestDepth = <span class="hljs-built_in">texture</span>(depthMap, fragToLight + <span class="hljs-type">vec3</span>(x, y, z)).r;<br>            closestDepth *= far_plane;   <span class="hljs-comment">// Undo mapping [0;1]</span><br>            <span class="hljs-keyword">if</span>(currentDepth - bias &gt; closestDepth)<br>                shadow += <span class="hljs-number">1.0</span>;<br>        &#125;<br>    &#125;<br>&#125;<br>shadow /= (samples * samples * samples);<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="从偏移方向数组中取样平滑"><a href="#从偏移方向数组中取样平滑" class="headerlink" title="从偏移方向数组中取样平滑"></a>从偏移方向数组中取样平滑</h3><ul>
+<li>向所有邻近方向取样进行平滑的效果很好，但取样次数较多，上面的例子中，每个像素需要取样64次。</li>
+<li><p>大多数这些样本都是多余的，它们在原始方向向量近处采样，不如在采样方向向量的垂直方向进行采样更有意义。可是，没有（简单的）方式能够指出哪一个子方向是多余的，这就难了。有个技巧可以使用，用一个偏移量方向数组，它们差不多都是分开的，每一个指向完全不同的方向，剔除彼此接近的那些子方向。下面就是一个有着20个偏移方向的数组：</p>
+<figure class="hljs highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs glsl"><span class="hljs-type">vec3</span> sampleOffsetDirections[<span class="hljs-number">20</span>] = <span class="hljs-type">vec3</span>[]<br>(<br>   <span class="hljs-type">vec3</span>( <span class="hljs-number">1</span>,  <span class="hljs-number">1</span>,  <span class="hljs-number">1</span>), <span class="hljs-type">vec3</span>( <span class="hljs-number">1</span>, <span class="hljs-number">-1</span>,  <span class="hljs-number">1</span>), <span class="hljs-type">vec3</span>(<span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>,  <span class="hljs-number">1</span>), <span class="hljs-type">vec3</span>(<span class="hljs-number">-1</span>,  <span class="hljs-number">1</span>,  <span class="hljs-number">1</span>),<br>   <span class="hljs-type">vec3</span>( <span class="hljs-number">1</span>,  <span class="hljs-number">1</span>, <span class="hljs-number">-1</span>), <span class="hljs-type">vec3</span>( <span class="hljs-number">1</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>), <span class="hljs-type">vec3</span>(<span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>), <span class="hljs-type">vec3</span>(<span class="hljs-number">-1</span>,  <span class="hljs-number">1</span>, <span class="hljs-number">-1</span>),<br>   <span class="hljs-type">vec3</span>( <span class="hljs-number">1</span>,  <span class="hljs-number">1</span>,  <span class="hljs-number">0</span>), <span class="hljs-type">vec3</span>( <span class="hljs-number">1</span>, <span class="hljs-number">-1</span>,  <span class="hljs-number">0</span>), <span class="hljs-type">vec3</span>(<span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>,  <span class="hljs-number">0</span>), <span class="hljs-type">vec3</span>(<span class="hljs-number">-1</span>,  <span class="hljs-number">1</span>,  <span class="hljs-number">0</span>),<br>   <span class="hljs-type">vec3</span>( <span class="hljs-number">1</span>,  <span class="hljs-number">0</span>,  <span class="hljs-number">1</span>), <span class="hljs-type">vec3</span>(<span class="hljs-number">-1</span>,  <span class="hljs-number">0</span>,  <span class="hljs-number">1</span>), <span class="hljs-type">vec3</span>( <span class="hljs-number">1</span>,  <span class="hljs-number">0</span>, <span class="hljs-number">-1</span>), <span class="hljs-type">vec3</span>(<span class="hljs-number">-1</span>,  <span class="hljs-number">0</span>, <span class="hljs-number">-1</span>),<br>   <span class="hljs-type">vec3</span>( <span class="hljs-number">0</span>,  <span class="hljs-number">1</span>,  <span class="hljs-number">1</span>), <span class="hljs-type">vec3</span>( <span class="hljs-number">0</span>, <span class="hljs-number">-1</span>,  <span class="hljs-number">1</span>), <span class="hljs-type">vec3</span>( <span class="hljs-number">0</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>), <span class="hljs-type">vec3</span>( <span class="hljs-number">0</span>,  <span class="hljs-number">1</span>, <span class="hljs-number">-1</span>)<br>);<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>然后我们把PCF算法与从sampleOffsetDirections得到的样本数量进行适配，使用它们从立方体贴图里采样。这么做的好处是与之前的PCF算法相比，我们需要的样本数量变少了。</p>
+<figure class="hljs highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs glsl"><span class="hljs-type">float</span> shadow = <span class="hljs-number">0.0</span>;<br><span class="hljs-type">float</span> bias = <span class="hljs-number">0.15</span>;<br><span class="hljs-type">int</span> samples = <span class="hljs-number">20</span>;<br><span class="hljs-type">float</span> viewDistance = <span class="hljs-built_in">length</span>(viewPos - fragPos);<br><span class="hljs-type">float</span> diskRadius = <span class="hljs-number">0.05</span>;<br><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; samples; ++i)<br>&#123;<br>    <span class="hljs-type">float</span> closestDepth = <span class="hljs-built_in">texture</span>(depthMap, fragToLight + sampleOffsetDirections[i] * diskRadius).r;<br>    closestDepth *= far_plane;   <span class="hljs-comment">// Undo mapping [0;1]</span><br>    <span class="hljs-keyword">if</span>(currentDepth - bias &gt; closestDepth)<br>        shadow += <span class="hljs-number">1.0</span>;<br>&#125;<br>shadow /= <span class="hljs-type">float</span>(samples);<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>另外，我们可以基于观察者里一个fragment的距离来改变diskRadius；这样我们就能根据观察者的距离来增加偏移半径了，当距离更远的时候阴影更柔和，更近了就更锐利。</p>
+<figure class="hljs highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs glsl"><span class="hljs-type">float</span> diskRadius = (<span class="hljs-number">1.0</span> + (viewDistance / far_plane)) / <span class="hljs-number">25.0</span>;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><img src="/2019/04/20/点阴影/result.png" alt=""></p>
+</li>
+</ul>
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/OpenGL/" rel="tag"><i class="fas fa-tags"></i>OpenGL</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2019/03/10/阴影映射/" rel="next" title="阴影映射"><i class="fas fa-angle-left"></i><span class="nav-title">阴影映射</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+    </div>
+  </nav>
+  
+  
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div id="vcomments" class="vcomments"></div>
+  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    new Valine({
+      "el": "#vcomments",
+      "appId": "VDoaWS84zwOew1oV52zzYOwd-gzGzoHsz",
+      "appKey": "wion5JEuGPOkyUk0FdSzHo4E",
+      "verify": "false",
+      "notify": "false",
+      "avatar": "mm",
+      "meta": ["nick", "mail", "link"],
+      "pageSize": 10,
+      "lang": "zh-cn",
+      "visitor": "false",
+      "highlight": "true",
+      "placeholder": "在这里说点什么……",
+      "avatarForce": "false"
+    });
+  });
+  </script>
+  
+  
+</div>
+
+
+
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control">
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/myavatar.png" alt="MoriMiya">
+  
+  <h1 class="author-name">MoriMiya</h1>
+  <h2 class="author-description"></h2>
+  <div class="site-count">
+    
+    
+    
+    
+    <div class="archives-count count-block">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">13</a></div>
+    </div>
+    
+    
+    
+    <div class="categories-count count-block">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">12</a></div>
+    </div>
+    
+    
+    
+    <div class="tags-count count-block">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">7</a></div>
+    </div>
+    
+    
+    
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="/atom.xml"><i class="fas fa-rss"></i>RSS</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#生成深度立方体贴图"><span class="toc-text">生成深度立方体贴图</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#朴素的生成方式"><span class="toc-text">朴素的生成方式</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#利用几何着色器生成"><span class="toc-text">利用几何着色器生成</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#光空间的变换"><span class="toc-text">光空间的变换</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#在着色器中将深度贴图生成"><span class="toc-text">在着色器中将深度贴图生成</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#顶点着色器"><span class="toc-text">顶点着色器</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#几何着色器"><span class="toc-text">几何着色器</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#片段着色器"><span class="toc-text">片段着色器</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#渲染出阴影"><span class="toc-text">渲染出阴影</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#PCF"><span class="toc-text">PCF</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#向所有邻近方向取样平滑"><span class="toc-text">向所有邻近方向取样平滑</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#从偏移方向数组中取样平滑"><span class="toc-text">从偏移方向数组中取样平滑</span></a></li></ol></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接<p></p></div>
+      <ul>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/morimiya" target="_blank">GitHub</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #33363b;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">MoriMiya</span><span class="year"><i class="far fa-copyright"></i>2018 - 2019</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://pages.github.com/" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+</html>
