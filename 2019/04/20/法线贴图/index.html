@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#33363b">
+    <meta name="msapplication-TileColor" content="#33363b">
+    
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#33363b">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="MoriMiya" type="application/atom+xml">
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/clipboard.min.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    
+    <script defer type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-MML-AM_CHTML"></script>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ["$","$"], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ["script", "noscript", "style", "textarea", "pre", "code"]
+      }
+    });
+    </script>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += " has-jax";
+      }
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var cb = null;
+      var els = $(".post figure.highlight");
+      if (els.length) {
+        // Enabled Hexo highlight line number.
+        $(els).each(function (i, e) {
+          $(e).before("<button class=\"copy button\">复制</button>");
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              // nextElementSibling is figure,highlight.
+              // And following is the sequence of Hexo's internal
+              // highlight layout with line number.
+              return trigger.nextElementSibling.firstChild.firstChild.firstChild.lastChild.firstChild.firstChild;
+          }
+        });
+      } else {
+        // Disabled Hexo highlight line number.
+        els = $(".post pre code");
+        $(els).each(function (i, e) {
+          // Add button before pre, not code.
+          $(e).parent().before("<button class=\"copy button\">复制</button>");
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              // nextElementSibling is figure,highlight.
+              // And following is the sequence of Hexo's internal
+              // highlight layout without line number.
+              return trigger.nextElementSibling.firstChild;
+          }
+        });
+      }
+      cb.on("success", function (e) {
+        e.clearSelection();
+        var trigger = e.trigger;
+        // Change button text as a user tip.
+        trigger.innerHTML = "已复制";
+        $(trigger).addClass("copied");
+        // Change button text back;
+        setTimeout(function () {
+          trigger.innerHTML = "复制";
+          $(trigger).removeClass("copied");
+        }, 1500);
+      });
+    });
+    </script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>法线贴图 | MoriMiya - Don't you want to be alive before you die?</title>
+  </head>
+  <body itemscope="" itemtype="http://schema.org/WebPage" lang="zh_CN" data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #33363b;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">MoriMiya</a></h1>
+        <h2 class="subtitle">Don't you want to be alive before you die?</h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/"><i class="fas fa-home"></i><span class="menu-text">首页</span></a></li>
+        
+        <li role="menuitem"><a href="/archives/"><i class="fas fa-archive"></i><span class="menu-text">归档</span></a></li>
+        
+        <li role="menuitem"><a href="/categories/"><i class="fas fa-th-list"></i><span class="menu-text">分类</span></a></li>
+        
+        <li role="menuitem"><a href="/tags/"><i class="fas fa-tags"></i><span class="menu-text">标签</span></a></li>
+        
+        <li role="menuitem"><a href="/about/"><i class="fas fa-user-edit"></i><span class="menu-text">关于</span></a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card animate" itemscope="" itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/20/法线贴图/">
+      <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="MoriMiya">
+       <meta itemprop="description" content="">
+       <meta itemprop="image" content="/images/myavatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="MoriMiya">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">法线贴图</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2019-04-20T16:23:08+08:00">2019-04-20 16:23:08</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/OpenGL/" itemprop="url" rel="index"><span itemprop="name">OpenGL</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/OpenGL/法线贴图/" itemprop="url" rel="index"><span itemprop="name">法线贴图</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <blockquote>
+<p><a href="https://learnopengl-cn.github.io" target="_blank" rel="noopener">https://learnopengl-cn.github.io</a> 法线学习笔记</p>
+<p><img src="/2019/04/20/法线贴图/result.png" alt=""></p>
+</blockquote>
+<a id="more"></a>
+<h2 id="凹凸细节"><a href="#凹凸细节" class="headerlink" title="凹凸细节"></a>凹凸细节</h2><ul>
+<li>一面墙由2个三角形所组成。我们通过附上纹理贴图的方式来增加其细节，提升真实感，让其看上去确实像是一面墙。但靠近墙观察的时候，我们很容易发现墙的表面十分平坦，没有任何凹凸细节，缺乏凹凸细节使得这面墙缺乏真实感。</li>
+<li><p><img src="/2019/04/20/法线贴图/without_normal_map.png" alt=""></p>
+</li>
+<li><p>以光的视角来看这个问题：是什么使表面被视为完全平坦的表面来照亮？答案会是表面的法线向量。以光照算法的视角考虑的话，只有一件事决定物体的形状，这就是垂直于它的法线向量。砖块表面只有一个法线向量，表面完全根据这个法线向量被以一致的方式照亮。如果每个fragment都是用自己的不同的法线会怎样？这样我们就可以根据表面细微的细节对法线向量进行改变；这样就会获得一种表面看起来要复杂得多的幻觉：</p>
+</li>
+<li>每个fragment使用了自己的法线，我们就可以让光照相信一个表面由很多微小的（垂直于法线向量的）平面所组成，物体表面的细节将会得到极大提升。这种每个fragment使用各自的法线，替代一个面上所有fragment使用同一个法线的技术叫做法线贴图（normal mapping）或凹凸贴图（bump mapping）。</li>
+<li><img src="/2019/04/20/法线贴图/normal_mapping_surfaces.png" alt=""></li>
+</ul>
+<h2 id="法线贴图"><a href="#法线贴图" class="headerlink" title="法线贴图"></a>法线贴图</h2><h3 id="法线贴图存储及使用"><a href="#法线贴图存储及使用" class="headerlink" title="法线贴图存储及使用"></a>法线贴图存储及使用</h3><ul>
+<li>为使法线贴图工作，我们需要为每个fragment提供一个法线。像diffuse贴图和specular贴图一样，我们可以使用一个2D纹理来储存法线数据。2D纹理不仅可以储存颜色和光照数据，还可以储存法线向量。这样我们可以从2D纹理中采样得到特定纹理的法线向量。</li>
+<li>纹理信息的r，g，b值取值范围是[0, 1]，而法线取值范围是[-1, 1]，故将法线以纹理贴图的方式存储时，需要将其转换至[0, 1]的取值范围。</li>
+</ul>
+<figure class="hljs highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs glsl"><span class="hljs-type">vec3</span> rgb_normal = normal * <span class="hljs-number">0.5</span> + <span class="hljs-number">0.5</span>; <span class="hljs-comment">// 从 [-1,1] 转换至 [0,1]</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>同样，使用法线贴图时，我们需要将[0, 1]转换回[-1, 1]。<figure class="hljs highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs glsl"><span class="hljs-keyword">uniform</span> <span class="hljs-type">sampler2D</span> normalMap;  <br><br><span class="hljs-type">void</span> main()<br>&#123;           <br>    <span class="hljs-comment">// 从法线贴图范围[0,1]获取法线</span><br>    normal = <span class="hljs-built_in">texture</span>(normalMap, fs_in.TexCoords).rgb;<br>    <span class="hljs-comment">// 将法线向量转换为范围[-1,1]</span><br>    normal = <span class="hljs-built_in">normalize</span>(normal * <span class="hljs-number">2.0</span> - <span class="hljs-number">1.0</span>);   <br><br>    [...]<br>    <span class="hljs-comment">// 像往常那样处理光照</span><br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="法线贴图的使用限制"><a href="#法线贴图的使用限制" class="headerlink" title="法线贴图的使用限制"></a>法线贴图的使用限制</h3><ul>
+<li>一般法线贴图存储着物体正朝着Z轴方向时的法线值。当被渲染物体的朝上面不再是Z轴方向时，其表现便会出现异常：</li>
+<li><img src="/2019/04/20/法线贴图/without_TBN.png" alt=""></li>
+<li>光照看起来完全不对！发生这种情况是平面的表面法线现在指向了y，而采样得到的法线仍然指向的是z。结果就是光照仍然认为表面法线和之前朝向正z方向时一样；这样光照就不对了。下面的图片展示了这个表面上采样的法线的近似情况：</li>
+<li><img src="/2019/04/20/法线贴图/normal_mapping_ground_normals.png" alt=""></li>
+</ul>
+<h2 id="切线空间"><a href="#切线空间" class="headerlink" title="切线空间"></a>切线空间</h2><ul>
+<li><p>在一个不同的坐标空间中进行光照，这个坐标空间里，法线贴图向量总是指向这个坐标空间的正z方向；所有的光照向量都相对与这个正z方向进行变换。这样我们就能始终使用同样的法线贴图，不管朝向问题。这个坐标空间叫做切线空间（tangent space）。</p>
+</li>
+<li><p>法线贴图中的法线向量在切线空间中，法线永远指着正z方向。切线空间是位于三角形表面之上的空间：法线相对于单个三角形的本地参考框架。它就像法线贴图向量的本地空间；它们都被定义为指向正z方向，无论最终变换到什么方向。使用一个特定的矩阵我们就能将本地/切线空间中的法线向量转成世界或视图坐标，使它们转向到最终的贴图表面的方向。</p>
+</li>
+</ul>
+<h3 id="TBN向量"><a href="#TBN向量" class="headerlink" title="TBN向量"></a>TBN向量</h3><ul>
+<li>这种矩阵叫做TBN矩阵这三个字母分别代表tangent、bitangent和normal向量。这是建构这个矩阵所需的向量。要建构这样一个把切线空间转变为不同空间的变换矩阵，我们需要三个相互垂直的向量，它们沿一个表面的法线贴图对齐于：上、右、前。</li>
+<li>已知上向量是表面的法线向量。右和前向量是切线(Tagent)和副切线(Bitangent)向量。</li>
+<li><img src="/2019/04/20/法线贴图/normal_mapping_tbn_vectors.png" style="width: 22em;"></li>
+</ul>
+<h3 id="TBN向量的计算"><a href="#TBN向量的计算" class="headerlink" title="TBN向量的计算"></a>TBN向量的计算</h3><ul>
+<li>计算出切线和副切线并不像法线向量那么容易。从图中可以看到法线贴图的切线和副切线与纹理坐标的两个方向对齐。我们就是用到这个特性计算每个表面的切线和副切线的。</li>
+<li><p><img src="/2019/04/20/法线贴图/normal_mapping_surface_edges.png" style="width: 22em;"></p>
+</li>
+<li><p>注意上图中边 $E_2$ 与纹理坐标的差 $\Delta U_2$、$\Delta V_2$ 构成一个三角形。 $\Delta U_2$ 与切线向量T方向相同，而 $\Delta V_2$ 与副切线向量B方向相同。这也就是说，所以我们可以将三角形的边 $E_1$ 与  $E_2$写成切线向量T和副切线向量B的线性组合：</p>
+<script type="math/tex; mode=display">\Delta U_1 = U_1 - U_2</script><script type="math/tex; mode=display">\Delta V_1 = V_1 - V_2</script><script type="math/tex; mode=display">E_1 = \Delta U_1 T + \Delta V_1 B</script></li>
+</ul>
+<script type="math/tex; mode=display">\Delta U_2 = U_3 - U_2</script><script type="math/tex; mode=display">\Delta V_2 = V_3 - V_2</script><script type="math/tex; mode=display">E_2 = \Delta U_2 T + \Delta V_2 B</script><ul>
+<li>将上面的式子改用x, y, z的表示方式：<script type="math/tex; mode=display">(E_1x, E_1y, E_1z) = \Delta U_1 (T_x, T_y, T_z) + \Delta V_1 (B_x, B_y, B_z)</script><script type="math/tex; mode=display">(E_2x, E_2y, E_2z) = \Delta U_2 (T_x, T_y, T_z) + \Delta V_2 (B_x, B_y, B_z)</script><script type="math/tex; mode=display">改用矩阵乘法表示=></script><script type="math/tex; mode=display">\begin{bmatrix} E_1x & E_1y & E_1z \\ E_2x & E_2y & E_2z \end{bmatrix} = \begin{bmatrix} \Delta U_1 & \Delta V_1 \\ \Delta U_2 & \Delta V_2 \end{bmatrix} \begin{bmatrix} T_x & T_y & T_z \\ B_x & B_y & B_z \end{bmatrix}</script><script type="math/tex; mode=display">=></script><script type="math/tex; mode=display">\begin{bmatrix} T_x & T_y & T_z \\ B_x & B_y & B_z \end{bmatrix} = \begin{bmatrix} \Delta U_1 & \Delta V_1 \\ \Delta U_2 & \Delta V_2 \end{bmatrix}^{-1} \begin{bmatrix} E_1x & E_1y & E_1z \\ E_2x & E_2y & E_2z \end{bmatrix}</script><script type="math/tex; mode=display">1除以矩阵的行列式，再乘以它的伴随矩阵便能求得逆矩阵=></script><script type="math/tex; mode=display">\begin{bmatrix} T_x & T_y & T_z \\ B_x & B_y & B_z \end{bmatrix} = \frac{1}{\Delta U_1 \Delta V_2 - \Delta U_2 \Delta V_1} \begin{bmatrix} \Delta V_2 & -\Delta V_1 \\ -\Delta U_2 & \Delta U_1 \end{bmatrix} \begin{bmatrix} E_1x & E_1y & E_1z \\ E_2x & E_2y & E_2z \end{bmatrix}</script></li>
+</ul>
+<h2 id="切线空间法线贴图"><a href="#切线空间法线贴图" class="headerlink" title="切线空间法线贴图"></a>切线空间法线贴图</h2><figure class="hljs highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs glsl"><span class="hljs-meta">#version 330 core</span><br><span class="hljs-keyword">layout</span> (<span class="hljs-keyword">location</span> = <span class="hljs-number">0</span>) <span class="hljs-keyword">in</span> <span class="hljs-type">vec3</span> position;<br><span class="hljs-keyword">layout</span> (<span class="hljs-keyword">location</span> = <span class="hljs-number">1</span>) <span class="hljs-keyword">in</span> <span class="hljs-type">vec3</span> normal;<br><span class="hljs-keyword">layout</span> (<span class="hljs-keyword">location</span> = <span class="hljs-number">2</span>) <span class="hljs-keyword">in</span> <span class="hljs-type">vec2</span> texCoords;<br><span class="hljs-keyword">layout</span> (<span class="hljs-keyword">location</span> = <span class="hljs-number">3</span>) <span class="hljs-keyword">in</span> <span class="hljs-type">vec3</span> tangent;<br><span class="hljs-keyword">layout</span> (<span class="hljs-keyword">location</span> = <span class="hljs-number">4</span>) <span class="hljs-keyword">in</span> <span class="hljs-type">vec3</span> bitangent;<br><br><span class="hljs-type">void</span> main()<br>&#123;<br>   [...]<br>   <span class="hljs-type">vec3</span> T = <span class="hljs-built_in">normalize</span>(<span class="hljs-type">vec3</span>(model * <span class="hljs-type">vec4</span>(tangent,   <span class="hljs-number">0.0</span>)));<br>   <span class="hljs-type">vec3</span> B = <span class="hljs-built_in">normalize</span>(<span class="hljs-type">vec3</span>(model * <span class="hljs-type">vec4</span>(bitangent, <span class="hljs-number">0.0</span>)));<br>   <span class="hljs-type">vec3</span> N = <span class="hljs-built_in">normalize</span>(<span class="hljs-type">vec3</span>(model * <span class="hljs-type">vec4</span>(normal,    <span class="hljs-number">0.0</span>)));<br>   <span class="hljs-type">mat3</span> TBN = <span class="hljs-type">mat3</span>(T, B, N)<br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>通过上面的顶点着色器代码，我们可以求出TBN矩阵，对于TBN的使用，有两种方式。</li>
+</ul>
+<h3 id="切线空间转世界空间"><a href="#切线空间转世界空间" class="headerlink" title="切线空间转世界空间"></a>切线空间转世界空间</h3><ul>
+<li>在片段着色器中进行TBN空间转换和使用。</li>
+<li>我们直接使用TBN矩阵，这个矩阵可以把切线坐标空间的向量转换到世界坐标空间。因此我们把它传给片段着色器中，把通过采样得到的法线坐标左乘上TBN矩阵，转换到世界坐标空间中，这样所有法线和其他光照变量就在同一个坐标系中了。</li>
+</ul>
+<figure class="hljs highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs glsl"><span class="hljs-comment">// fs</span><br>normal = <span class="hljs-built_in">texture</span>(normalMap, fs_in.TexCoords).rgb;<br>normal = <span class="hljs-built_in">normalize</span>(normal * <span class="hljs-number">2.0</span> - <span class="hljs-number">1.0</span>);   <br>normal = <span class="hljs-built_in">normalize</span>(fs_in.TBN * normal);<br></code></pre></td></tr></table></figure>
+<h3 id="世界空间转切线空间"><a href="#世界空间转切线空间" class="headerlink" title="世界空间转切线空间"></a>世界空间转切线空间</h3><ul>
+<li>在顶点着色器中进行光照变量的转换，及那个它们转换至切线空间。</li>
+<li>使用TBN矩阵的逆矩阵，这个矩阵可以把世界坐标空间的向量转换到切线坐标空间。因此我们使用这个矩阵左乘其他光照变量，把他们转换到切线空间，这样法线和其他光照变量再一次在一个坐标系中了。</li>
+<li>相较于将TBN传给片段着色器，再在片段着色器中进行法线的空间转换，在顶点着色器中对光照变量转换至切线空间，能不用在像素着色器里进行矩阵乘法。顶点着色器通常比像素着色器运行的少，因此这一优化的效果是极佳的。</li>
+<li>在求逆矩阵的时候，利用正交矩阵（每个轴既是单位向量同时相互垂直）的置换矩阵与它的逆矩阵相等的属性，能以很少的消耗算出其逆矩阵。</li>
+</ul>
+<figure class="hljs highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs glsl"><span class="hljs-comment">// vs</span><br><span class="hljs-keyword">out</span> VS_OUT &#123;<br>    <span class="hljs-type">vec3</span> FragPos;<br>    <span class="hljs-type">vec2</span> TexCoords;<br>    <span class="hljs-type">vec3</span> TangentLightPos;<br>    <span class="hljs-type">vec3</span> TangentViewPos;<br>    <span class="hljs-type">vec3</span> TangentFragPos;<br>&#125; vs_out;<br><br><span class="hljs-keyword">uniform</span> <span class="hljs-type">vec3</span> lightPos;<br><span class="hljs-keyword">uniform</span> <span class="hljs-type">vec3</span> viewPos;<br><br>[...]<br><br><span class="hljs-type">void</span> main()<br>&#123;    <br>    [...]<br>    <span class="hljs-type">mat3</span> TBN = <span class="hljs-built_in">transpose</span>(<span class="hljs-type">mat3</span>(T, B, N));<br>    vs_out.TangentLightPos = TBN * lightPos;<br>    vs_out.TangentViewPos  = TBN * viewPos;<br>    vs_out.TangentFragPos  = TBN * <span class="hljs-type">vec3</span>(model * <span class="hljs-type">vec4</span>(position, <span class="hljs-number">0.0</span>));<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="复杂物体"><a href="#复杂物体" class="headerlink" title="复杂物体"></a>复杂物体</h2><ul>
+<li>Assimp有个很有用的配置，在我们加载模型的时候调用aiProcess_CalcTangentSpace。当aiProcess_CalcTangentSpace应用到Assimp的ReadFile函数时，Assimp会为每个加载的顶点计算出柔和的切线和副切线向量。</li>
+</ul>
+<figure class="hljs highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">const</span> aiScene* scene = importer.ReadFile(<br>    path, aiProcess_Triangulate | aiProcess_FlipUVs | aiProcess_CalcTangentSpace<br>);<br><br><span class="hljs-built_in">vector</span>.x = mesh-&gt;mTangents[i].x;<br><span class="hljs-built_in">vector</span>.y = mesh-&gt;mTangents[i].y;<br><span class="hljs-built_in">vector</span>.z = mesh-&gt;mTangents[i].z;<br>vertex.Tangent = <span class="hljs-built_in">vector</span>;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>另外，还必须更新模型加载器，用以从带纹理模型中加载法线贴图。wavefront的模型格式（.obj）导出的法线贴图有点不一样，Assimp的aiTextureType_NORMAL并不会加载它的法线贴图，而aiTextureType_HEIGHT却能，所以我们经常这样加载它们：</li>
+</ul>
+<figure class="hljs highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-built_in">vector</span>&lt;Texture&gt; specularMaps = <span class="hljs-keyword">this</span>-&gt;loadMaterialTextures(<br>    material, aiTextureType_HEIGHT, <span class="hljs-string">"texture_normal"</span><br>);<br></code></pre></td></tr></table></figure>
+<ul>
+<li>使用法线贴图也是一种提升你的场景的表现的重要方式。在使用法线贴图之前你不得不使用相当多的顶点才能表现出一个更精细的网格，但使用了法线贴图我们可以使用更少的顶点表现出同样丰富的细节。下图来自Paolo Cignoni，图中对比了两种方式：</li>
+<li><p><img src="/2019/04/20/法线贴图/normal_mapping_comparison.png" alt=""></p>
+</li>
+<li><p>当在更大的网格上计算切线向量的时候，它们往往有很大数量的共享顶点，当法向贴图应用到这些表面时将切线向量平均化通常能获得更好更平滑的结果。这样做有个问题，就是TBN向量可能会不能互相垂直，这意味着TBN矩阵不再是正交矩阵了。法线贴图可能会稍稍偏移，但这仍然可以改进。</p>
+</li>
+<li><p>使用叫做格拉姆-施密特正交化过程（Gram-Schmidt process）的数学技巧，我们可以对TBN向量进行重正交化，这样每个向量就又会重新垂直了。在顶点着色器中我们这样做：</p>
+</li>
+</ul>
+<figure class="hljs highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs glsl"><span class="hljs-type">vec3</span> T = <span class="hljs-built_in">normalize</span>(<span class="hljs-type">vec3</span>(model * <span class="hljs-type">vec4</span>(tangent, <span class="hljs-number">0.0</span>)));<br><span class="hljs-type">vec3</span> N = <span class="hljs-built_in">normalize</span>(<span class="hljs-type">vec3</span>(model * <span class="hljs-type">vec4</span>(normal, <span class="hljs-number">0.0</span>)));<br><span class="hljs-comment">// re-orthogonalize T with respect to N</span><br>T = <span class="hljs-built_in">normalize</span>(T - <span class="hljs-built_in">dot</span>(T, N) * N);<br><span class="hljs-comment">// then retrieve perpendicular vector B with the cross product of T and N</span><br><span class="hljs-type">vec3</span> B = <span class="hljs-built_in">cross</span>(T, N);<br><br><span class="hljs-type">mat3</span> TBN = <span class="hljs-type">mat3</span>(T, B, N)<br></code></pre></td></tr></table></figure>
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/OpenGL/" rel="tag"><i class="fas fa-tags"></i>OpenGL</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2019/04/20/点阴影/" rel="next" title="点阴影"><i class="fas fa-angle-left"></i><span class="nav-title">点阴影</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+    </div>
+  </nav>
+  
+  
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div id="vcomments" class="vcomments"></div>
+  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    new Valine({
+      "el": "#vcomments",
+      "appId": "VDoaWS84zwOew1oV52zzYOwd-gzGzoHsz",
+      "appKey": "wion5JEuGPOkyUk0FdSzHo4E",
+      "verify": "false",
+      "notify": "false",
+      "avatar": "mm",
+      "meta": ["nick", "mail", "link"],
+      "pageSize": 10,
+      "lang": "zh-cn",
+      "visitor": "false",
+      "highlight": "true",
+      "placeholder": "在这里说点什么……",
+      "avatarForce": "false"
+    });
+  });
+  </script>
+  
+  
+</div>
+
+
+
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control">
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/myavatar.png" alt="MoriMiya">
+  
+  <h1 class="author-name">MoriMiya</h1>
+  <h2 class="author-description"></h2>
+  <div class="site-count">
+    
+    
+    
+    
+    <div class="archives-count count-block">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">14</a></div>
+    </div>
+    
+    
+    
+    <div class="categories-count count-block">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">13</a></div>
+    </div>
+    
+    
+    
+    <div class="tags-count count-block">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">7</a></div>
+    </div>
+    
+    
+    
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="/atom.xml"><i class="fas fa-rss"></i>RSS</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#凹凸细节"><span class="toc-text">凹凸细节</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#法线贴图"><span class="toc-text">法线贴图</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#法线贴图存储及使用"><span class="toc-text">法线贴图存储及使用</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#法线贴图的使用限制"><span class="toc-text">法线贴图的使用限制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#切线空间"><span class="toc-text">切线空间</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#TBN向量"><span class="toc-text">TBN向量</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#TBN向量的计算"><span class="toc-text">TBN向量的计算</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#切线空间法线贴图"><span class="toc-text">切线空间法线贴图</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#切线空间转世界空间"><span class="toc-text">切线空间转世界空间</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#世界空间转切线空间"><span class="toc-text">世界空间转切线空间</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#复杂物体"><span class="toc-text">复杂物体</span></a></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接<p></p></div>
+      <ul>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/morimiya" target="_blank">GitHub</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #33363b;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">MoriMiya</span><span class="year"><i class="far fa-copyright"></i>2018 - 2019</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://pages.github.com/" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+</html>
