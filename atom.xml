@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-05-19T15:14:32.696Z</updated>
+  <updated>2019-06-02T06:56:45.589Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>QCon2019广州</title>
+    <link href="http://yoursite.com/2019/06/02/QCon2019%E5%B9%BF%E5%B7%9E/"/>
+    <id>http://yoursite.com/2019/06/02/QCon2019广州/</id>
+    <published>2019-06-02T06:47:44.000Z</published>
+    <updated>2019-06-02T06:56:45.589Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>Service Mesh、小游戏质量测试、基于C++的跨平台开发框架</p></blockquote><hr><p><a href="/2019/06/02/QCon2019广州/QCon收获.pptx">QCon收获.pptx</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;Service Mesh、小游戏质量测试、基于C++的跨平台开发框架&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;a href=&quot;/2019/06/02/QCon2019广州/QCon收获.pptx&quot;&gt;QCon收获.pptx&lt;/a&gt;&lt;/p
+      
+    
+    </summary>
+    
+    
+      <category term="QCon" scheme="http://yoursite.com/tags/QCon/"/>
+    
+  </entry>
   
   <entry>
     <title>HDR和泛光</title>
