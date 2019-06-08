@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-06-02T07:00:12.202Z</updated>
+  <updated>2019-06-08T08:11:25.874Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>延迟着色法</title>
+    <link href="http://yoursite.com/2019/06/08/%E5%BB%B6%E8%BF%9F%E7%9D%80%E8%89%B2%E6%B3%95/"/>
+    <id>http://yoursite.com/2019/06/08/延迟着色法/</id>
+    <published>2019-06-08T07:00:05.000Z</published>
+    <updated>2019-06-08T08:11:25.874Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p><a href="https://learnopengl-cn.github.io" target="_blank" rel="noopener">https://learnopengl-cn.github.io</a> 延迟着色法学习笔记</p></blockquote><ul><li><img src="/2019/06/08/延迟着色法/result.png" alt=""></li></ul><a id="more"></a><h3 id="延迟着色法-Deferred-Shading"><a href="#延迟着色法-Deferred-Shading" class="headerlink" title="延迟着色法(Deferred Shading)"></a>延迟着色法(Deferred Shading)</h3><h4 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h4><ul><li><em>延迟着色法(Deferred Shading)</em> ，或者说是 <em>延迟渲染(Deferred Rendering)</em> 是为了解决 <em>正向渲染(Forward Rendering)</em> 中对每一个片段都需要遍历所有的光源进行迭代，而其中大部分片段着色器的输出都会被之后的输出覆盖，造成大量的计算浪费而提出的一种高效的渲染方式。</li></ul><h4 id="延迟着色原理"><a href="#延迟着色原理" class="headerlink" title="延迟着色原理"></a>延迟着色原理</h4><ul><li>延迟着色法基于我们延迟(Defer)或推迟(Postpone)大部分计算量非常大的渲染(像是光照)到后期进行处理的想法。</li><li><p>它包含两个处理阶段(Pass)：</p><ol><li><p>在第一个几何处理阶段(Geometry Pass)中，我们先渲染场景一次，之后获取对象的各种几何信息，并储存在一系列叫做G缓冲(G-buffer)的纹理中；像位置向量(Position Vector)、颜色向量(Color Vector)、法向量(Normal Vector)和/或镜面值(Specular Value)。场景中这些储存在G缓冲中的几何信息将会在之后用来做(更复杂的)光照计算。</p></li><li><p>第二个光照处理阶段(Lighting Pass)中使用G缓冲内的纹理数据。在光照处理阶段中，我们渲染一个屏幕大小的方形，并使用G缓冲中的几何数据对每一个片段计算场景的光照；在每个像素中我们都会对G缓冲进行迭代。我们对于渲染过程进行解耦，将它高级的片段处理挪到后期进行，而不是直接将每个对象从顶点着色器带到片段着色器。光照计算过程还是和以前一样，但是现在需要从对应的G缓冲而不是顶点着色器(和一些uniform变量)那里获取输入变量了。</p></li></ol></li><li><p><img src="/2019/06/08/延迟着色法/deferred_g_buffer.png" alt="G缓冲内容"></p></li><li><p><img src="/2019/06/08/延迟着色法/deferred_overview.png" alt="延迟着色法过程"></p></li><li><p>优点：</p><ol><li><p>这种渲染方法一个很大的好处就是能保证在G缓冲中的片段和在屏幕上呈现的像素所包含的片段信息是一样的，因为深度测试已经最终将这里的片段信息作为最顶层的片段。这样保证了对于在光照处理阶段中处理的每一个像素都只处理一次，所以我们能够省下很多无用的渲染调用。</p></li><li><p>除此之外，延迟渲染还允许我们做更多的优化，从而渲染更多的光源。</p></li><li><p>在几何处理阶段中填充G缓冲非常高效，因为我们直接储存像是位置，颜色或者是法线等对象信息到帧缓冲中，而这几乎不会消耗处理时间。在此基础上使用多渲染目标(Multiple Render Targets, MRT)技术，我们甚至可以在一个渲染处理之内完成这所有的工作。</p></li></ol></li><li><p>缺陷：</p><ol><li><p>由于G缓冲要求我们在纹理颜色缓冲中存储相对比较大的场景数据，这会消耗比较多的显存，尤其是类似位置向量之类的需要高精度的场景数据。</p></li><li><p>不支持混色(因为我们只有最前面的片段信息)， 因此也不能使用MSAA了。</p></li></ol></li></ul><hr><h3 id="G缓冲和延迟渲染"><a href="#G缓冲和延迟渲染" class="headerlink" title="G缓冲和延迟渲染"></a>G缓冲和延迟渲染</h3><ul><li><p>G缓冲(G-buffer)是对所有用来储存光照相关的数据，并在最后的光照处理阶段中使用的所有纹理的总称。因此，G缓冲中需要有正向渲染中光照所用到的所有数据：</p><ol><li>一个3D位置向量来计算(插值)片段位置变量供lightDir和viewDir使用</li><li>一个RGB漫反射颜色向量，也就是反照率(Albedo)</li><li>一个3D法向量来判断平面的斜率</li><li>一个镜面强度(Specular Intensity)浮点值</li><li>所有光源的位置和颜色向量</li><li>观察者的位置向量</li></ol></li><li><p>对于在每个片段上都相同的值，如光源位置、颜色、观察者位置这些，我们可以通过uniform来设置。对于在每个片段上都不同的值，如漫反射颜色、镜面强度等，我们则通过纹理贴图来存储，这样，我们只需要在最后阶段绘制一个矩形，它从纹理贴图中来采样RGB漫反射颜色，反照率、法向量等数据，进而进行绘制。</p></li><li>大致过程如下：</li></ul><figure class="hljs highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">while</span>(...) <span class="hljs-comment">// 游戏循环</span><br>&#123;<br>    <span class="hljs-comment">// 1. 几何处理阶段：渲染所有的几何/颜色数据到G缓冲</span><br>    glBindFramebuffer(GL_FRAMEBUFFER, gBuffer);<br>    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);<br>    gBufferShader.Use();<br>    <span class="hljs-keyword">for</span>(Object obj : Objects)<br>    &#123;<br>        ConfigureShaderTransformsAndUniforms();<br>        obj.Draw();<br>    &#125;  <br>    <span class="hljs-comment">// 2. 光照处理阶段：使用G缓冲计算场景的光照</span><br>    glBindFramebuffer(GL_FRAMEBUFFER, <span class="hljs-number">0</span>);<br>    glClear(GL_COLOR_BUFFER_BIT);<br>    lightingPassShader.Use();<br>    BindAllGBufferTextures();<br>    SetLightingUniforms();<br>    RenderQuad();<br>&#125;<br></code></pre></td></tr></table></figure><ul><li>将位置、法线、颜色、镜面值等存储于多个目标纹理缓冲中可以使用多渲染目标(Multiple Render Targets)方式。</li><li>因为有光照计算，需要保证所有变量在一个坐标空间。将它们在世界空间中存储(并计算)所有的变量是一种较方便的方式。</li></ul><hr><h3 id="结合延迟渲染与正向渲染"><a href="#结合延迟渲染与正向渲染" class="headerlink" title="结合延迟渲染与正向渲染"></a>结合延迟渲染与正向渲染</h3><ul><li><p>若想要渲染每一个光源为一个3D立方体，并放置在光源的位置上随着延迟渲染器一起发出光源的颜色。那么在处理完光照阶段后，还需要再将这些立方体绘制上去。不利用之前在G缓冲中的深度信息直接绘制立方体的话，所有立方体都会置于最前，丢失与原场景中物体交错的层次。</p></li><li><p><img src="/2019/06/08/延迟着色法/without_deep.png" alt="未使用G缓冲的深度信息"></p></li><li><p>OpenGL提供直接将帧缓冲中的数据拷贝至另一个帧缓冲中的方法，通过这种方式，便可以方便的将G缓冲中的深度信息单独拷贝至默认缓冲中。</p></li></ul><figure class="hljs highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c++">glBindFramebuffer(GL_READ_FRAMEBUFFER, gBuffer);<br>glBindFramebuffer(GL_DRAW_FRAMEBUFFER, <span class="hljs-number">0</span>); <span class="hljs-comment">// 写入到默认帧缓冲</span><br>glBlitFramebuffer(<br>  <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, SCR_WIDTH, SCR_HEIGHT, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, SCR_WIDTH, SCR_HEIGHT, GL_DEPTH_BUFFER_BIT, GL_NEAREST<br>);<br>glBindFramebuffer(GL_FRAMEBUFFER, <span class="hljs-number">0</span>);<br></code></pre></td></tr></table></figure><ul><li>这种方式需要两个缓冲的内部格式一致才可成功复制，若无法成功复制，则需要将深度信息输出到另一张纹理中（就如在阴影中使用的方式），供渲染时采样使用。</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://learnopengl-cn.github.io&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://learnopengl-cn.github.io&lt;/a&gt; 延迟着色法学习笔记&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;/2019/06/08/延迟着色法/result.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="OpenGL" scheme="http://yoursite.com/categories/OpenGL/"/>
+    
+      <category term="延迟着色法" scheme="http://yoursite.com/categories/OpenGL/%E5%BB%B6%E8%BF%9F%E7%9D%80%E8%89%B2%E6%B3%95/"/>
+    
+    
+      <category term="OpenGL" scheme="http://yoursite.com/tags/OpenGL/"/>
+    
+  </entry>
   
   <entry>
     <title>QCon2019广州</title>
