@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title>平直Alpha与预乘Alpha</title>
+      <link href="/2019/12/01/%E5%B9%B3%E7%9B%B4Alpha%E4%B8%8E%E9%A2%84%E4%B9%98Alpha/"/>
+      <url>/2019/12/01/%E5%B9%B3%E7%9B%B4Alpha%E4%B8%8E%E9%A2%84%E4%B9%98Alpha/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>关于预乘Alpha的解析，以及平直Alpha和预乘Alpha的使用场景。</p></blockquote><a id="more"></a><h2 id="Alpha通道的概念"><a href="#Alpha通道的概念" class="headerlink" title="Alpha通道的概念"></a>Alpha通道的概念</h2><ul><li>在传统电影合成操作中，为了制作Matte，通常需要两盘独立的胶片，一盘记录运动影像，一盘则记录Matte信息。合成时，需要背景胶片、前景胶片、Matte胶片。也就是说Matte信息和图像信息独立存在。而Catmull/Smith小组开发的Alpha通道概念就方便了很多，而且可以让任何人使用Alpha通道。他们首次推出RGBA概念，即将Alpha通道和RGB通道并列，并一同存储在图像信息中。这样随着一幅图像的建立（这里说的是CGI），其Alpha通道也会随之产生或者存储。这样Alpha通道其实是Matte的概念，但它和图像信息一并存储和移动，这样Matte信息就变成影像的一部分，而不像传统电影合成时，需要单独的一盘胶片提供Matte信息，这也是RGBA的优势所在。有了RGBA的概念，数字合成变得更加轻松容易。当然为了提高合成效率，后来Catmull / Smith小组又在Integral Alpha的基础上提出Premultiplied Alpha。—-百度百科。</li></ul><h2 id="Alpha通道的表示方式"><a href="#Alpha通道的表示方式" class="headerlink" title="Alpha通道的表示方式"></a>Alpha通道的表示方式</h2><ul><li>图像中使用的Alpha通道通常有两种表示形式：平直Alpha（英语：straight alpha）和预乘Alpha（英语：premultiplied alpha）。</li><li>平直Alpha<ul><li>图像中的RGB分量仅表示像素的颜色，与是否透明无关。</li></ul></li><li>预乘Alpha<ul><li>图像中的RGB分量已和不透明度做了乘法。一些场景下，这样的做法可以在后续合成时节省一次乘法。</li></ul></li></ul><h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><ul><li>平直Alpha和预乘Alpha并没有孰优孰劣之说，它们有各自更加适用的场景。</li></ul><h3 id="平直Alpha的限制"><a href="#平直Alpha的限制" class="headerlink" title="平直Alpha的限制"></a>平直Alpha的限制</h3><ul><li><p>混合公式</p><script type="math/tex; mode=display">R = (R_{src} * A_{src} + (1 - A_{src}) * R_{dst} * A_{dst}) / A</script><script type="math/tex; mode=display">G = (G_{src} * A_{src} + (1 - A_{src}) * G_{dst} * A_{dst}) / A</script><script type="math/tex; mode=display">B = (B_{src} * A_{src} + (1 - A_{src}) * B_{dst} * A_{dst}) / A</script><script type="math/tex; mode=display">A = A_{src} + (1 - A_{scr}) * A_{dst}</script></li><li><p>从混合公式中可以看出，RGB与A并不相互独立，它们最终的展现效果都需要A参与计算，因此，插值相关的计算都不能在平直Alpha的图片上进行，如旋转、缩放等操作。</p></li><li><p>在<a href="https://developer.nvidia.com/content/alpha-blending-pre-or-not-pre" target="_blank" rel="noopener">https://developer.nvidia.com/content/alpha-blending-pre-or-not-pre</a> 一文中，给出了平直Alpha不适合进行插值的原因，简单总结如下：</p><ol><li>原图是2X1大小的两个像素点，分别为纯红和纯绿，但纯绿的alpha值为0.1。<ul><li><img src="/2019/12/01/平直Alpha与预乘Alpha/orgpic.png" style="width: 400px;"></li></ul></li><li>对上图求1X1的mipmap的时候，我们会得到下面的结果：<ul><li><img src="/2019/12/01/平直Alpha与预乘Alpha/straight_filter.png" style="width: 200px;"></li><li>原因是我们不仅对RGB进行了线性插值，也对alpha进行了线性插值，但RGB与alpha却又不是相互独立的变量，alpha会影响RGB的表现结果，导致结果与直观效果大相径庭。</li></ul></li><li>我们先将alpha进行预乘，再进行线性求插值，得到的结果与直观感受相符。<ul><li><img src="/2019/12/01/平直Alpha与预乘Alpha/premultiplied_filter.png" style="width: 200px;"></li><li>因为原图alpha参与进了RGB的插值运算当中，所以插值计算出来的结果是与视觉效果相符的。</li></ul></li></ol></li></ul><h3 id="预乘Alpha的限制"><a href="#预乘Alpha的限制" class="headerlink" title="预乘Alpha的限制"></a>预乘Alpha的限制</h3><ul><li><p>混合公式</p><script type="math/tex; mode=display">R = R_{src} + (1 - A_{src}) * R_{dst}</script><script type="math/tex; mode=display">G = G_{src} + (1 - A_{src}) * G_{dst}</script><script type="math/tex; mode=display">B = B_{src} + (1 - A_{src}) * B_{dst}</script><script type="math/tex; mode=display">A = A_{src} + (1 - A_{scr}) * A_{dst}</script></li><li><p>从混合公式中可以看出，原图RGB的混合不再受alpha参数影响，故直接进行RGB调整的变换都不能在预乘Alpha的图片上进行，如ContrastLum、Color-Add等调色行为。</p></li></ul><h2 id="黑边白边问题"><a href="#黑边白边问题" class="headerlink" title="黑边白边问题"></a>黑边白边问题</h2><ul><li><p>产生黑边、白边都是因为使用的软件、算法对图像是否已进行alpha预乘的理解有差异导致。如PS软件认为所有的图片都是平直alpha，而3DSMAX等软件输出的图像则是预乘alpha后的图像，将后者输出的图像直接在PS上进行叠加，则会多了一次乘原图alpha的计算，导致颜色偏暗。</p></li><li><p>简单解析如下（这里只对R分量进行解析，GB分量同理）：</p><ol><li>PS使用的混合公式（平直Alpha）：<script type="math/tex; mode=display">R = R_{src} * A_{src} + (1 - A_{src}) * R_{dst}</script></li><li>3DSMAX使用的混合公式（预乘Alpha）：<script type="math/tex; mode=display">R = R_{src} + (1 - A_{src}) * R_{dst}</script></li><li>在3DSMAX中输出的图是预乘Alpha图，将其还原回平直Alpha，其R值为：<script type="math/tex; mode=display">R = R_{src} * A_{src}</script></li><li>将3中的R套到1中的混合式子中：<script type="math/tex; mode=display">R = R_{src} * A_{src} * A_{src} + (1 - A_{src}) * R_{dst}</script></li><li>可以看出，乘多了一次 $A_{src}$ ，导致图像偏暗。</li><li>由于3D图像输出的时候，在边缘通常会使用抗锯齿技术，因此边缘上的像素的alpha值不是非0即1，而是介于0和1之间，这些抗锯齿产生的像素在进行4中的混合后，便是黑边所在。</li></ol></li></ul><h3 id="黑边的解决方式："><a href="#黑边的解决方式：" class="headerlink" title="黑边的解决方式："></a>黑边的解决方式：</h3><ol><li>输入的图像改回用平直Alpha图，即若输入的图像为预乘Alpha图，对其进行一次逆运算，RGB除以其Alpha值，获得平直Alpha图作为输入。</li><li>对混合的背景图进行一次 $(1 - A_{src})$ 计算，然后混合公式改用直接相加的方式。<ul><li>通过此种方式，混合公式就变为：</li><li><script type="math/tex; mode=display">R = R_{src} + (1 - A_{src}) * R_{dst}</script></li><li>该公式与预乘Alpha的混合公式是相同的。</li></ul></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 预乘Alpha </tag>
+            
+            <tag> 平直Alpha </tag>
+            
+            <tag> 图像处理 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>2019CGDC+CJ</title>
       <link href="/2019/08/30/2019CGDC-CJ/"/>
       <url>/2019/08/30/2019CGDC-CJ/</url>
@@ -535,15 +562,6 @@
   
     
     <entry>
-      <title>about</title>
-      <link href="/about/index.html"/>
-      <url>/about/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    <entry>
       <title>categories</title>
       <link href="/categories/index.html"/>
       <url>/categories/index.html</url>
@@ -556,6 +574,15 @@
       <title>tags</title>
       <link href="/tags/index.html"/>
       <url>/tags/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    <entry>
+      <title>about</title>
+      <link href="/about/index.html"/>
+      <url>/about/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       

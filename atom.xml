@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://morimiya.me/"/>
-  <updated>2019-08-29T17:52:23.936Z</updated>
+  <updated>2019-12-01T14:06:50.648Z</updated>
   <id>http://morimiya.me/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>平直Alpha与预乘Alpha</title>
+    <link href="http://morimiya.me/2019/12/01/%E5%B9%B3%E7%9B%B4Alpha%E4%B8%8E%E9%A2%84%E4%B9%98Alpha/"/>
+    <id>http://morimiya.me/2019/12/01/平直Alpha与预乘Alpha/</id>
+    <published>2019-12-01T09:21:44.000Z</published>
+    <updated>2019-12-01T14:06:50.648Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;关于预乘Alpha的解析，以及平直Alpha和预乘Alpha的使用场景。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="学习笔记" scheme="http://morimiya.me/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="预乘Alpha" scheme="http://morimiya.me/tags/%E9%A2%84%E4%B9%98Alpha/"/>
+    
+      <category term="平直Alpha" scheme="http://morimiya.me/tags/%E5%B9%B3%E7%9B%B4Alpha/"/>
+    
+      <category term="图像处理" scheme="http://morimiya.me/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+    
+  </entry>
   
   <entry>
     <title>2019CGDC+CJ</title>
@@ -43,7 +69,7 @@
     <link href="http://morimiya.me/2019/06/09/%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4%E7%8E%AF%E5%A2%83%E5%85%89%E9%81%AE%E8%94%BD/"/>
     <id>http://morimiya.me/2019/06/09/屏幕空间环境光遮蔽/</id>
     <published>2019-06-09T11:52:34.000Z</published>
-    <updated>2019-06-10T16:50:03.778Z</updated>
+    <updated>2019-12-01T14:03:47.019Z</updated>
     
     <summary type="html">
     
@@ -104,7 +130,7 @@
     <link href="http://morimiya.me/2019/06/02/QCon2019%E5%B9%BF%E5%B7%9E/"/>
     <id>http://morimiya.me/2019/06/02/QCon2019广州/</id>
     <published>2019-06-02T06:47:44.000Z</published>
-    <updated>2019-06-02T07:00:12.202Z</updated>
+    <updated>2019-12-01T09:21:56.797Z</updated>
     
     <summary type="html">
     
@@ -495,28 +521,6 @@
     
     
       <category term="OpenGL" scheme="http://morimiya.me/tags/OpenGL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2017随记-1200bookshop</title>
-    <link href="http://morimiya.me/2017/03/12/2017%E9%9A%8F%E8%AE%B0-1200bookshop/"/>
-    <id>http://morimiya.me/2017/03/12/2017随记-1200bookshop/</id>
-    <published>2017-03-12T15:06:47.000Z</published>
-    <updated>2019-06-09T12:30:47.175Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;/2017/03/12/2017随记-1200bookshop/img1.jpg&quot; style=&quot;width: 30em;&quot; alt=&quot;书店清晨&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="2017随记" scheme="http://morimiya.me/categories/2017%E9%9A%8F%E8%AE%B0/"/>
-    
-      <category term="1200bookshop" scheme="http://morimiya.me/categories/2017%E9%9A%8F%E8%AE%B0/1200bookshop/"/>
-    
-    
-      <category term="生活" scheme="http://morimiya.me/tags/%E7%94%9F%E6%B4%BB/"/>
     
   </entry>
   
