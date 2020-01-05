@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title>2019年总结</title>
+      <link href="/2020/01/05/2019%E5%B9%B4%E6%80%BB%E7%BB%93/"/>
+      <url>/2020/01/05/2019%E5%B9%B4%E6%80%BB%E7%BB%93/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>2019年的简单汇总。</p></blockquote><a id="more"></a><h3 id="生活"><a href="#生活" class="headerlink" title="生活"></a>生活</h3><ul><li>1月：<ul><li>日本旅游。</li><li>碧水湾泡温泉。</li><li>达成 Friend Zone 照片成就。</li></ul></li><li>2月：<ul><li>北京旅游。</li></ul></li><li>5月：<ul><li>入坑王者荣耀。</li></ul></li><li>6月：<ul><li>参加QCon广州。</li></ul></li><li>7月：<ul><li>带爸妈体检。</li></ul></li><li>8月：<ul><li>参加上海CGDC和CJ。</li></ul></li><li>9月：<ul><li>中秋节用椴木层板做了一个阵列灯的外罩，但后续没吧树莓派接上去控制灯光。</li></ul></li><li>10月：<ul><li>西北自驾游，看到了银河，好开心。</li></ul></li><li>12月：<ul><li>通关宝可梦盾，很一般的一作。</li><li>御温泉，并不是很喜欢泡温泉，时间也比较赶，玩狼人杀到凌晨四点，一天下来感觉反而更累了。</li></ul></li></ul><h3 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h3><ul><li>自学完LearnOpenGL课程，课程设计很适合入门者，收益颇多。</li><li>看完《游戏引擎架构》，大体整体结构上能明白理解，但我缺乏实践，没针对一个具体引擎进行剖析分解及实操，仅了解了理论知识。在动画系统一章中，缺乏对动画的了解，导致看得一知半解，未能完全吃透。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 2019随记 </category>
+          
+          <category> 年度总结 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 生活 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>平直Alpha与预乘Alpha</title>
       <link href="/2019/12/01/%E5%B9%B3%E7%9B%B4Alpha%E4%B8%8E%E9%A2%84%E4%B9%98Alpha/"/>
       <url>/2019/12/01/%E5%B9%B3%E7%9B%B4Alpha%E4%B8%8E%E9%A2%84%E4%B9%98Alpha/</url>
@@ -571,18 +596,18 @@
     </entry>
     
     <entry>
-      <title>tags</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
+      <title>about</title>
+      <link href="/about/index.html"/>
+      <url>/about/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
     </entry>
     
     <entry>
-      <title>about</title>
-      <link href="/about/index.html"/>
-      <url>/about/index.html</url>
+      <title>tags</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
