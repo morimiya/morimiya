@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#33363b">
+    <meta name="msapplication-TileColor" content="#33363b">
+    
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#33363b">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="MoriMiya" type="application/atom+xml">
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/clipboard.min.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var cb = null;
+      var els = $(".post figure.highlight");
+      if (els.length) {
+        // Enabled Hexo highlight line number.
+        $(els).each(function (i, e) {
+          $(e).before("<button class=\"copy button\">复制</button>");
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              // nextElementSibling is figure,highlight.
+              // And following is the sequence of Hexo's internal
+              // highlight layout with line number.
+              return trigger.nextElementSibling.firstChild.firstChild.firstChild.lastChild.firstChild.firstChild;
+          }
+        });
+      } else {
+        // Disabled Hexo highlight line number.
+        els = $(".post pre code");
+        $(els).each(function (i, e) {
+          // Add button before pre, not code.
+          $(e).parent().before("<button class=\"copy button\">复制</button>");
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              // nextElementSibling is figure,highlight.
+              // And following is the sequence of Hexo's internal
+              // highlight layout without line number.
+              return trigger.nextElementSibling.firstChild;
+          }
+        });
+      }
+      cb.on("success", function (e) {
+        e.clearSelection();
+        var trigger = e.trigger;
+        // Change button text as a user tip.
+        trigger.innerHTML = "已复制";
+        $(trigger).addClass("copied");
+        // Change button text back;
+        setTimeout(function () {
+          trigger.innerHTML = "复制";
+          $(trigger).removeClass("copied");
+        }, 1500);
+      });
+    });
+    </script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>cocos2d-x学习笔记-第二章 | MoriMiya - Don't you want to be alive before you die?</title>
+  </head>
+  <body itemscope="" itemtype="http://schema.org/WebPage" lang="zh_CN" data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #33363b;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">MoriMiya</a></h1>
+        <h2 class="subtitle">Don't you want to be alive before you die?</h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/"><i class="fas fa-home"></i><span class="menu-text">首页</span></a></li>
+        
+        <li role="menuitem"><a href="/archives/"><i class="fas fa-archive"></i><span class="menu-text">归档</span></a></li>
+        
+        <li role="menuitem"><a href="/categories/"><i class="fas fa-th-list"></i><span class="menu-text">分类</span></a></li>
+        
+        <li role="menuitem"><a href="/tags/"><i class="fas fa-tags"></i><span class="menu-text">标签</span></a></li>
+        
+        <li role="menuitem"><a href="/about/"><i class="fas fa-user-edit"></i><span class="menu-text">关于</span></a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card animate" itemscope="" itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://morimiya.me/2020/03/15/cocos2d-x学习笔记-第二章/">
+      <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="MoriMiya">
+       <meta itemprop="description" content="">
+       <meta itemprop="image" content="/images/myavatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="MoriMiya">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">cocos2d-x学习笔记-第二章</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-03-15T22:21:35+08:00">2020-03-15 22:21:35</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/cocos2d-x学习笔记/" itemprop="url" rel="index"><span itemprop="name">cocos2d-x学习笔记</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <blockquote>
+<p>cocos2d-x学习笔记-第二章。<br>cocos2d-x架构。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="总览"><a href="#总览" class="headerlink" title="总览"></a>总览</h2><ul>
+<li>cocos2d-x 引擎系统结构：</li>
+<li><img src="/2020/03/15/cocos2d-x学习笔记-第二章/cocos2dx引擎系统结构.png" alt="cocos2dx引擎系统结构.png"></li>
+<li>cocos2d-x支持跨平台，其使用大量第三方开源库用于支持文件解压、图片解析、网络支持、物理引擎、音频等功能，自身则专注于渲染引擎的开发。</li>
+<li>在使用了第三方库的基础上，其还封装了文件的加载、纹理解析、线程操作等跨平台接口，使得渲染和其他系统的设计可以与平台无关。</li>
+</ul>
+<h2 id="内存管理机制"><a href="#内存管理机制" class="headerlink" title="内存管理机制"></a>内存管理机制</h2><h3 id="背景知识"><a href="#背景知识" class="headerlink" title="背景知识"></a>背景知识</h3><ul>
+<li><p>cocos2d-x不使用C++ 11中的只能指针，原因有二：</p>
+<ul>
+<li>其一，智能指针有较大的性能损失。shared_ptr为了保证线程安全，必须使用一定形式的互斥锁来保证所有线程访问时其引用计数的正确。对游戏这种实时性要求非常高的应用程序而言，这种性能损失是不可接受的。</li>
+<li><p>其二，需要程序员显式的声明智能指针，如创建一个Node：</p>
+  <figure class="hljs highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">share_ptr&lt;Node*&gt; node(<span class="hljs-keyword">new</span> Node());<br></code></pre></td></tr></table></figure>
+<p>  另外，在需要引用的地方，一般应该使用weak_ptr指针，否则在Node被移除的时候，还需要手动减持shared_ptr指针的引用计数。如：</p>
+  <figure class="hljs highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">weak_ptr&lt;Node*&gt; refNode=node;<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>垃圾回收机制：</p>
+<ul>
+<li>基于引用计数：引用计数使用系统记录的一个对象被引用的次数，当对象被引用的次数变为零时，该对象即被视作垃圾而被回收。优点是实现比较简单。</li>
+<li>基于跟踪处理：先产生跟踪对象的关系图，再进行垃圾回收。其算法是首先将程序中正在使用的对象视为根对象，从根对象开始查找它们所引用的堆空间，并在这些堆空间上做标记。做完标记后，所有未被标记的对象即被视为垃圾，会在第二阶段被清理。清理的方式是对正在使用的对象进行移动或者复制，从而减少内存碎片的产生。</li>
+</ul>
+</li>
+</ul>
+<h3 id="cocos2d-x-内存管理机制"><a href="#cocos2d-x-内存管理机制" class="headerlink" title="cocos2d-x 内存管理机制"></a>cocos2d-x 内存管理机制</h3><ul>
+<li><p><strong>autorelease垃圾回收机制：</strong></p>
+<ul>
+<li><p>cocos2d-x中的所有对象几乎都继承自Ref基类。Ref基类主要的职责就是对对象进行引用计数管理。</p>
+  <figure class="hljs highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CC_DLL</span> <span class="hljs-title">Ref</span><br>&#123;</span><br><span class="hljs-keyword">public</span>:<br>	<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">retain</span><span class="hljs-params">()</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">release</span><span class="hljs-params">()</span></span>;<br>    <span class="hljs-function">Ref* <span class="hljs-title">autorelease</span><span class="hljs-params">()</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getReferenceCount</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<br><br><span class="hljs-keyword">protected</span>:<br>	Ref();<br><br><span class="hljs-keyword">protected</span>:<br>	<span class="hljs-comment">// count of references</span><br>    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> _referenceCount;<br>    <span class="hljs-keyword">friend</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AutoreleasePool</span>;</span><br>&#125;;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>当一个对象使用new运算符分配的内存时候，其引用计数为1，调用retain()方法，会增加引用计数，调用release()则减少引用计数。在调用release()方法后，若其引用计数为0，则自动调用delete运算符删除对象并释放内存。</p>
+</li>
+<li>直接使用retain()和release()会增加程序复杂性，在cocos2d-x中支持用autorelease()方法声明一个“智能指针”。</li>
+<li>使用autorelease()声明的智能指针，它们会被放进AutoreleasePool中，在每帧结束的时候，对AutoreleasePool中的对象进行清理。即，在cocos2d-x中，一个智能指针的生命周期是从创建开始到当前帧结束时结束。</li>
+<li>AutoreleasePool的实现机制是对池子中的每个对象执行一次release()，然后清空池子。对象在new出来后，引用计数为1，在帧尾若未被其他地方引用，则在执行release()时引用计数清零，从而被释放。</li>
+<li><p>cocos2d-x中大部分的类可以通过静态方法create()来返回一个智能指针对象，另外，自定义的UI元素也应该遵循这样的风格。</p>
+  <figure class="hljs highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c">Node * Node::create(<span class="hljs-keyword">void</span>)<br>&#123;<br>    Node * ret = <span class="hljs-keyword">new</span> Node();<br>    <span class="hljs-keyword">if</span> (ret &amp;&amp; ret-&gt;init()) &#123;<br>        ret-&gt;autorelease();<br>    &#125;<br>    <span class="hljs-keyword">else</span> &#123;<br>        CC_SAFE_DELETE(ret);<br>    &#125;<br>    <span class="hljs-keyword">return</span> ret;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>默认的AutoreleasePool一帧被清理一次，主要用来清理UI元素。若游戏中在一帧中创建大量的临时对象，且这些对象只在每个方法的作用域内被使用，若继续使用默认的AutoreleasePool来清理对象，那在帧尾前会有大量游戏对象残留，内存容易形成峰值。</p>
+</li>
+<li>在cocos2d-x中，支持程序员创建、销毁AutoreleasePool。在创建了新的AutoreleasePool后，之后新创建的autorelease()智能指针对象都会放进该AutoreleasePool中。在AutoreleasePool被销毁的时候，会自动执行其自身的clear()方法，对其管理的每个对象执行release()操作后，再将当前使用的AutoreleasePool设置为上一次创建的AutoreleasePool。简言之，就是一个栈的实现。</li>
+<li><p>cocos2d-x中通过PoolManager来管理AutoreleasePool队列，创建AutoreleasePool时会放进PoolManager中，销毁AutoreleasePool时会从PoolManager中移除，PoolManager管理当前使用的是哪个AutoreleasePool队列。</p>
+  <figure class="hljs highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CC_DLL</span> <span class="hljs-title">PoolManager</span><br>&#123;</span><br><span class="hljs-keyword">public</span>:<br>	<span class="hljs-function"><span class="hljs-keyword">static</span> PoolManager* <span class="hljs-title">getInstance</span><span class="hljs-params">()</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">destroyInstance</span><span class="hljs-params">()</span></span>;<br><br>    <span class="hljs-function">AutoreleasePool *<span class="hljs-title">getCurrentPool</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isObjectInPools</span><span class="hljs-params">(Ref* obj)</span> <span class="hljs-keyword">const</span></span>;<br><br>    <span class="hljs-keyword">friend</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AutoreleasePool</span>;</span><br><br><span class="hljs-keyword">private</span>:<br>	PoolManager();<br>    ~PoolManager();<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">push</span><span class="hljs-params">(AutoreleasePool *pool)</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">pop</span><span class="hljs-params">()</span></span>;<br><br>    <span class="hljs-keyword">static</span> PoolManager* s_singleInstance;<br><br>    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">deque</span>&lt;AutoreleasePool*&gt; _releasePoolStack;<br>    AutoreleasePool *_curReleasePool;<br>&#125;<br><br>AutoreleasePool::AutoreleasePool()<br>: _name(<span class="hljs-string">""</span>)<br>&#123;<br>	_managedObjectArray.reserve(<span class="hljs-number">150</span>);<br>    PoolManager::getInstance()-&gt;push(<span class="hljs-keyword">this</span>);<br>&#125;<br><br>AutoreleasePool::AutoreleasePool(<span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> &amp;name)<br>: _name(name)<br>&#123;<br>	_managedObjectArray.reserve(<span class="hljs-number">150</span>);<br>    PoolManager::getInstance()-&gt;push(<span class="hljs-keyword">this</span>);<br>&#125;<br><br>AutoreleasePool::~AutoreleasePool()<br>&#123;<br>	clear();<br>    PoolManager::getInstance()-&gt;pop();<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>因此，可以在局部方法中通过创建AutoreleasePool的自动变量的方式，让方法结束时候自动清理该方法中创建的临时autorelease()对象。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>RefPtr<t>智能指针：</t></strong></p>
+<ul>
+<li>对于单个的非集合元素对象，我们往往不会通过Autorelease进行管理，除非它是一个临时对象。此时，我们需要手动调用retain()和release()，这跟new和delete是等价的，容易导致内存管理问题。</li>
+<li>cocos2d-x模仿C++ 11的std::shared_ptr实现RefPtr<t>智能指针，使用Ref的引用计数来管理多个智能对内存的共享。但它不是线程安全的，也因此比shared_ptr更高效。</t></li>
+<li><strong>构造函数：</strong> 在RefPtr中，对于传入参数为左值的构造函数和复制构造函数，会对T*增加引用计数。对于右值的复制构造函数，则不会增加引用计数，而是将其对应的内存的占用转移过来。</li>
+<li><strong>赋值操作符：</strong> 与构造函数类似，对于任何左值变量的赋值，RefPtr都应该与该左值共享资源从而增加其引用计数，对于右值，仍然应该转移而不是共享。特别的是，赋值操作符还会释放对之前旧的资源的引用计数。</li>
+<li><p><strong>弱引用赋值：</strong> 无论是复制构造函数，还是赋值操作符，RefPtr都会对任何非空的左值资源保持一种强引用关系。RefPtr提供weakAssign()方法来实现弱引用。通过weakAssign()方法，我们可以不用再手动调用release()来实现若引用。</p>
+  <figure class="hljs highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// 不使用weakAssign。</span><br>RefPtr&lt;cocos2d::Image&gt; image;<br>image = <span class="hljs-keyword">new</span> cocos2d::Image();<br>image-&gt;release();<br><br><span class="hljs-comment">// 使用weakAssign。</span><br>RefPtr&lt;cocos2d::Image&gt; image;<br>image.weakAssign(<span class="hljs-keyword">new</span> cocos2d::Image());<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>RefPtr<t>与自动回收池的比较：</t></strong></p>
+<ol>
+<li>如果用autorelease替代RefPtr，由于autorelease完全依赖于自动回收池的释放，使得各个共享的变量几乎无法控制对资源的使用。</li>
+<li>如果用RefPtr替代autorelease，那么任何一个对Node资源的引用都是强引用，使得当Node从UI树中移除时，需要调用reset释放其对Node资源的占用，这是无法控制的。</li>
+<li>因此，对于UI元素，我们希望使用一种弱引用类型的内存管理方式，只有UI树本身才可分配和释放内存，其他地方都是弱引用，这里使用autorelease来管理会更合适。对于游戏中的数据，则使用智能指针RefPtr来管理。</li>
+</ol>
+</li>
+<li><p><strong>RefPtr<t>的缺陷：</t></strong></p>
+<ol>
+<li><p>引用计数可以被RefPtr从外部控制，让RefPtr中的资源情况变得复杂。</p>
+ <figure class="hljs highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">auto</span> str = <span class="hljs-keyword">new</span> __String(<span class="hljs-string">"Hello"</span>);<br>RefPrt&lt;__String&gt; prt;<br>prt.weakAssign(str);<br>str.release();			<span class="hljs-comment">// 外部控制引用计数。</span><br>(*ptr)-&gt;GetCString();	<span class="hljs-comment">// 访问野指针。</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>RefPtr提供的弱引用智能指针可以对其资源进行修改，从而导致原智能指针的行为变得不可预期。</p>
+ <figure class="hljs highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c">RefPtr&lt;__String&gt; prt1(<span class="hljs-keyword">new</span> __String(<span class="hljs-string">"Hello"</span>));<br>RefPtr&lt;__String&gt; prt2;<br>ptr2.weakAssign(ptr1);	<span class="hljs-comment">// 引用计数2。</span><br>ptr2.reset();			<span class="hljs-comment">// 引用计数1。</span><br>ptr2.reset();			<span class="hljs-comment">// 引用计数0，释放。</span><br>(*ptr)-&gt;GetCString();	<span class="hljs-comment">// 出错。</span><br></code></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p><strong>怎样进行内存管理：</strong></p>
+<ul>
+<li>Ref的引用计数并不是线程安全的，在多线程中，我们需要通过处理互斥锁来保证线程的安全。处于性能等方面的考虑，cocos2d-x没有提供AutoreleasePool的安全实现。</li>
+<li>对自定义的Node子类，为其添加create()方法，并使该方法返回一个autorelease对象。</li>
+<li>对于自定义的数据类型，如果需要动态分配内存，继承自Ref，使用智能指针RefPtr来管理其内存的释放。</li>
+<li>对于只在一个方法内部使用的Ref对象，需要使用自动回收池的，应使用自定义的AutoreleasePool来即时清理对内存的占用。</li>
+<li>不要动态分配AutoreleasePool对象，要始终使用自动变量。</li>
+<li>不要显式调用Refptr的构造函数，始终使用隐式方式调用构造函数（复制构造函数、赋值操作符）。因为显式的构造函数会导致同事执行构造函数和赋值操作符，这会造成一次不必要的临时智能指针变量的产生。</li>
+</ul>
+</li>
+</ul>
+<h2 id="UI树及运行时游戏对象"><a href="#UI树及运行时游戏对象" class="headerlink" title="UI树及运行时游戏对象"></a>UI树及运行时游戏对象</h2><ul>
+<li>锚点：<ul>
+<li>锚点取值是(0, 0)到(1, 1)之间。</li>
+<li>其决定着元素的位置、旋转、缩放等操作的基准点。</li>
+</ul>
+</li>
+<li>坐标系：<ul>
+<li>右手坐标系。</li>
+<li>本地坐标系以元素的左下角为原点（注意，<strong>不是锚点</strong>）。</li>
+<li>使用convertToWorldSpaceAR计算世界坐标时，其返回的是以该元素的锚点为原点的坐标系中的某个位置的世界坐标。</li>
+</ul>
+</li>
+<li>UI树：<ul>
+<li>cocos2d-x的UI树根节点为Scene类，UI树中每个节点都是一个Node实例对象，每个Node对象具有一个children集合及一个parent集合，其中Scene的parent属性为空。</li>
+<li>UI树使用中序遍历，将所有子元素分为两组，其中一组的逻辑深度小于0，表示其层级处于父节点之后，另一组的逻辑深度大于或等于0，表示层级在父节点之上。开发者可以通过制定逻辑深度来制定一个元素的绘制顺序。</li>
+<li>逻辑深度：在visit()方法开始遍历子元素前，会对所有子元素按逻辑深度从小到大进行排序。逻辑深度使用localZOrder属性表示，若两个元素的逻辑深度一致，则按它们被添加到UI树种的顺序排序。</li>
+<li>只按localZOrder来进行绘制顺序排序，会让游戏开发失去一定的灵活性，如希望将一个低层级的元素始终可见，我们不得不把它移至UI树的根部。cocos2d-x 3.0新增了globalZOrder，排序逻辑如下：<ol>
+<li>默认每个元素的globalZOrder值为0。</li>
+<li>如果一个元素的globalZOrder值不为0，则按globalZOrder进行排序。</li>
+<li>否则，按localZOrder进行排序。</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="应用程序架构"><a href="#应用程序架构" class="headerlink" title="应用程序架构"></a>应用程序架构</h2><ul>
+<li><p><strong>游戏生命周期</strong></p>
+<ul>
+<li><p>一个游戏对应于一个Application对象，Application的职责是管理游戏生命周期并设置默认窗口，获取平台及本地化信息等。在cocos2d-x种，通常会实现一个Application的子类供程序员自定义生命周期各个阶段的处理，这个子类叫作AppDelegate。</p>
+  <figure class="hljs highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AppDelegate</span> :</span> <span class="hljs-keyword">private</span> cocos2d::Application<br>&#123;<br><span class="hljs-keyword">public</span>:<br>	AppDelegate();<br>    <span class="hljs-keyword">virtual</span> ~AppDelegate();<br><br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">applicationDidFinishLaunching</span><span class="hljs-params">()</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">applicationDidEnterBackground</span><span class="hljs-params">()</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">applicationWillEnterForeground</span><span class="hljs-params">()</span></span>;<br>&#125;;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>在applicationDidFinishLaunching事件中，我们需要创建和初始化一个Director，并未Director创建一个OpenGL ES窗口（cocos2d-x中封装为一个GLView），然后创建场景，并将场景交给Director绘制出来。一个Application可以创建多个Director，每个Director对应一个屏幕，以支持多屏设备。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>场景管理</strong></p>
+<ul>
+<li>在游戏初始化时，我们通过Director::runWithScene()方法指定了第一个场景，之后可以通过getRunningScene()方法取得当前正在运行的场景。</li>
+<li>Director支持replaceScene()方法直接替换场景，这回直接删除并释放之前的场景。也可以使用场景栈来进行场景管理，在这种情况下，切换到一个新的场景不会删除之前的场景，而是将新的场景加入场景栈的顶端。对应方法为pushScene和popScene，也可以通过popToRootScene方法切换到栈底场景。</li>
+</ul>
+</li>
+<li><p><strong>游戏循环</strong></p>
+<ul>
+<li><p>当Application对象被初始化后，就开始根据设定的帧率执行游戏循环。Application::run是整个应用程序的入口，Director::mainLoop则定义了一个游戏循环所有的事件和内容。</p>
+  <figure class="hljs highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">int</span> Application::run()<br>&#123;<br>	<span class="hljs-keyword">if</span>(!applicationDidFinishLaunching()) &#123;<br>    	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    &#125;<br>    glview-&gt;retain();<br>    <span class="hljs-keyword">while</span> (!glview-&gt;windowShouldClose()) &#123;<br>    	lastTime = getCurrentMillSecond();<br>        director-&gt;mainLoop();<br>        glview-&gt;pollEvents();<br><br>        curTime = getCurrentMillSecond();<br>        <span class="hljs-keyword">if</span> (curTime - lastTime &lt; _animationInterval) &#123;<br>        	usleep(<span class="hljs-keyword">static_cast</span>&lt;<span class="hljs-keyword">useconds_t</span>&gt;((_animationInterval - curTime + lastTime) * <span class="hljs-number">1000</span>));<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><img src="/2020/03/15/cocos2d-x学习笔记-第二章/游戏循环.png" alt="游戏循环.png"></p>
+</li>
+</ul>
+</li>
+<li><p><strong>实时更新游戏对象</strong></p>
+<ul>
+<li>游戏中通过Director::setAnimationInterval()方法来设置帧率。</li>
+<li><p>Scheduler提供两种类型的回调更新，scheduleUpdate和schedule，scheduleUpdate与游戏循环的帧率保持一致，schedule则支持自定义的更新间隔、更新次数等。在实现上，每个自定义的更新回调需要使用一个Timer类（非线程中的Timer）来计时，这会花费更多的内存及计算时间，且不能指定更新的优先级。所以，在编写程序时应该尽量使用scheduleUpdate。</p>
+  <figure class="hljs highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CC_DLL</span> <span class="hljs-title">Scheduler</span> :</span> <span class="hljs-keyword">public</span> Ref<br>&#123;<br><span class="hljs-keyword">public</span>:<br>	<span class="hljs-comment">// 该回调更新与游戏循环的帧率保持一致。</span><br>	<span class="hljs-keyword">template</span> &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">T</span>&gt;<br>    <span class="hljs-title">void</span> <span class="hljs-title">scheduleUpdate</span>(<span class="hljs-title">T</span> *<span class="hljs-title">target</span>, <span class="hljs-title">int</span> <span class="hljs-title">priority</span>, <span class="hljs-title">bool</span> <span class="hljs-title">paused</span>)<br>    &#123;</span><br>    	<span class="hljs-keyword">this</span>-&gt;schedulePerFrame([target](<span class="hljs-keyword">float</span> dt) &#123;<br>        	target-&gt;update(dt);<br>        &#125;, target, priority, paused);<br>    &#125;<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CC_DLL</span> <span class="hljs-title">Scheduler</span> :</span> <span class="hljs-keyword">public</span> Ref<br>&#123;<br><span class="hljs-keyword">public</span>:<br>	<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">schedule</span><span class="hljs-params">(<span class="hljs-keyword">const</span> ccSchedulerFunc&amp; callback, <span class="hljs-keyword">void</span> *target, <span class="hljs-keyword">float</span> interval, <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> repeat, <span class="hljs-keyword">float</span> delay, <span class="hljs-keyword">bool</span> paused, <span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>&amp; key)</span></span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>Scheduler支持设置timeScale来设置其相对时间线。默认状态下,timeScale为1.0，表示与游戏循环更新频率一致。通过修改该值，可以产生加速、减速效果。</p>
+  <figure class="hljs highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">void</span> Scheduler::update(<span class="hljs-keyword">float</span> dt)<br>&#123;<br>	<span class="hljs-keyword">if</span> (_timeScale != <span class="hljs-number">1.0f</span>) &#123;<br>    	dt *= _timeScale;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>虽然Scheduler支持设置更新回调的优先级，但按游戏对象来划分逻辑更新优先级的方式并不是一种合理的方式。在游戏设计中，队逻辑，而不是游戏对象设计优先级往往更有意义。在cocos2d-x中，ActionManager和PhysicsWorld分别管理Node对象的动画更新和物理模拟相关的计算，而不是单独对每个Node对象执行动画和物理模拟。这样，ActionManager和PhysicsWorld可以作为一个逻辑子系统，我们只需要关心两个子系统的逻辑优先级。</p>
+</li>
+<li>ActionManager和PhysicsWorld给了我们一种启示，我们应该对一个逻辑注册一个更新回调，而不是对使用该逻辑的某个对象注册更新回调。这样我们便只需要关心逻辑优先级，而不用考虑对象优先级。</li>
+</ul>
+</li>
+</ul>
+<h2 id="coco2d-x的主线程"><a href="#coco2d-x的主线程" class="headerlink" title="coco2d-x的主线程"></a>coco2d-x的主线程</h2><ul>
+<li><p>cocos2d-x目前仍然是一个单线程的游戏引擎，这使得我们几乎不用考虑游戏对象更新的线程安全性。</p>
+</li>
+<li><p><strong>主线程中执行异步处理</strong></p>
+<ul>
+<li>Scheduler提供performFunctionInCocosThread方法，让我们可以在主线程中执行一个方法，执行的时机所有系统或自定义的schedule之后，在UI树遍历之前。  <figure class="hljs highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">void</span> Scheduler::performFunctionInCocosThread(<span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::function&lt;<span class="hljs-keyword">void</span>()&gt; &amp;function)<br>&#123;<br>	_performMutex.lock();<br>    _functionsToPerform.push_back(function);<br>    _performMutex.unlock();<br>&#125;<br><br><span class="hljs-keyword">void</span> Scheduler::update(<span class="hljs-keyword">float</span> dt)<br>&#123;<br>	<span class="hljs-keyword">if</span> (!_functionsToPerform.empty()) &#123;<br>    	_performMutex.lock();<br>        <span class="hljs-keyword">auto</span> temp = _functionsToPerform;<br>        _functionsToPerform.clear();<br>        _performMutex.unlock();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> <span class="hljs-keyword">auto</span> &amp;function: temp) &#123;<br>        	function();<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>纹理的异步加载</strong></p>
+<ul>
+<li>所有想scheduler注册的方法都会在该帧结束的时候被全部执行，对于一些比较耗时的计算，为了不影响游戏的性能，我们需要把一些列耗时的方法分帧执行。</li>
+<li>cocos2d-x纹理的异步加载完成后，将纹理上传至GL内存的操作必须要在主线程中执行，但是glTexImage2D是一个耗时的操作，同时执行太多容易造成卡顿。</li>
+<li>cocos2d-x的纹理异步加载回调使用了一个自定义的Schedule，该Schedule内部，检查已经完成加载的纹理，每一帧处理一个纹理，直至所有纹理被处理完毕，则注销该Schedule。</li>
+<li>TextureCache向Scheduler注册一个更新回调addImageAsyncCallBack。  <figure class="hljs highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs c">      <span class="hljs-keyword">void</span> TextureCache::addImageAsyncCallBack(<span class="hljs-keyword">float</span> dt)<br>      &#123;<br>      	<span class="hljs-built_in">std</span>::<span class="hljs-built_in">deque</span>&lt;ImageInfo*&gt; *imageQueue = _imageInfoQueue;<br><br>          _imageInfoMutex.lock();<br>          <span class="hljs-keyword">if</span> (imagesQueue-&gt;empty()) &#123;<br>          	_imageInfoMutex.unlock();<br>          &#125;<br>          <span class="hljs-keyword">else</span> &#123;<br>          	ImageInfo *imageInfo = imagesQueue-&gt;front();<br>              imagesQueue-&gt;pop_front();<br>              _imageInfoMutex.unlock();<br><br>              AsyncStruct *asyncStruct = imageInfo-&gt;asyncStruct;<br>              Image *image = imageInfo-&gt;image;<br><br>              <span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>&amp; filename = asyncStruct-&gt;filename;<br><br>              Texture2D *texture = <span class="hljs-literal">nullptr</span>;<br>              <span class="hljs-keyword">if</span> (image) &#123;<br>              	texture = <span class="hljs-keyword">new</span> Texture2D();<br>                  texture-&gt;initWithImage(image);<br><span class="hljs-meta">#<span class="hljs-meta-keyword">if</span> CC_ENABLE_CACHE_TEXTURE_DATA</span><br>      			VolatileTextureMgr::addImageTexture(texture, filename);<br><span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span><br>      			_textures.insert(<span class="hljs-built_in">std</span>::make_pair(filename, texture));<br>                  texture-&gt;retain();<br>                  texture-&gt;autorelease();<br>              &#125;<br>              <span class="hljs-keyword">else</span> &#123;<br>              	<span class="hljs-keyword">auto</span> it = _textures.find(asyncStruct-&gt;filename);<br>                  <span class="hljs-keyword">if</span> (it != _textures.end())<br>                  	texture = it-&gt;second;<br>              &#125;<br><br>		asyncStruct-&gt;callback(texture);<br>              <span class="hljs-keyword">if</span> (image) &#123;<br>              	image-&gt;release();<br>              &#125;<br>              <span class="hljs-keyword">delete</span> asyncStruct;<br>              <span class="hljs-keyword">delete</span> imageInfo;<br><br>              --_asyncRefCount;<br>              <span class="hljs-keyword">if</span> (<span class="hljs-number">0</span> == _asyncRefCount) &#123;<br>              	Director::getInstance()-&gt;getScheduler()-&gt;unschedule(schedule_selector(TextureCache::addImageAsyncCallBack), <span class="hljs-keyword">this</span>);<br>              &#125;<br>          &#125;<br>      &#125;<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/cocos/" rel="tag"><i class="fas fa-tags"></i>cocos</a>
+        
+        <a class="post-tag button" href="/tags/学习笔记/" rel="tag"><i class="fas fa-tags"></i>学习笔记</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2020/03/15/cocos2d-x学习笔记-第一章/" rel="next" title="cocos2d-x学习笔记-第一章"><i class="fas fa-angle-left"></i><span class="nav-title">cocos2d-x学习笔记-第一章</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+    </div>
+  </nav>
+  
+  
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div id="vcomments" class="vcomments"></div>
+  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    new Valine({
+      "el": "#vcomments",
+      "appId": "VDoaWS84zwOew1oV52zzYOwd-gzGzoHsz",
+      "appKey": "wion5JEuGPOkyUk0FdSzHo4E",
+      "verify": "false",
+      "notify": "false",
+      "avatar": "mm",
+      "meta": ["nick", "mail", "link"],
+      "pageSize": 10,
+      "lang": "zh-cn",
+      "visitor": "false",
+      "highlight": "true",
+      "placeholder": "在这里说点什么……",
+      "avatarForce": "false"
+    });
+  });
+  </script>
+  
+  
+</div>
+
+
+
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control">
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/myavatar.png" alt="MoriMiya">
+  
+  <h1 class="author-name">MoriMiya</h1>
+  <h2 class="author-description"></h2>
+  <div class="site-count">
+    
+    
+    
+    
+    <div class="archives-count count-block">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">25</a></div>
+    </div>
+    
+    
+    
+    <div class="categories-count count-block">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">23</a></div>
+    </div>
+    
+    
+    
+    <div class="tags-count count-block">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">23</a></div>
+    </div>
+    
+    
+    
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="/atom.xml"><i class="fas fa-rss"></i>RSS</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#总览"><span class="toc-text">总览</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#内存管理机制"><span class="toc-text">内存管理机制</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#背景知识"><span class="toc-text">背景知识</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#cocos2d-x-内存管理机制"><span class="toc-text">cocos2d-x 内存管理机制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#UI树及运行时游戏对象"><span class="toc-text">UI树及运行时游戏对象</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#应用程序架构"><span class="toc-text">应用程序架构</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#coco2d-x的主线程"><span class="toc-text">coco2d-x的主线程</span></a></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接<p></p></div>
+      <ul>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/morimiya" target="_blank">GitHub</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="http://blog.luxiaobai.net/" target="_blank">叉哥的博客</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #33363b;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">MoriMiya</span><span class="year"><i class="far fa-copyright"></i>2018 - 2020</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://pages.github.com/" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+</html>

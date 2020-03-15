@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://morimiya.me/"/>
-  <updated>2020-01-05T08:30:43.262Z</updated>
+  <updated>2020-03-15T14:29:43.208Z</updated>
   <id>http://morimiya.me/</id>
   
   <author>
@@ -15,6 +15,54 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>cocos2d-x学习笔记-第二章</title>
+    <link href="http://morimiya.me/2020/03/15/cocos2d-x%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%AC%AC%E4%BA%8C%E7%AB%A0/"/>
+    <id>http://morimiya.me/2020/03/15/cocos2d-x学习笔记-第二章/</id>
+    <published>2020-03-15T14:21:35.000Z</published>
+    <updated>2020-03-15T14:29:43.208Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;cocos2d-x学习笔记-第二章。&lt;br&gt;cocos2d-x架构。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="cocos2d-x学习笔记" scheme="http://morimiya.me/categories/cocos2d-x%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="cocos" scheme="http://morimiya.me/tags/cocos/"/>
+    
+      <category term="学习笔记" scheme="http://morimiya.me/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>cocos2d-x学习笔记-第一章</title>
+    <link href="http://morimiya.me/2020/03/15/cocos2d-x%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%AC%AC%E4%B8%80%E7%AB%A0/"/>
+    <id>http://morimiya.me/2020/03/15/cocos2d-x学习笔记-第一章/</id>
+    <published>2020-03-15T14:18:37.000Z</published>
+    <updated>2020-03-15T14:21:51.899Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;cocos2d-x学习笔记-第一章。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="cocos2d-x学习笔记" scheme="http://morimiya.me/categories/cocos2d-x%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="cocos" scheme="http://morimiya.me/tags/cocos/"/>
+    
+      <category term="学习笔记" scheme="http://morimiya.me/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>2019年总结</title>
@@ -467,56 +515,6 @@
       <category term="OpenGL" scheme="http://morimiya.me/categories/OpenGL/"/>
     
       <category term="高级OpenGL" scheme="http://morimiya.me/categories/OpenGL/%E9%AB%98%E7%BA%A7OpenGL/"/>
-    
-    
-      <category term="OpenGL" scheme="http://morimiya.me/tags/OpenGL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>高级OpenGL（上）</title>
-    <link href="http://morimiya.me/2018/12/23/%E9%AB%98%E7%BA%A7OpenGL%EF%BC%88%E4%B8%8A%EF%BC%89/"/>
-    <id>http://morimiya.me/2018/12/23/高级OpenGL（上）/</id>
-    <published>2018-12-22T17:06:22.000Z</published>
-    <updated>2019-02-24T07:19:31.936Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;https://learnopengl-cn.github.io&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://learnopengl-cn.github.io&lt;/a&gt; 高级OpenGL学习笔记&lt;/p&gt;
-&lt;p&gt;深度测试，模板测试，混合，面剔除，帧缓冲，立方体贴图。&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="OpenGL" scheme="http://morimiya.me/categories/OpenGL/"/>
-    
-      <category term="高级OpenGL" scheme="http://morimiya.me/categories/OpenGL/%E9%AB%98%E7%BA%A7OpenGL/"/>
-    
-    
-      <category term="OpenGL" scheme="http://morimiya.me/tags/OpenGL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>模型加载</title>
-    <link href="http://morimiya.me/2018/12/10/%E6%A8%A1%E5%9E%8B%E5%8A%A0%E8%BD%BD/"/>
-    <id>http://morimiya.me/2018/12/10/模型加载/</id>
-    <published>2018-12-09T17:09:24.000Z</published>
-    <updated>2019-02-24T07:18:53.045Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;https://learnopengl-cn.github.io&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://learnopengl-cn.github.io&lt;/a&gt; 模型加载学习笔记&lt;/p&gt;
-&lt;p&gt;Assimp，网格，模型。&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="OpenGL" scheme="http://morimiya.me/categories/OpenGL/"/>
-    
-      <category term="模型加载" scheme="http://morimiya.me/categories/OpenGL/%E6%A8%A1%E5%9E%8B%E5%8A%A0%E8%BD%BD/"/>
     
     
       <category term="OpenGL" scheme="http://morimiya.me/tags/OpenGL/"/>
