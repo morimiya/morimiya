@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://morimiya.me/"/>
-  <updated>2020-05-02T10:14:28.268Z</updated>
+  <updated>2021-02-17T14:03:00.113Z</updated>
   <id>http://morimiya.me/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CocosCreator-合成大西瓜</title>
+    <link href="http://morimiya.me/2021/02/17/CocosCreator-%E5%90%88%E6%88%90%E5%A4%A7%E8%A5%BF%E7%93%9C/"/>
+    <id>http://morimiya.me/2021/02/17/CocosCreator-合成大西瓜/</id>
+    <published>2021-02-17T13:41:27.000Z</published>
+    <updated>2021-02-17T14:03:00.113Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;使用CocosCreator 3.0制作《合成大西瓜》。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2021/02/17/CocosCreator-合成大西瓜/result.png&quot; alt=&quot;res&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="游戏开发" scheme="http://morimiya.me/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="游戏开发" scheme="http://morimiya.me/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
+    
+      <category term="CocosCreator" scheme="http://morimiya.me/tags/CocosCreator/"/>
+    
+  </entry>
   
   <entry>
     <title>cocos2d-x学习笔记-第四章</title>
@@ -492,31 +516,6 @@
     
     
       <category term="OpenGL" scheme="http://morimiya.me/tags/OpenGL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>游戏角色染色实现</title>
-    <link href="http://morimiya.me/2019/02/19/%E6%B8%B8%E6%88%8F%E8%A7%92%E8%89%B2%E6%9F%93%E8%89%B2%E5%AE%9E%E7%8E%B0/"/>
-    <id>http://morimiya.me/2019/02/19/游戏角色染色实现/</id>
-    <published>2019-02-19T06:36:47.000Z</published>
-    <updated>2020-06-01T08:57:05.914Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;游戏常用的染色方式。&lt;br&gt;&lt;/p&gt;&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="游戏开发" scheme="http://morimiya.me/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
-    
-      <category term="染色" scheme="http://morimiya.me/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/%E6%9F%93%E8%89%B2/"/>
-    
-    
-      <category term="染色" scheme="http://morimiya.me/tags/%E6%9F%93%E8%89%B2/"/>
-    
-      <category term="游戏开发" scheme="http://morimiya.me/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
