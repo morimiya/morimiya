@@ -19,9 +19,9 @@
       
         <tags>
             
-            <tag> Unity </tag>
-            
             <tag> 游戏开发 </tag>
+            
+            <tag> Unity </tag>
             
         </tags>
       
@@ -550,9 +550,9 @@
       
         <tags>
             
-            <tag> 游戏开发 </tag>
-            
             <tag> 染色 </tag>
+            
+            <tag> 游戏开发 </tag>
             
         </tags>
       
@@ -712,18 +712,18 @@
   
     
     <entry>
-      <title>about</title>
-      <link href="/about/index.html"/>
-      <url>/about/index.html</url>
+      <title>categories</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
     </entry>
     
     <entry>
-      <title>categories</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
+      <title>about</title>
+      <link href="/about/index.html"/>
+      <url>/about/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
