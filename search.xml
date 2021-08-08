@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title>塞尔达风格卡通渲染</title>
+      <link href="/2021/08/08/%E5%A1%9E%E5%B0%94%E8%BE%BE%E9%A3%8E%E6%A0%BC%E5%8D%A1%E9%80%9A%E6%B8%B2%E6%9F%93/"/>
+      <url>/2021/08/08/%E5%A1%9E%E5%B0%94%E8%BE%BE%E9%A3%8E%E6%A0%BC%E5%8D%A1%E9%80%9A%E6%B8%B2%E6%9F%93/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>使用Unity版本为：2019.4.10f1。<br> -<br>最终效果：<img src="/2021/08/08/塞尔达风格卡通渲染/result.png" style="width: 36em;" alt="效果展示"><br><a id="more"></a></p></blockquote><h2 id="游戏效果分析"><a href="#游戏效果分析" class="headerlink" title="游戏效果分析"></a>游戏效果分析</h2><ul><li><img src="/2021/08/08/塞尔达风格卡通渲染/zelda_analyze.png" style="width: 36em;" alt="塞尔达游戏效果"></li><li>造型有明显的向光面（阳面）和背光面（阴面），它们分界明显。</li><li>造型阳面有高亮的边缘光。</li><li>头发高光处理分了层次分明的三档。</li></ul><h2 id="阴阳面效果实现"><a href="#阴阳面效果实现" class="headerlink" title="阴阳面效果实现"></a>阴阳面效果实现</h2><ul><li>阴阳面可以通过模型法线与光照夹角来计算，当法线与光夹角越小，说明越面向光源，反之则越背对光源。</li><li>法线与光的夹角可通过它们的向量点乘结果模拟，那么只需要规定点乘值小于某个阈值则显示阴影效果，反之则不显示，即达到阴阳面分界的效果。</li><li>这里我使用点乘结果作为纹理索引值在下面纹理中进行采样，来决定阴阳面分界的过度值，以方便控制阴阳面分界的过度。</li><li>阴面效果通过对颜色取平方值来让颜色变得暗淡些，这里也可采样其他方式。</li><li><img src="/2021/08/08/塞尔达风格卡通渲染/FO_RIM1.png" style="width: 12em;" alt="_FalloffSampler"></li><li>效果：<img src="/2021/08/08/塞尔达风格卡通渲染/cloth_light.png" style="width: 36em;" alt="阴阳面效果"></li><li>代码实现：<figure class="hljs highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs glsl">float4 diffSamplerColor = tex2D(_MainTex, f.uv.xy);<br>float3 normalVec = GetNormalFromMap(f);<br><br><span class="hljs-type">float</span> normalDotLight = <span class="hljs-built_in">dot</span>(normalVec, f.lightDir);<br><span class="hljs-type">float</span> falloffU = <span class="hljs-built_in">clamp</span>(<span class="hljs-number">1.0</span> - normalDotLight, <span class="hljs-number">0.02</span>, <span class="hljs-number">0.98</span>);<br>falloffU = tex2D(_FalloffSampler, float2(falloffU, <span class="hljs-number">0.25</span>)).r;<br>float3 combinedColor = lerp(diffSamplerColor.rgb, diffSamplerColor.rgb * diffSamplerColor.rgb, falloffU);<br></code></pre></td></tr></table></figure></li></ul><h2 id="边缘光实现"><a href="#边缘光实现" class="headerlink" title="边缘光实现"></a>边缘光实现</h2><ul><li>边缘光可以通过模型法线与视线夹角来计算，当法线与视线夹角越接近90度，说明越接近边缘，即法线与视线的夹角点乘值越接近0，则表示越接近边缘。</li><li>这样处理下来，阴阳面都会有边缘光，所以在边缘的判定上，我再乘以了阴阳面的判定系数（阳面为1.0， 阴面为0.0），从而让只有阳面边缘被判定为边缘。</li><li>最终在边缘上加上加一层自身的颜色值达到高亮效果。</li><li>边缘边界的判定也是用阴阳面边界的判定方式，通过纹理来控制。</li><li>效果：<img src="/2021/08/08/塞尔达风格卡通渲染/cloth_rim.png" style="width: 36em;" alt="边缘光效果"></li><li><img src="/2021/08/08/塞尔达风格卡通渲染/cloth_rim_anim.gif" style="width: 14em;" alt="边缘光效果"></li><li>代码实现：<figure class="hljs highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs glsl"><span class="hljs-type">float</span> rimlightDot = <span class="hljs-built_in">dot</span>(normalVec, f.eyeDir);<br>falloffU = (<span class="hljs-number">1.0</span> - rimlightDot) * (<span class="hljs-number">1.0</span> - falloffU);<br>falloffU = tex2D(_RimLightSampler, float2(falloffU, <span class="hljs-number">0.25</span>f)).r;<br>float3 lightColor = diffSamplerColor.rgb;<br>combinedColor += falloffU * lightColor;<br></code></pre></td></tr></table></figure></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 游戏开发 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Unity </tag>
+            
+            <tag> 游戏开发 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>UnityChan渲染分析</title>
       <link href="/2021/08/01/UnityChan%E6%B8%B2%E6%9F%93%E5%88%86%E6%9E%90/"/>
       <url>/2021/08/01/UnityChan%E6%B8%B2%E6%9F%93%E5%88%86%E6%9E%90/</url>
@@ -19,9 +44,9 @@
       
         <tags>
             
-            <tag> 游戏开发 </tag>
-            
             <tag> Unity </tag>
+            
+            <tag> 游戏开发 </tag>
             
         </tags>
       
@@ -550,9 +575,9 @@
       
         <tags>
             
-            <tag> 染色 </tag>
-            
             <tag> 游戏开发 </tag>
+            
+            <tag> 染色 </tag>
             
         </tags>
       
@@ -712,18 +737,18 @@
   
     
     <entry>
-      <title>about</title>
-      <link href="/about/index.html"/>
-      <url>/about/index.html</url>
+      <title>categories</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
     </entry>
     
     <entry>
-      <title>categories</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
+      <title>about</title>
+      <link href="/about/index.html"/>
+      <url>/about/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
