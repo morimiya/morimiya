@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://morimiya.me/"/>
-  <updated>2021-08-09T15:51:58.934Z</updated>
+  <updated>2021-08-22T09:28:34.268Z</updated>
   <id>http://morimiya.me/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>河流渲染</title>
+    <link href="http://morimiya.me/2021/08/16/%E5%8D%A1%E9%80%9A%E6%B2%B3%E6%B5%81%E6%B8%B2%E6%9F%93/"/>
+    <id>http://morimiya.me/2021/08/16/卡通河流渲染/</id>
+    <published>2021-08-16T14:56:37.000Z</published>
+    <updated>2021-08-22T09:28:34.268Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;使用Unity版本为：2019.4.10f1。&lt;br&gt;最终效果：&lt;img src=&quot;/2021/08/16/卡通河流渲染/result.gif&quot; style=&quot;width: 36em;&quot; alt=&quot;效果展示&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="游戏开发" scheme="http://morimiya.me/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
+    
+      <category term="Unity" scheme="http://morimiya.me/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/Unity/"/>
+    
+    
+      <category term="Unity" scheme="http://morimiya.me/tags/Unity/"/>
+    
+      <category term="游戏开发" scheme="http://morimiya.me/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
     <title>塞尔达风格卡通渲染</title>
     <link href="http://morimiya.me/2021/08/08/%E5%A1%9E%E5%B0%94%E8%BE%BE%E9%A3%8E%E6%A0%BC%E5%8D%A1%E9%80%9A%E6%B8%B2%E6%9F%93/"/>
     <id>http://morimiya.me/2021/08/08/塞尔达风格卡通渲染/</id>
     <published>2021-08-08T10:16:00.000Z</published>
-    <updated>2021-08-09T15:51:58.934Z</updated>
+    <updated>2021-08-10T15:28:50.671Z</updated>
     
     <summary type="html">
     
@@ -496,33 +521,6 @@
     
     
       <category term="OpenGL" scheme="http://morimiya.me/tags/OpenGL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>DXT压缩纹理格式</title>
-    <link href="http://morimiya.me/2019/02/24/DXT%E5%8E%8B%E7%BC%A9%E7%BA%B9%E7%90%86%E6%A0%BC%E5%BC%8F/"/>
-    <id>http://morimiya.me/2019/02/24/DXT压缩纹理格式/</id>
-    <published>2019-02-24T09:15:27.000Z</published>
-    <updated>2019-02-27T16:35:42.127Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;DXT1，DXT3和DXT5三种压缩纹理的内存格式及其计算RGB及alpha值的方式。&lt;br&gt;&lt;/p&gt;&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="游戏开发" scheme="http://morimiya.me/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
-    
-      <category term="DXT压缩纹理格式" scheme="http://morimiya.me/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/DXT%E5%8E%8B%E7%BC%A9%E7%BA%B9%E7%90%86%E6%A0%BC%E5%BC%8F/"/>
-    
-    
-      <category term="DXT" scheme="http://morimiya.me/tags/DXT/"/>
-    
-      <category term="压缩纹理" scheme="http://morimiya.me/tags/%E5%8E%8B%E7%BC%A9%E7%BA%B9%E7%90%86/"/>
-    
-      <category term="S3TC" scheme="http://morimiya.me/tags/S3TC/"/>
     
   </entry>
   

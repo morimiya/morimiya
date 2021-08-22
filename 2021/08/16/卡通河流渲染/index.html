@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#33363b">
+    <meta name="msapplication-TileColor" content="#33363b">
+    
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#33363b">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="MoriMiya" type="application/atom+xml">
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/clipboard.min.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var cb = null;
+      var els = $(".post figure.highlight");
+      if (els.length) {
+        // Enabled Hexo highlight line number.
+        $(els).each(function (i, e) {
+          $(e).before("<button class=\"copy button\">复制</button>");
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              // nextElementSibling is figure,highlight.
+              // And following is the sequence of Hexo's internal
+              // highlight layout with line number.
+              return trigger.nextElementSibling.firstChild.firstChild.firstChild.lastChild.firstChild.firstChild;
+          }
+        });
+      } else {
+        // Disabled Hexo highlight line number.
+        els = $(".post pre code");
+        $(els).each(function (i, e) {
+          // Add button before pre, not code.
+          $(e).parent().before("<button class=\"copy button\">复制</button>");
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              // nextElementSibling is figure,highlight.
+              // And following is the sequence of Hexo's internal
+              // highlight layout without line number.
+              return trigger.nextElementSibling.firstChild;
+          }
+        });
+      }
+      cb.on("success", function (e) {
+        e.clearSelection();
+        var trigger = e.trigger;
+        // Change button text as a user tip.
+        trigger.innerHTML = "已复制";
+        $(trigger).addClass("copied");
+        // Change button text back;
+        setTimeout(function () {
+          trigger.innerHTML = "复制";
+          $(trigger).removeClass("copied");
+        }, 1500);
+      });
+    });
+    </script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>河流渲染 | MoriMiya - Don't you want to be alive before you die?</title>
+  </head>
+  <body itemscope="" itemtype="http://schema.org/WebPage" lang="zh_CN" data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #33363b;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">MoriMiya</a></h1>
+        <h2 class="subtitle">Don't you want to be alive before you die?</h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/"><i class="fas fa-home"></i><span class="menu-text">首页</span></a></li>
+        
+        <li role="menuitem"><a href="/archives/"><i class="fas fa-archive"></i><span class="menu-text">归档</span></a></li>
+        
+        <li role="menuitem"><a href="/categories/"><i class="fas fa-th-list"></i><span class="menu-text">分类</span></a></li>
+        
+        <li role="menuitem"><a href="/tags/"><i class="fas fa-tags"></i><span class="menu-text">标签</span></a></li>
+        
+        <li role="menuitem"><a href="/about/"><i class="fas fa-user-edit"></i><span class="menu-text">关于</span></a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card animate" itemscope="" itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://morimiya.me/2021/08/16/卡通河流渲染/">
+      <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="MoriMiya">
+       <meta itemprop="description" content="">
+       <meta itemprop="image" content="/images/myavatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="MoriMiya">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">河流渲染</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2021-08-16T22:56:37+08:00">2021-08-16 22:56:37</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/游戏开发/" itemprop="url" rel="index"><span itemprop="name">游戏开发</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/游戏开发/Unity/" itemprop="url" rel="index"><span itemprop="name">Unity</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <blockquote>
+<p>使用Unity版本为：2019.4.10f1。<br>最终效果：<img src="/2021/08/16/卡通河流渲染/result.gif" style="width: 36em;" alt="效果展示"><br><a id="more"></a></p>
+</blockquote>
+<h2 id="河流的组成"><a href="#河流的组成" class="headerlink" title="河流的组成"></a>河流的组成</h2><ul>
+<li>凹陷的地表。<ul>
+<li><img src="/2021/08/16/卡通河流渲染/ground.png" style="width: 36em;" alt="凹陷的地表"></li>
+</ul>
+</li>
+<li>与地面水平的一个平面用于渲染水体。<ul>
+<li>给平面赋予蓝色让其颜色接近水体。</li>
+<li><img src="/2021/08/16/卡通河流渲染/waterquad.png" style="width: 36em;" alt="水体平面"></li>
+</ul>
+</li>
+</ul>
+<h2 id="河流深浅的表现"><a href="#河流深浅的表现" class="headerlink" title="河流深浅的表现"></a>河流深浅的表现</h2><h3 id="修改混合方式，让其具有透明度"><a href="#修改混合方式，让其具有透明度" class="headerlink" title="修改混合方式，让其具有透明度"></a>修改混合方式，让其具有透明度</h3><ul>
+<li>注意，Tags要加上”Queue” = “Transparent”，让其在绘制半透明的批次上。<ul>
+<li><img src="/2021/08/16/卡通河流渲染/usealphablend.png" style="width: 36em;" alt="修改混合方式"><figure class="hljs highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs glsl">Tags &#123; "Queue" = "Transparent" &#125;<br>Pass &#123;<br>    Blend SrcAlpha OneMinusSrcAlpha<br><br>    CGPROGRAM<br>    ...<br>    ENDCG<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="根据水的深浅决定水体颜色"><a href="#根据水的深浅决定水体颜色" class="headerlink" title="根据水的深浅决定水体颜色"></a>根据水的深浅决定水体颜色</h3><ul>
+<li><p>定义深浅的水体颜色，当水比较深的时候，用_WaterColorDeep，当水浅的时候，用_WaterColorShallow的颜色，过渡时用它们的插值。</p>
+<figure class="hljs highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs glsl">Properties<br>&#123;<br>    _WaterColorDeep("Water Color Deep", Color) = (0.086, 0.407, 1, 0.749)<br>    _WaterColorShallow("Water Color Shallow", Color) = (0.325, 0.807, 0.971, 0.725)<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>关闭深入写入，根据水体表面与水底视线距离计算水体颜色。</p>
+<ul>
+<li><img src="/2021/08/16/卡通河流渲染/waterdepth.png" style="width: 36em;" alt="水面与地表的深度差"></li>
+</ul>
+</li>
+<li>这里通过_CameraDepthTexture来获取深度值，由于透视摄像机下深度是非线性的，在计算深度差前，需要将深度转换为线性深度。</li>
+<li>在渲染水面时，通过获取水面点的w分量即可获得其距离摄像机的线性深度，具体原理参考：<a href="http://www.songho.ca/opengl/gl_projectionmatrix.html" target="_blank" rel="noopener">http://www.songho.ca/opengl/gl_projectionmatrix.html</a></li>
+<li><p><img src="/2021/08/16/卡通河流渲染/usedepth.png" style="width: 36em;" alt="根据水体表面与水底距离计算水体颜色"></p>
+<figure class="hljs highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs glsl">Pass &#123;<br>    Blend SrcAlpha OneMinusSrcAlpha<br>    ZWrite Off<br><br>    CGPROGRAM<br>    <span class="hljs-meta">#pragma vertex vert</span><br>    <span class="hljs-meta">#pragma fragment frag</span><br><br>    <span class="hljs-meta">#include "UnityCG.cginc"</span><br><br>    <span class="hljs-type">sampler2D</span> _CameraDepthTexture;<br><br>    float4 _WaterColorDeep;<br>    float4 _WaterColorShallow;<br><br>    struct appdata &#123;<br>        float4 vertex		: POSITION;<br>        float3 normal		: NORMAL;<br>        float4 texcoord		: TEXCOORD0;<br>    &#125;;<br><br>    struct v2f &#123;<br>        float4 pos			: SV_POSITION;<br>        float4 screenPosition : TEXCOORD0;<br>    &#125;;<br><br>    v2f vert(appdata v) &#123;<br>        v2f f;<br>        f.pos = UnityObjectToClipPos(v.vertex);<br>        f.screenPosition = ComputeScreenPos(f.pos);<br><br>        <span class="hljs-keyword">return</span> f;<br>    &#125;<br><br>    float4 frag(v2f f) : SV_Target&#123;<br>        <span class="hljs-type">float</span> linearWaterDepthInView = tex2Dproj(_CameraDepthTexture, UNITY_PROJ_COORD(f.screenPosition)).r;	<span class="hljs-comment">// 从摄像机角度看过去的水深。</span><br>        linearWaterDepthInView = LinearEyeDepth(linearWaterDepthInView); <span class="hljs-comment">// 将深度转换为线性深度。</span><br>        float4 waterColor = lerp(_WaterColorShallow, _WaterColorDeep, (linearWaterDepthInView - f.screenPosition.w) / <span class="hljs-number">3.0</span>);<br><br>        <span class="hljs-keyword">return</span> waterColor;<br>    &#125;<br>    ENDCG<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>可以开启castshadows，让水体具有阴影，效果会更好些。</p>
+</li>
+<li><img src="/2021/08/16/卡通河流渲染/castshadows.png" style="width: 36em;" alt="Cast Shadows"></li>
+<li><img src="/2021/08/16/卡通河流渲染/usecastshadows.png" style="width: 36em;" alt="使用Cast Shadows效果"></li>
+</ul>
+<h2 id="河流的流动效果"><a href="#河流的流动效果" class="headerlink" title="河流的流动效果"></a>河流的流动效果</h2><h3 id="使用噪声纹理让水面出现水纹"><a href="#使用噪声纹理让水面出现水纹" class="headerlink" title="使用噪声纹理让水面出现水纹"></a>使用噪声纹理让水面出现水纹</h3><ul>
+<li><img src="/2021/08/16/卡通河流渲染/noise.png" style="width: 24em;" alt="Surface Noise"></li>
+<li>通过_SurfaceNoiseCutoff来控制噪声纹理的显示范围，达到下图效果。</li>
+<li><img src="/2021/08/16/卡通河流渲染/noisecutoff.gif" style="width: 36em;" alt="调整SurfaceNoiseCutoff效果"></li>
+<li>最终将SurfaceNoiseCutoff定为0.8。</li>
+<li><img src="/2021/08/16/卡通河流渲染/usenoise.png" style="width: 36em;" alt="使用噪声纹理制造水纹"></li>
+<li>具体代码如下：<figure class="hljs highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs glsl">Properties<br>&#123;<br>    _SurfaceNoise("Surface Noise", 2D) = "white" &#123;&#125;<br>    _SurfaceNoiseCutoff("Surface Noise Cutoff", Range(0, 1)) = 0.8<br>    _SurfaceNoiseColor("Surface Noise Color", Color) = (1.0, 1.0, 1.0, 1.0)<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="hljs highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs glsl">struct v2f &#123;<br>    float4 pos			: SV_POSITION;<br>    float4 screenPosition : TEXCOORD0;<br>    float2 noiseUV		: TEXCOORD1;<br>&#125;;<br><br>v2f vert(appdata v) &#123;<br>    ...<br>    f.noiseUV = TRANSFORM_TEX(v.texcoord, _SurfaceNoise);<br>    <span class="hljs-keyword">return</span> f;<br>&#125;<br><br>float4 Blend(float4 srcColor, float4 dstColor) &#123;<br>    float4 resultColor;<br>    resultColor.rgb = srcColor.a * srcColor.rgb + (<span class="hljs-number">1.0</span> - srcColor.a) * dstColor.rgb;<br>    resultColor.a = srcColor.a + dstColor.a * (<span class="hljs-number">1.0</span> - srcColor.a);<br>    <span class="hljs-keyword">return</span> resultColor;<br>&#125;<br><br>float4 frag(v2f f) : SV_Target&#123;<br>    ...<br>    float2 noiseUV = f.noiseUV;<br>    <span class="hljs-type">float</span> surfaceNoiseSample = tex2D(_SurfaceNoise, noiseUV).r;<br>    <span class="hljs-type">float</span> surfaceNoise = <span class="hljs-built_in">smoothstep</span>(_SurfaceNoiseCutoff - <span class="hljs-number">0.01</span>, _SurfaceNoiseCutoff + <span class="hljs-number">0.01</span>, surfaceNoiseSample);<br>    float4 surfaceNoiseColor = _SurfaceNoiseColor;<br>    surfaceNoiseColor.a *= surfaceNoise;<br><br>    <span class="hljs-keyword">return</span> Blend(surfaceNoiseColor, waterColor);<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="让水纹动起来"><a href="#让水纹动起来" class="headerlink" title="让水纹动起来"></a>让水纹动起来</h3><ul>
+<li>让噪声采样uv与时间关联起来，从而让水纹动起来。</li>
+<li>添加扭曲纹理，让水纹不是一直线性移动，而是带有一点儿扭曲效果。<figure class="hljs highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs glsl">_SurfaceNoiseScroll("Surface Noise Scroll", Vector) = (0.03, 0.03, 0, 0)    // 水流流动方向。<br><br>_SurfaceDistortion("Surface Distortion", 2D) = "white" &#123;&#125;<br>_SurfaceDistortionAmount("Surface Distortion Amount", Range(0, 1)) = 0.233<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="hljs highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs glsl">float4 frag(v2f f) : SV_Target&#123;<br>    ...<br><br>    float2 distort = (tex2D(_SurfaceDistortion, f.distortUV).xy * <span class="hljs-number">2</span> - <span class="hljs-number">1</span>) * _SurfaceDistortionAmount;<br>    float2 noiseUV = float2(f.noiseUV.x + _Time.y * _SurfaceNoiseScroll.x + distort.x, f.noiseUV.y + _Time.y * _SurfaceNoiseScroll.y + distort.y);<br>    <span class="hljs-type">float</span> surfaceNoiseSample = tex2D(_SurfaceNoise, noiseUV).r;<br>    <span class="hljs-type">float</span> surfaceNoise = <span class="hljs-built_in">smoothstep</span>(_SurfaceNoiseCutoff - <span class="hljs-number">0.01</span>, _SurfaceNoiseCutoff + <span class="hljs-number">0.01</span>, surfaceNoiseSample);<br>    float4 surfaceNoiseColor = _SurfaceNoiseColor;<br>    surfaceNoiseColor.a *= surfaceNoise;<br><br>    <span class="hljs-keyword">return</span> Blend(surfaceNoiseColor, waterColor);<br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li><img src="/2021/08/16/卡通河流渲染/ani.gif" style="width: 36em;" alt="流动的水流"></li>
+<li>在河流上放上小船看看效果：</li>
+<li><img src="/2021/08/16/卡通河流渲染/result.gif" style="width: 36em;" alt="效果展示"></li>
+</ul>
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/Unity/" rel="tag"><i class="fas fa-tags"></i>Unity</a>
+        
+        <a class="post-tag button" href="/tags/游戏开发/" rel="tag"><i class="fas fa-tags"></i>游戏开发</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2021/08/08/塞尔达风格卡通渲染/" rel="next" title="塞尔达风格卡通渲染"><i class="fas fa-angle-left"></i><span class="nav-title">塞尔达风格卡通渲染</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+    </div>
+  </nav>
+  
+  
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div id="vcomments" class="vcomments"></div>
+  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    new Valine({
+      "el": "#vcomments",
+      "appId": "g87PyVdDsH5EP8VCTtaGlIBo-gzGzoHsz",
+      "appKey": "wboY6qvCvYXBESIQQOWkFzYq",
+      "verify": "false",
+      "notify": "false",
+      "avatar": "mm",
+      "meta": ["nick", "mail", "link"],
+      "pageSize": 10,
+      "lang": "zh-cn",
+      "visitor": "false",
+      "highlight": "true",
+      "placeholder": "在这里说点什么……",
+      "avatarForce": "false"
+    });
+  });
+  </script>
+  
+  
+</div>
+
+
+
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control">
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/myavatar.png" alt="MoriMiya">
+  
+  <h1 class="author-name">MoriMiya</h1>
+  <h2 class="author-description"></h2>
+  <div class="site-count">
+    
+    
+    
+    
+    <div class="archives-count count-block">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">30</a></div>
+    </div>
+    
+    
+    
+    <div class="categories-count count-block">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">25</a></div>
+    </div>
+    
+    
+    
+    <div class="tags-count count-block">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">25</a></div>
+    </div>
+    
+    
+    
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="/atom.xml"><i class="fas fa-rss"></i>RSS</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#河流的组成"><span class="toc-text">河流的组成</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#河流深浅的表现"><span class="toc-text">河流深浅的表现</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#修改混合方式，让其具有透明度"><span class="toc-text">修改混合方式，让其具有透明度</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#根据水的深浅决定水体颜色"><span class="toc-text">根据水的深浅决定水体颜色</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#河流的流动效果"><span class="toc-text">河流的流动效果</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#使用噪声纹理让水面出现水纹"><span class="toc-text">使用噪声纹理让水面出现水纹</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#让水纹动起来"><span class="toc-text">让水纹动起来</span></a></li></ol></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接<p></p></div>
+      <ul>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/morimiya" target="_blank">GitHub</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #33363b;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">MoriMiya</span><span class="year"><i class="far fa-copyright"></i>2018 - 2021</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://pages.github.com/" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+</html>
