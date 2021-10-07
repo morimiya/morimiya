@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://morimiya.me/"/>
-  <updated>2021-10-07T09:40:30.731Z</updated>
+  <updated>2021-10-07T09:45:45.410Z</updated>
   <id>http://morimiya.me/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://morimiya.me/2021/10/07/%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93RPG%E6%B8%B8%E6%88%8F%E7%9A%84%E6%90%AD%E5%BB%BA/"/>
     <id>http://morimiya.me/2021/10/07/一个简易RPG游戏的搭建/</id>
     <published>2021-10-07T07:27:57.000Z</published>
-    <updated>2021-10-07T09:40:30.731Z</updated>
+    <updated>2021-10-07T09:45:45.410Z</updated>
     
     <summary type="html">
     
@@ -30,8 +30,7 @@
         
         
           &lt;blockquote&gt;
-&lt;p&gt;使用Unity版本为：2019.4.10f1。&lt;/p&gt;
-&lt;h2 id=&quot;最终效果：&quot;&gt;&lt;a href=&quot;#最终效果：&quot; class=&quot;headerlink&quot; title=&quot;最终效果：&quot;&gt;&lt;/a&gt;最终效果：&lt;img
+&lt;p&gt;使用Unity版本为：2019.4.10f1。&lt;br&gt;最终效果：&lt;img src=&quot;/2021/10/07/一个简易RPG游戏的搭建/result.png&quot; style=&quot;width: 36em;&quot;
         
       
     
