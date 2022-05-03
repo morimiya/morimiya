@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://morimiya.me/"/>
-  <updated>2021-10-17T08:53:03.221Z</updated>
+  <updated>2022-05-03T11:41:17.536Z</updated>
   <id>http://morimiya.me/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PBR学习笔记</title>
+    <link href="http://morimiya.me/2022/05/03/PBR%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>http://morimiya.me/2022/05/03/PBR学习笔记/</id>
+    <published>2022-05-03T05:27:24.000Z</published>
+    <updated>2022-05-03T11:41:17.536Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;PBR(Physically Based Rendering)并不是为了追求游戏画面与真实照片一样真实，其更多的是为了只需要实现一个万能的shader，这个shader就可以渲染绝大部分类型的材质，而不用针对每种材质专门写一种shader。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="OpenGL" scheme="http://morimiya.me/categories/OpenGL/"/>
+    
+      <category term="PBR" scheme="http://morimiya.me/categories/OpenGL/PBR/"/>
+    
+    
+      <category term="OpenGL" scheme="http://morimiya.me/tags/OpenGL/"/>
+    
+      <category term="PBR" scheme="http://morimiya.me/tags/PBR/"/>
+    
+      <category term="BRDF" scheme="http://morimiya.me/tags/BRDF/"/>
+    
+  </entry>
   
   <entry>
     <title>高性能定点数实现方案</title>
@@ -505,33 +533,6 @@
     
     
       <category term="OpenGL" scheme="http://morimiya.me/tags/OpenGL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>点阴影</title>
-    <link href="http://morimiya.me/2019/04/20/%E7%82%B9%E9%98%B4%E5%BD%B1/"/>
-    <id>http://morimiya.me/2019/04/20/点阴影/</id>
-    <published>2019-04-20T06:31:06.000Z</published>
-    <updated>2019-06-09T12:31:11.539Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;https://learnopengl-cn.github.io&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://learnopengl-cn.github.io&lt;/a&gt; 点阴影学习笔记&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/2019/04/20/点阴影/result.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="OpenGL" scheme="http://morimiya.me/categories/OpenGL/"/>
-    
-      <category term="点阴影" scheme="http://morimiya.me/categories/OpenGL/%E7%82%B9%E9%98%B4%E5%BD%B1/"/>
-    
-    
-      <category term="OpenGL" scheme="http://morimiya.me/tags/OpenGL/"/>
-    
-      <category term="点阴影" scheme="http://morimiya.me/tags/%E7%82%B9%E9%98%B4%E5%BD%B1/"/>
     
   </entry>
   
