@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://morimiya.me/"/>
-  <updated>2022-05-03T11:41:17.536Z</updated>
+  <updated>2022-09-04T16:16:21.437Z</updated>
   <id>http://morimiya.me/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>第一次攀岩</title>
+    <link href="http://morimiya.me/2022/09/04/%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%94%80%E5%B2%A9/"/>
+    <id>http://morimiya.me/2022/09/04/第一次攀岩/</id>
+    <published>2022-09-04T15:15:42.000Z</published>
+    <updated>2022-09-04T16:16:21.437Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;记录第一次攀岩。&lt;br&gt;&lt;img src=&quot;/2022/09/04/第一次攀岩/img.png&quot; style=&quot;width: 24em;&quot; alt=&quot;攀岩&quot;&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="2022随记" scheme="http://morimiya.me/categories/2022%E9%9A%8F%E8%AE%B0/"/>
+    
+      <category term="攀岩" scheme="http://morimiya.me/categories/2022%E9%9A%8F%E8%AE%B0/%E6%94%80%E5%B2%A9/"/>
+    
+    
+      <category term="生活" scheme="http://morimiya.me/tags/%E7%94%9F%E6%B4%BB/"/>
+    
+  </entry>
   
   <entry>
     <title>PBR学习笔记</title>
@@ -508,31 +532,6 @@
       <category term="OpenGL" scheme="http://morimiya.me/tags/OpenGL/"/>
     
       <category term="位移贴图" scheme="http://morimiya.me/tags/%E4%BD%8D%E7%A7%BB%E8%B4%B4%E5%9B%BE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>法线贴图</title>
-    <link href="http://morimiya.me/2019/04/20/%E6%B3%95%E7%BA%BF%E8%B4%B4%E5%9B%BE/"/>
-    <id>http://morimiya.me/2019/04/20/法线贴图/</id>
-    <published>2019-04-20T08:23:08.000Z</published>
-    <updated>2019-04-20T11:34:06.713Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;https://learnopengl-cn.github.io&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://learnopengl-cn.github.io&lt;/a&gt; 法线学习笔记&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/2019/04/20/法线贴图/result.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="OpenGL" scheme="http://morimiya.me/categories/OpenGL/"/>
-    
-      <category term="法线贴图" scheme="http://morimiya.me/categories/OpenGL/%E6%B3%95%E7%BA%BF%E8%B4%B4%E5%9B%BE/"/>
-    
-    
-      <category term="OpenGL" scheme="http://morimiya.me/tags/OpenGL/"/>
     
   </entry>
   
