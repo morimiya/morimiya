@@ -215,10 +215,10 @@
     </header>
     <main class="post-main" itemprop="articleBody">
       <blockquote>
-<p>使用Unity版本为：2019.4.10f1。<br>最终效果：<img src="/2021/08/08/塞尔达风格卡通渲染/result.png" style="width: 36em;" alt="效果展示"><br><a id="more"></a></p>
+<p>使用Unity版本为：2019.4.10f1。<br>最终效果：<img src="/morimiya/2021/08/08/塞尔达风格卡通渲染/result.png" style="width: 36em;" alt="效果展示"><br><a id="more"></a></p>
 </blockquote>
 <h2 id="游戏效果分析"><a href="#游戏效果分析" class="headerlink" title="游戏效果分析"></a>游戏效果分析</h2><ul>
-<li><img src="/2021/08/08/塞尔达风格卡通渲染/zelda_analyze.png" style="width: 36em;" alt="塞尔达游戏效果"></li>
+<li><img src="/morimiya/2021/08/08/塞尔达风格卡通渲染/zelda_analyze.png" style="width: 36em;" alt="塞尔达游戏效果"></li>
 <li>造型有明显的向光面（阳面）和背光面（阴面），它们分界明显。</li>
 <li>造型阳面有高亮的边缘光。</li>
 <li>头发高光处理分了层次分明的三档。</li>
@@ -228,8 +228,8 @@
 <li>法线与光的夹角可通过它们的向量点乘结果模拟，那么只需要规定点乘值小于某个阈值则显示阴影效果，反之则不显示，即达到阴阳面分界的效果。</li>
 <li>这里我使用点乘结果作为纹理索引值在下面纹理中进行采样，来决定阴阳面分界的过度值，以方便控制阴阳面分界的过度。</li>
 <li>阴面效果通过对颜色取平方值来让颜色变得暗淡些，这里也可采样其他方式。</li>
-<li><img src="/2021/08/08/塞尔达风格卡通渲染/FO_RIM1.png" style="width: 12em;" alt="_FalloffSampler"></li>
-<li>效果：<img src="/2021/08/08/塞尔达风格卡通渲染/cloth_light.png" style="width: 36em;" alt="阴阳面效果"></li>
+<li><img src="/morimiya/2021/08/08/塞尔达风格卡通渲染/FO_RIM1.png" style="width: 12em;" alt="_FalloffSampler"></li>
+<li>效果：<img src="/morimiya/2021/08/08/塞尔达风格卡通渲染/cloth_light.png" style="width: 36em;" alt="阴阳面效果"></li>
 <li>代码实现：<figure class="hljs highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs glsl">float4 diffSamplerColor = tex2D(_MainTex, f.uv.xy);<br>float3 normalVec = GetNormalFromMap(f);<br><br><span class="hljs-type">float</span> normalDotLight = <span class="hljs-built_in">dot</span>(normalVec, f.lightDir);<br><span class="hljs-type">float</span> falloffU = <span class="hljs-built_in">clamp</span>(<span class="hljs-number">1.0</span> - normalDotLight, <span class="hljs-number">0.02</span>, <span class="hljs-number">0.98</span>);<br>falloffU = tex2D(_FalloffSampler, float2(falloffU, <span class="hljs-number">0.25</span>)).r;<br>float3 combinedColor = lerp(diffSamplerColor.rgb, diffSamplerColor.rgb * diffSamplerColor.rgb, falloffU);<br></code></pre></td></tr></table></figure>
 </li>
 </ul>
@@ -238,8 +238,8 @@
 <li>这样处理下来，阴阳面都会有边缘光，所以在边缘的判定上，我再乘以了阴阳面的判定系数（阳面为1.0， 阴面为0.0），从而让只有阳面边缘被判定为边缘。</li>
 <li>最终在边缘上加上加一层自身的颜色值达到高亮效果。</li>
 <li>边缘边界的判定也是用阴阳面边界的判定方式，通过纹理来控制。</li>
-<li>效果：<img src="/2021/08/08/塞尔达风格卡通渲染/cloth_rim.png" style="width: 36em;" alt="边缘光效果"></li>
-<li><img src="/2021/08/08/塞尔达风格卡通渲染/cloth_rim_anim.gif" style="width: 14em;" alt="边缘光效果"></li>
+<li>效果：<img src="/morimiya/2021/08/08/塞尔达风格卡通渲染/cloth_rim.png" style="width: 36em;" alt="边缘光效果"></li>
+<li><img src="/morimiya/2021/08/08/塞尔达风格卡通渲染/cloth_rim_anim.gif" style="width: 14em;" alt="边缘光效果"></li>
 <li><p>代码实现：</p>
 <figure class="hljs highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs glsl"><span class="hljs-type">float</span> rimlightDot = <span class="hljs-built_in">dot</span>(normalVec, f.eyeDir);<br>falloffU = (<span class="hljs-number">1.0</span> - rimlightDot) * (<span class="hljs-number">1.0</span> - falloffU);<br>falloffU = tex2D(_RimLightSampler, float2(falloffU, <span class="hljs-number">0.25</span>f)).r;<br>float3 lightColor = diffSamplerColor.rgb;<br>combinedColor += falloffU * lightColor;<br></code></pre></td></tr></table></figure>
 </li>
@@ -247,15 +247,15 @@
 </li>
 <li>为了参数调整方便，改用smoothstep来设定边缘光粗细。</li>
 <li>效果对比：</li>
-<li><img src="/2021/08/08/塞尔达风格卡通渲染/rim_a.png" style="width: 12em;" alt="边缘光效果A"></li>
-<li><img src="/2021/08/08/塞尔达风格卡通渲染/rim_b.png" style="width: 12em;" alt="边缘光效果B"><figure class="hljs highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs glsl"><span class="hljs-type">float</span> rimlightDot = <span class="hljs-number">1.0</span> - <span class="hljs-built_in">dot</span>(normalVec, f.eyeDir);<br><span class="hljs-type">float</span> rimIntensity = <span class="hljs-built_in">smoothstep</span>(<span class="hljs-number">0.66</span>, <span class="hljs-number">0.78</span>, rimlightDot * <span class="hljs-built_in">pow</span>(normalDotLight, <span class="hljs-number">0.2</span>)) * (<span class="hljs-number">1.0</span> - falloffU);<br>float3 lightColor = diffSamplerColor.rgb;<br>combinedColor += rimIntensity * lightColor;<br></code></pre></td></tr></table></figure>
+<li><img src="/morimiya/2021/08/08/塞尔达风格卡通渲染/rim_a.png" style="width: 12em;" alt="边缘光效果A"></li>
+<li><img src="/morimiya/2021/08/08/塞尔达风格卡通渲染/rim_b.png" style="width: 12em;" alt="边缘光效果B"><figure class="hljs highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs glsl"><span class="hljs-type">float</span> rimlightDot = <span class="hljs-number">1.0</span> - <span class="hljs-built_in">dot</span>(normalVec, f.eyeDir);<br><span class="hljs-type">float</span> rimIntensity = <span class="hljs-built_in">smoothstep</span>(<span class="hljs-number">0.66</span>, <span class="hljs-number">0.78</span>, rimlightDot * <span class="hljs-built_in">pow</span>(normalDotLight, <span class="hljs-number">0.2</span>)) * (<span class="hljs-number">1.0</span> - falloffU);<br>float3 lightColor = diffSamplerColor.rgb;<br>combinedColor += rimIntensity * lightColor;<br></code></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="层次分明的高光"><a href="#层次分明的高光" class="headerlink" title="层次分明的高光"></a>层次分明的高光</h2><ul>
 <li>有层次分明的高光，可以将其拆分成多个高光系数不同的高光叠加的效果。</li>
 <li>这里我用了两次高光的效果叠加在一起，配合上面的阴阳面效果，头发颜色会根据离光远近分成四块。</li>
 <li>最后，为了让效果偏卡通，这里用smoothstep来对高光效果做了明显的分界。</li>
-<li>效果：<img src="/2021/08/08/塞尔达风格卡通渲染/hair_specular.gif" style="width: 14em;" alt="头发高光"><figure class="hljs highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs glsl">float3 halfVector = <span class="hljs-built_in">normalize</span>(f.lightDir + f.eyeDir);<br><span class="hljs-type">float</span> NdotH = <span class="hljs-built_in">dot</span>(normalVec, halfVector);<br><span class="hljs-type">float</span> specularIntensity = <span class="hljs-built_in">pow</span>(NdotH * (<span class="hljs-number">1.0</span> - falloffU), <span class="hljs-number">512</span>);<br>float3 specularColor = diffSamplerColor * <span class="hljs-number">0.4</span>;<br>specularIntensity = <span class="hljs-built_in">smoothstep</span>(<span class="hljs-number">0.005</span>, <span class="hljs-number">0.01</span>, specularIntensity);<br>combinedColor += specularIntensity * specularColor;<br><br>specularIntensity = <span class="hljs-built_in">pow</span>(NdotH * (<span class="hljs-number">1.0</span> - falloffU), <span class="hljs-number">32</span>);<br>specularIntensity = <span class="hljs-built_in">smoothstep</span>(<span class="hljs-number">0.005</span>, <span class="hljs-number">0.01</span>, specularIntensity);<br>combinedColor += specularIntensity * specularColor * <span class="hljs-number">0.4</span>;<br></code></pre></td></tr></table></figure>
+<li>效果：<img src="/morimiya/2021/08/08/塞尔达风格卡通渲染/hair_specular.gif" style="width: 14em;" alt="头发高光"><figure class="hljs highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs glsl">float3 halfVector = <span class="hljs-built_in">normalize</span>(f.lightDir + f.eyeDir);<br><span class="hljs-type">float</span> NdotH = <span class="hljs-built_in">dot</span>(normalVec, halfVector);<br><span class="hljs-type">float</span> specularIntensity = <span class="hljs-built_in">pow</span>(NdotH * (<span class="hljs-number">1.0</span> - falloffU), <span class="hljs-number">512</span>);<br>float3 specularColor = diffSamplerColor * <span class="hljs-number">0.4</span>;<br>specularIntensity = <span class="hljs-built_in">smoothstep</span>(<span class="hljs-number">0.005</span>, <span class="hljs-number">0.01</span>, specularIntensity);<br>combinedColor += specularIntensity * specularColor;<br><br>specularIntensity = <span class="hljs-built_in">pow</span>(NdotH * (<span class="hljs-number">1.0</span> - falloffU), <span class="hljs-number">32</span>);<br>specularIntensity = <span class="hljs-built_in">smoothstep</span>(<span class="hljs-number">0.005</span>, <span class="hljs-number">0.01</span>, specularIntensity);<br>combinedColor += specularIntensity * specularColor * <span class="hljs-number">0.4</span>;<br></code></pre></td></tr></table></figure>
 </li>
 </ul>
 

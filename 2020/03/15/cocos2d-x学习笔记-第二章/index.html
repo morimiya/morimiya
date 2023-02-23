@@ -220,7 +220,7 @@
 <a id="more"></a>
 <h2 id="总览"><a href="#总览" class="headerlink" title="总览"></a>总览</h2><ul>
 <li>cocos2d-x 引擎系统结构：</li>
-<li><img src="/2020/03/15/cocos2d-x学习笔记-第二章/cocos2dx引擎系统结构.png" alt="cocos2dx引擎系统结构.png"></li>
+<li><img src="/morimiya/2020/03/15/cocos2d-x学习笔记-第二章/cocos2dx引擎系统结构.png" alt="cocos2dx引擎系统结构.png"></li>
 <li>cocos2d-x支持跨平台，其使用大量第三方开源库用于支持文件解压、图片解析、网络支持、物理引擎、音频等功能，自身则专注于渲染引擎的开发。</li>
 <li>在使用了第三方库的基础上，其还封装了文件的加载、纹理解析、线程操作等跨平台接口，使得渲染和其他系统的设计可以与平台无关。</li>
 </ul>
@@ -351,7 +351,7 @@
 <li><p>当Application对象被初始化后，就开始根据设定的帧率执行游戏循环。Application::run是整个应用程序的入口，Director::mainLoop则定义了一个游戏循环所有的事件和内容。</p>
   <figure class="hljs highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">int</span> Application::run()<br>&#123;<br>	<span class="hljs-keyword">if</span>(!applicationDidFinishLaunching()) &#123;<br>    	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    &#125;<br>    glview-&gt;retain();<br>    <span class="hljs-keyword">while</span> (!glview-&gt;windowShouldClose()) &#123;<br>    	lastTime = getCurrentMillSecond();<br>        director-&gt;mainLoop();<br>        glview-&gt;pollEvents();<br><br>        curTime = getCurrentMillSecond();<br>        <span class="hljs-keyword">if</span> (curTime - lastTime &lt; _animationInterval) &#123;<br>        	usleep(<span class="hljs-keyword">static_cast</span>&lt;<span class="hljs-keyword">useconds_t</span>&gt;((_animationInterval - curTime + lastTime) * <span class="hljs-number">1000</span>));<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
-<li><p><img src="/2020/03/15/cocos2d-x学习笔记-第二章/游戏循环.png" alt="游戏循环.png"></p>
+<li><p><img src="/morimiya/2020/03/15/cocos2d-x学习笔记-第二章/游戏循环.png" alt="游戏循环.png"></p>
 </li>
 </ul>
 </li>

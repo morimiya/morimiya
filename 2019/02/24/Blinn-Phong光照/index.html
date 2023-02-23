@@ -246,21 +246,21 @@
 </ul>
 <h2 id="冯氏光照模型的不足"><a href="#冯氏光照模型的不足" class="headerlink" title="冯氏光照模型的不足"></a>冯氏光照模型的不足</h2><ul>
 <li>在镜面光分量上，当视线与反射光向量夹角大于90°时，镜面光值将会变为0，在反光度非常小的情况下，会产生较明显的边界情况。</li>
-<li><img src="/2019/02/24/Blinn-Phong光照/advanced_lighting_over_90.png" alt="镜面光临界情况"></li>
-<li><img src="/2019/02/24/Blinn-Phong光照/low_shininess.png" alt="镜面光临界情况"></li>
+<li><img src="/morimiya/2019/02/24/Blinn-Phong光照/advanced_lighting_over_90.png" alt="镜面光临界情况"></li>
+<li><img src="/morimiya/2019/02/24/Blinn-Phong光照/low_shininess.png" alt="镜面光临界情况"></li>
 </ul>
 <h2 id="Blinn-Phong光照"><a href="#Blinn-Phong光照" class="headerlink" title="Blinn-Phong光照"></a>Blinn-Phong光照</h2><ul>
 <li>Blinn-Phong光照模型是建立在冯氏光照模型的基础上对镜面光计算进行修改的算法，Blinn-Phong模型不再依赖于反射向量，而是采用了半程向量(Halfway Vector)，即光线与视线夹角<br>low_shininess.png一半方向上的一个单位向量。当半程向量与法线向量越接近时，镜面光分量就越大。</li>
-<li><img src="/2019/02/24/Blinn-Phong光照/advanced_lighting_halfway_vector.png" alt="镜面光临界情况"></li>
+<li><img src="/morimiya/2019/02/24/Blinn-Phong光照/advanced_lighting_halfway_vector.png" alt="镜面光临界情况"></li>
 <li>当视线正好与反射向量对齐时，半程向量就会与法线完美契合。所以当观察者视线越接近于原本反射光线的方向时，镜面高光就会越强。</li>
 <li>现在，不论观察者向哪个方向看，半程向量与表面法线之间的夹角都不会超过90度（除非光源在表面以下）。它产生的效果会与冯氏光照有些许不同，但是大部分情况下看起来会更自然一点，特别是低高光的区域。Blinn-Phong着色模型正是早期固定渲染管线时代时OpenGL所采用的光照模型。</li>
 <li>获取半程向量的方法很简单，只需要将光线的方向向量和观察向量加到一起，并将结果正规化(Normalize)就可以了：<script type="math/tex; mode=display">\vec H = \frac{\vec L + \vec V}{||\vec L + \vec V||}</script></li>
 <li><p>除此之外，冯氏模型与Blinn-Phong模型也有一些细微的差别：半程向量与表面法线的夹角通常会小于观察与反射向量的夹角。所以，如果你想获得和冯氏着色类似的效果，就必须在使用Blinn-Phong模型时将镜面反光度设置更高一点。通常我们会选择冯氏着色时反光度分量的2到4倍。</p>
 <figure class="hljs highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs glsl"><span class="hljs-type">vec3</span> lightDir   = <span class="hljs-built_in">normalize</span>(lightPos - FragPos);<br><span class="hljs-type">vec3</span> viewDir    = <span class="hljs-built_in">normalize</span>(viewPos - FragPos);<br><span class="hljs-type">vec3</span> halfwayDir = <span class="hljs-built_in">normalize</span>(lightDir + viewDir);<br><br><span class="hljs-type">float</span> spec = <span class="hljs-built_in">pow</span>(<span class="hljs-built_in">max</span>(<span class="hljs-built_in">dot</span>(normal, halfwayDir), <span class="hljs-number">0.0</span>), shininess);<br><span class="hljs-type">vec3</span> specular = lightColor * spec;<br></code></pre></td></tr></table></figure>
 </li>
-<li><p><img src="/2019/02/24/Blinn-Phong光照/compare.png" alt="光照结果对比"></p>
+<li><p><img src="/morimiya/2019/02/24/Blinn-Phong光照/compare.png" alt="光照结果对比"></p>
 </li>
-<li><img src="/2019/02/24/Blinn-Phong光照/compare2.png" alt="镜面光对比"></li>
+<li><img src="/morimiya/2019/02/24/Blinn-Phong光照/compare2.png" alt="镜面光对比"></li>
 </ul>
 
     </main>

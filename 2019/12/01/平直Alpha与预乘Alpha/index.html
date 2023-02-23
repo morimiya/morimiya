@@ -262,16 +262,16 @@
 <li><p>在<a href="https://developer.nvidia.com/content/alpha-blending-pre-or-not-pre" target="_blank" rel="noopener">https://developer.nvidia.com/content/alpha-blending-pre-or-not-pre</a> 一文中，给出了平直Alpha不适合进行插值的原因，简单总结如下：</p>
 <ol>
 <li>原图是2X1大小的两个像素点，分别为纯红和纯绿，但纯绿的alpha值为0.1。<ul>
-<li><img src="/2019/12/01/平直Alpha与预乘Alpha/orgpic.png" style="width: 400px;"></li>
+<li><img src="/morimiya/2019/12/01/平直Alpha与预乘Alpha/orgpic.png" style="width: 400px;"></li>
 </ul>
 </li>
 <li>对上图求1X1的mipmap的时候，我们会得到下面的结果：<ul>
-<li><img src="/2019/12/01/平直Alpha与预乘Alpha/straight_filter.png" style="width: 200px;"></li>
+<li><img src="/morimiya/2019/12/01/平直Alpha与预乘Alpha/straight_filter.png" style="width: 200px;"></li>
 <li>原因是我们不仅对RGB进行了线性插值，也对alpha进行了线性插值，但RGB与alpha却又不是相互独立的变量，alpha会影响RGB的表现结果，导致结果与直观效果大相径庭。</li>
 </ul>
 </li>
 <li>我们先将alpha进行预乘，再进行线性求插值，得到的结果与直观感受相符。<ul>
-<li><img src="/2019/12/01/平直Alpha与预乘Alpha/premultiplied_filter.png" style="width: 200px;"></li>
+<li><img src="/morimiya/2019/12/01/平直Alpha与预乘Alpha/premultiplied_filter.png" style="width: 200px;"></li>
 <li>因为原图alpha参与进了RGB的插值运算当中，所以插值计算出来的结果是与视觉效果相符的。</li>
 </ul>
 </li>

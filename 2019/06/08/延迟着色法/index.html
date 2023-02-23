@@ -218,7 +218,7 @@
 <p><a href="https://learnopengl-cn.github.io" target="_blank" rel="noopener">https://learnopengl-cn.github.io</a> 延迟着色法学习笔记</p>
 </blockquote>
 <ul>
-<li><img src="/2019/06/08/延迟着色法/result.png" alt=""></li>
+<li><img src="/morimiya/2019/06/08/延迟着色法/result.png" alt=""></li>
 </ul>
 <a id="more"></a>
 <h3 id="延迟着色法-Deferred-Shading"><a href="#延迟着色法-Deferred-Shading" class="headerlink" title="延迟着色法(Deferred Shading)"></a>延迟着色法(Deferred Shading)</h3><h4 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h4><ul>
@@ -234,9 +234,9 @@
 </li>
 </ol>
 </li>
-<li><p><img src="/2019/06/08/延迟着色法/deferred_g_buffer.png" alt="G缓冲内容"></p>
+<li><p><img src="/morimiya/2019/06/08/延迟着色法/deferred_g_buffer.png" alt="G缓冲内容"></p>
 </li>
-<li><p><img src="/2019/06/08/延迟着色法/deferred_overview.png" alt="延迟着色法过程"></p>
+<li><p><img src="/morimiya/2019/06/08/延迟着色法/deferred_overview.png" alt="延迟着色法过程"></p>
 </li>
 <li><p>优点：</p>
 <ol>
@@ -282,7 +282,7 @@
 <h3 id="结合延迟渲染与正向渲染"><a href="#结合延迟渲染与正向渲染" class="headerlink" title="结合延迟渲染与正向渲染"></a>结合延迟渲染与正向渲染</h3><ul>
 <li><p>若想要渲染每一个光源为一个3D立方体，并放置在光源的位置上随着延迟渲染器一起发出光源的颜色。那么在处理完光照阶段后，还需要再将这些立方体绘制上去。不利用之前在G缓冲中的深度信息直接绘制立方体的话，所有立方体都会置于最前，丢失与原场景中物体交错的层次。</p>
 </li>
-<li><p><img src="/2019/06/08/延迟着色法/without_deep.png" alt="未使用G缓冲的深度信息"></p>
+<li><p><img src="/morimiya/2019/06/08/延迟着色法/without_deep.png" alt="未使用G缓冲的深度信息"></p>
 </li>
 <li><p>OpenGL提供直接将帧缓冲中的数据拷贝至另一个帧缓冲中的方法，通过这种方式，便可以方便的将G缓冲中的深度信息单独拷贝至默认缓冲中。</p>
 </li>

@@ -244,11 +244,11 @@
 </ul>
 <h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><h3 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h3><ul>
 <li>浮点数的小数点位置是跟随最高位浮动的，因此它的精度也是浮动的。在CPU架构里，浮点运算通常由FPU来处理，遵循IEEE 754标准，但实践中并不完全遵守，如在同一个CPU里，FPU和SSE指令得到的结果不一致。<h3 id="浮点数的表示原理"><a href="#浮点数的表示原理" class="headerlink" title="浮点数的表示原理"></a>浮点数的表示原理</h3></li>
-<li><img src="/2021/10/17/高性能定点数实现方案/32位浮点数结构.png" style="width: 36em;" alt="32位浮点数结构"></li>
+<li><img src="/morimiya/2021/10/17/高性能定点数实现方案/32位浮点数结构.png" style="width: 36em;" alt="32位浮点数结构"></li>
 <li><script type="math/tex; mode=display">value = (-1)^S*2^{E-127}</script></li>
 </ul>
 <h3 id="基于整数的二进制表示的定点数"><a href="#基于整数的二进制表示的定点数" class="headerlink" title="基于整数的二进制表示的定点数"></a>基于整数的二进制表示的定点数</h3><ul>
-<li><img src="/2021/10/17/高性能定点数实现方案/32位定点数结构.png" style="width: 36em;" alt="32位定点数结构"></li>
+<li><img src="/morimiya/2021/10/17/高性能定点数实现方案/32位定点数结构.png" style="width: 36em;" alt="32位定点数结构"></li>
 <li>把整数的二进制表示中较低的n位视为小数部分，设a位定点数，f(a)为这个定点数对应的整数值，那么a的值为：</li>
 <li><script type="math/tex; mode=display">a = 2^{-n}f(a)</script></li>
 <li>精度为$ 1/2^{10} = 1/1024 = 0.0009765625 $ ， 数字范围为 $ [-2^{21}, 2^{21}-2^{-10}] $ 。</li>
@@ -268,7 +268,7 @@
 </ol>
 </li>
 <li>书中正弦/余弦函数的实现，很好的体现了MinMax多项式拟合法的应用。<ul>
-<li><img src="/2021/10/17/高性能定点数实现方案/正余弦函数.png" style="width: 24em;" alt="正余弦函数"></li>
+<li><img src="/morimiya/2021/10/17/高性能定点数实现方案/正余弦函数.png" style="width: 24em;" alt="正余弦函数"></li>
 </ul>
 <ol>
 <li>将平面8等分，则所有的角度均可表示为：$ angle = kπ/4 + x $，这里k用于表示angle落于8等分的平面的哪一分块中。</li>
