@@ -5,9 +5,9 @@
   <subtitle>Don&#39;t you want to be alive before you die?</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://morimiya.me/"/>
-  <updated>2022-09-04T16:21:00.382Z</updated>
-  <id>http://morimiya.me/</id>
+  <link href="https://morimiya.github.io/morimiya/"/>
+  <updated>2022-10-16T16:39:22.826Z</updated>
+  <id>https://morimiya.github.io/morimiya/</id>
   
   <author>
     <name>MoriMiya</name>
@@ -17,9 +17,34 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>王兴语录</title>
+    <link href="https://morimiya.github.io/morimiya/2022/10/16/%E7%8E%8B%E5%85%B4%E8%AF%AD%E5%BD%95/"/>
+    <id>https://morimiya.github.io/morimiya/2022/10/16/王兴语录/</id>
+    <published>2022-10-16T15:48:13.000Z</published>
+    <updated>2022-10-16T16:39:22.826Z</updated>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;王兴饭否语录，简单思考。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="2022随记" scheme="https://morimiya.github.io/morimiya/categories/2022%E9%9A%8F%E8%AE%B0/"/>
+    
+      <category term="王兴语录" scheme="https://morimiya.github.io/morimiya/categories/2022%E9%9A%8F%E8%AE%B0/%E7%8E%8B%E5%85%B4%E8%AF%AD%E5%BD%95/"/>
+    
+    
+      <category term="语录" scheme="https://morimiya.github.io/morimiya/tags/%E8%AF%AD%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
     <title>第一次攀岩</title>
-    <link href="http://morimiya.me/2022/09/04/%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%94%80%E5%B2%A9/"/>
-    <id>http://morimiya.me/2022/09/04/第一次攀岩/</id>
+    <link href="https://morimiya.github.io/morimiya/2022/09/04/%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%94%80%E5%B2%A9/"/>
+    <id>https://morimiya.github.io/morimiya/2022/09/04/第一次攀岩/</id>
     <published>2022-09-04T15:15:42.000Z</published>
     <updated>2022-09-04T16:21:00.382Z</updated>
     
@@ -31,19 +56,19 @@
     
     </summary>
     
-      <category term="2022随记" scheme="http://morimiya.me/categories/2022%E9%9A%8F%E8%AE%B0/"/>
+      <category term="2022随记" scheme="https://morimiya.github.io/morimiya/categories/2022%E9%9A%8F%E8%AE%B0/"/>
     
-      <category term="攀岩" scheme="http://morimiya.me/categories/2022%E9%9A%8F%E8%AE%B0/%E6%94%80%E5%B2%A9/"/>
+      <category term="攀岩" scheme="https://morimiya.github.io/morimiya/categories/2022%E9%9A%8F%E8%AE%B0/%E6%94%80%E5%B2%A9/"/>
     
     
-      <category term="生活" scheme="http://morimiya.me/tags/%E7%94%9F%E6%B4%BB/"/>
+      <category term="生活" scheme="https://morimiya.github.io/morimiya/tags/%E7%94%9F%E6%B4%BB/"/>
     
   </entry>
   
   <entry>
     <title>PBR学习笔记</title>
-    <link href="http://morimiya.me/2022/05/03/PBR%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    <id>http://morimiya.me/2022/05/03/PBR学习笔记/</id>
+    <link href="https://morimiya.github.io/morimiya/2022/05/03/PBR%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>https://morimiya.github.io/morimiya/2022/05/03/PBR学习笔记/</id>
     <published>2022-05-03T05:27:24.000Z</published>
     <updated>2022-05-03T11:41:17.536Z</updated>
     
@@ -55,23 +80,23 @@
     
     </summary>
     
-      <category term="OpenGL" scheme="http://morimiya.me/categories/OpenGL/"/>
+      <category term="OpenGL" scheme="https://morimiya.github.io/morimiya/categories/OpenGL/"/>
     
-      <category term="PBR" scheme="http://morimiya.me/categories/OpenGL/PBR/"/>
+      <category term="PBR" scheme="https://morimiya.github.io/morimiya/categories/OpenGL/PBR/"/>
     
     
-      <category term="OpenGL" scheme="http://morimiya.me/tags/OpenGL/"/>
+      <category term="OpenGL" scheme="https://morimiya.github.io/morimiya/tags/OpenGL/"/>
     
-      <category term="PBR" scheme="http://morimiya.me/tags/PBR/"/>
+      <category term="PBR" scheme="https://morimiya.github.io/morimiya/tags/PBR/"/>
     
-      <category term="BRDF" scheme="http://morimiya.me/tags/BRDF/"/>
+      <category term="BRDF" scheme="https://morimiya.github.io/morimiya/tags/BRDF/"/>
     
   </entry>
   
   <entry>
     <title>高性能定点数实现方案</title>
-    <link href="http://morimiya.me/2021/10/17/%E9%AB%98%E6%80%A7%E8%83%BD%E5%AE%9A%E7%82%B9%E6%95%B0%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%A1%88/"/>
-    <id>http://morimiya.me/2021/10/17/高性能定点数实现方案/</id>
+    <link href="https://morimiya.github.io/morimiya/2021/10/17/%E9%AB%98%E6%80%A7%E8%83%BD%E5%AE%9A%E7%82%B9%E6%95%B0%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%A1%88/"/>
+    <id>https://morimiya.github.io/morimiya/2021/10/17/高性能定点数实现方案/</id>
     <published>2021-10-17T03:54:13.000Z</published>
     <updated>2021-10-17T08:53:03.221Z</updated>
     
@@ -83,21 +108,21 @@
     
     </summary>
     
-      <category term="学习笔记" scheme="http://morimiya.me/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <category term="学习笔记" scheme="https://morimiya.github.io/morimiya/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="《腾讯游戏开发精粹》学习笔记" scheme="http://morimiya.me/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E3%80%8A%E8%85%BE%E8%AE%AF%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E7%B2%BE%E7%B2%B9%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <category term="《腾讯游戏开发精粹》学习笔记" scheme="https://morimiya.github.io/morimiya/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E3%80%8A%E8%85%BE%E8%AE%AF%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E7%B2%BE%E7%B2%B9%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="学习笔记" scheme="http://morimiya.me/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <category term="学习笔记" scheme="https://morimiya.github.io/morimiya/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="游戏开发" scheme="http://morimiya.me/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
+      <category term="游戏开发" scheme="https://morimiya.github.io/morimiya/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
   <entry>
     <title>一个简易RPG游戏的搭建</title>
-    <link href="http://morimiya.me/2021/10/07/%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93RPG%E6%B8%B8%E6%88%8F%E7%9A%84%E6%90%AD%E5%BB%BA/"/>
-    <id>http://morimiya.me/2021/10/07/一个简易RPG游戏的搭建/</id>
+    <link href="https://morimiya.github.io/morimiya/2021/10/07/%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93RPG%E6%B8%B8%E6%88%8F%E7%9A%84%E6%90%AD%E5%BB%BA/"/>
+    <id>https://morimiya.github.io/morimiya/2021/10/07/一个简易RPG游戏的搭建/</id>
     <published>2021-10-07T07:27:57.000Z</published>
     <updated>2021-10-17T03:37:44.204Z</updated>
     
@@ -110,23 +135,23 @@
     
     </summary>
     
-      <category term="游戏开发" scheme="http://morimiya.me/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
+      <category term="游戏开发" scheme="https://morimiya.github.io/morimiya/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
     
-      <category term="Unity" scheme="http://morimiya.me/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/Unity/"/>
+      <category term="Unity" scheme="https://morimiya.github.io/morimiya/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/Unity/"/>
     
     
-      <category term="Unity" scheme="http://morimiya.me/tags/Unity/"/>
+      <category term="Unity" scheme="https://morimiya.github.io/morimiya/tags/Unity/"/>
     
-      <category term="游戏开发" scheme="http://morimiya.me/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
+      <category term="游戏开发" scheme="https://morimiya.github.io/morimiya/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
     
-      <category term="RPG游戏" scheme="http://morimiya.me/tags/RPG%E6%B8%B8%E6%88%8F/"/>
+      <category term="RPG游戏" scheme="https://morimiya.github.io/morimiya/tags/RPG%E6%B8%B8%E6%88%8F/"/>
     
   </entry>
   
   <entry>
     <title>河流渲染</title>
-    <link href="http://morimiya.me/2021/08/16/%E5%8D%A1%E9%80%9A%E6%B2%B3%E6%B5%81%E6%B8%B2%E6%9F%93/"/>
-    <id>http://morimiya.me/2021/08/16/卡通河流渲染/</id>
+    <link href="https://morimiya.github.io/morimiya/2021/08/16/%E5%8D%A1%E9%80%9A%E6%B2%B3%E6%B5%81%E6%B8%B2%E6%9F%93/"/>
+    <id>https://morimiya.github.io/morimiya/2021/08/16/卡通河流渲染/</id>
     <published>2021-08-16T14:56:37.000Z</published>
     <updated>2021-08-22T09:28:34.268Z</updated>
     
@@ -137,21 +162,21 @@
     
     </summary>
     
-      <category term="游戏开发" scheme="http://morimiya.me/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
+      <category term="游戏开发" scheme="https://morimiya.github.io/morimiya/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
     
-      <category term="Unity" scheme="http://morimiya.me/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/Unity/"/>
+      <category term="Unity" scheme="https://morimiya.github.io/morimiya/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/Unity/"/>
     
     
-      <category term="Unity" scheme="http://morimiya.me/tags/Unity/"/>
+      <category term="Unity" scheme="https://morimiya.github.io/morimiya/tags/Unity/"/>
     
-      <category term="游戏开发" scheme="http://morimiya.me/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
+      <category term="游戏开发" scheme="https://morimiya.github.io/morimiya/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
   <entry>
     <title>塞尔达风格卡通渲染</title>
-    <link href="http://morimiya.me/2021/08/08/%E5%A1%9E%E5%B0%94%E8%BE%BE%E9%A3%8E%E6%A0%BC%E5%8D%A1%E9%80%9A%E6%B8%B2%E6%9F%93/"/>
-    <id>http://morimiya.me/2021/08/08/塞尔达风格卡通渲染/</id>
+    <link href="https://morimiya.github.io/morimiya/2021/08/08/%E5%A1%9E%E5%B0%94%E8%BE%BE%E9%A3%8E%E6%A0%BC%E5%8D%A1%E9%80%9A%E6%B8%B2%E6%9F%93/"/>
+    <id>https://morimiya.github.io/morimiya/2021/08/08/塞尔达风格卡通渲染/</id>
     <published>2021-08-08T10:16:00.000Z</published>
     <updated>2021-08-10T15:28:50.671Z</updated>
     
@@ -162,21 +187,21 @@
     
     </summary>
     
-      <category term="游戏开发" scheme="http://morimiya.me/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
+      <category term="游戏开发" scheme="https://morimiya.github.io/morimiya/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
     
-      <category term="Unity" scheme="http://morimiya.me/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/Unity/"/>
+      <category term="Unity" scheme="https://morimiya.github.io/morimiya/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/Unity/"/>
     
     
-      <category term="Unity" scheme="http://morimiya.me/tags/Unity/"/>
+      <category term="Unity" scheme="https://morimiya.github.io/morimiya/tags/Unity/"/>
     
-      <category term="游戏开发" scheme="http://morimiya.me/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
+      <category term="游戏开发" scheme="https://morimiya.github.io/morimiya/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
   <entry>
     <title>UnityChan渲染分析</title>
-    <link href="http://morimiya.me/2021/08/01/UnityChan%E6%B8%B2%E6%9F%93%E5%88%86%E6%9E%90/"/>
-    <id>http://morimiya.me/2021/08/01/UnityChan渲染分析/</id>
+    <link href="https://morimiya.github.io/morimiya/2021/08/01/UnityChan%E6%B8%B2%E6%9F%93%E5%88%86%E6%9E%90/"/>
+    <id>https://morimiya.github.io/morimiya/2021/08/01/UnityChan渲染分析/</id>
     <published>2021-08-01T09:36:28.000Z</published>
     <updated>2021-08-08T11:22:23.220Z</updated>
     
@@ -188,21 +213,21 @@
     
     </summary>
     
-      <category term="游戏开发" scheme="http://morimiya.me/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
+      <category term="游戏开发" scheme="https://morimiya.github.io/morimiya/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
     
-      <category term="Unity" scheme="http://morimiya.me/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/Unity/"/>
+      <category term="Unity" scheme="https://morimiya.github.io/morimiya/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/Unity/"/>
     
     
-      <category term="Unity" scheme="http://morimiya.me/tags/Unity/"/>
+      <category term="Unity" scheme="https://morimiya.github.io/morimiya/tags/Unity/"/>
     
-      <category term="游戏开发" scheme="http://morimiya.me/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
+      <category term="游戏开发" scheme="https://morimiya.github.io/morimiya/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
   <entry>
     <title>CocosCreator-合成大西瓜</title>
-    <link href="http://morimiya.me/2021/02/17/CocosCreator-%E5%90%88%E6%88%90%E5%A4%A7%E8%A5%BF%E7%93%9C/"/>
-    <id>http://morimiya.me/2021/02/17/CocosCreator-合成大西瓜/</id>
+    <link href="https://morimiya.github.io/morimiya/2021/02/17/CocosCreator-%E5%90%88%E6%88%90%E5%A4%A7%E8%A5%BF%E7%93%9C/"/>
+    <id>https://morimiya.github.io/morimiya/2021/02/17/CocosCreator-合成大西瓜/</id>
     <published>2021-02-17T13:41:27.000Z</published>
     <updated>2021-08-08T11:22:44.732Z</updated>
     
@@ -213,21 +238,21 @@
     
     </summary>
     
-      <category term="游戏开发" scheme="http://morimiya.me/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
+      <category term="游戏开发" scheme="https://morimiya.github.io/morimiya/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
     
-      <category term="CocosCreator" scheme="http://morimiya.me/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/CocosCreator/"/>
+      <category term="CocosCreator" scheme="https://morimiya.github.io/morimiya/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/CocosCreator/"/>
     
     
-      <category term="游戏开发" scheme="http://morimiya.me/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
+      <category term="游戏开发" scheme="https://morimiya.github.io/morimiya/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
     
-      <category term="CocosCreator" scheme="http://morimiya.me/tags/CocosCreator/"/>
+      <category term="CocosCreator" scheme="https://morimiya.github.io/morimiya/tags/CocosCreator/"/>
     
   </entry>
   
   <entry>
     <title>cocos2d-x学习笔记-第四章</title>
-    <link href="http://morimiya.me/2020/05/02/cocos2d-x%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%AC%AC%E5%9B%9B%E7%AB%A0/"/>
-    <id>http://morimiya.me/2020/05/02/cocos2d-x学习笔记-第四章/</id>
+    <link href="https://morimiya.github.io/morimiya/2020/05/02/cocos2d-x%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%AC%AC%E5%9B%9B%E7%AB%A0/"/>
+    <id>https://morimiya.github.io/morimiya/2020/05/02/cocos2d-x学习笔记-第四章/</id>
     <published>2020-05-02T10:05:38.000Z</published>
     <updated>2021-10-17T03:55:14.693Z</updated>
     
@@ -239,21 +264,21 @@
     
     </summary>
     
-      <category term="学习笔记" scheme="http://morimiya.me/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <category term="学习笔记" scheme="https://morimiya.github.io/morimiya/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="cocos2d-x学习笔记" scheme="http://morimiya.me/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/cocos2d-x%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <category term="cocos2d-x学习笔记" scheme="https://morimiya.github.io/morimiya/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/cocos2d-x%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="cocos" scheme="http://morimiya.me/tags/cocos/"/>
+      <category term="cocos" scheme="https://morimiya.github.io/morimiya/tags/cocos/"/>
     
-      <category term="学习笔记" scheme="http://morimiya.me/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <category term="学习笔记" scheme="https://morimiya.github.io/morimiya/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title>cocos2d-x学习笔记-第二章</title>
-    <link href="http://morimiya.me/2020/03/15/cocos2d-x%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%AC%AC%E4%BA%8C%E7%AB%A0/"/>
-    <id>http://morimiya.me/2020/03/15/cocos2d-x学习笔记-第二章/</id>
+    <link href="https://morimiya.github.io/morimiya/2020/03/15/cocos2d-x%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%AC%AC%E4%BA%8C%E7%AB%A0/"/>
+    <id>https://morimiya.github.io/morimiya/2020/03/15/cocos2d-x学习笔记-第二章/</id>
     <published>2020-03-15T14:21:35.000Z</published>
     <updated>2021-10-17T03:55:10.681Z</updated>
     
@@ -265,21 +290,21 @@
     
     </summary>
     
-      <category term="学习笔记" scheme="http://morimiya.me/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <category term="学习笔记" scheme="https://morimiya.github.io/morimiya/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="cocos2d-x学习笔记" scheme="http://morimiya.me/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/cocos2d-x%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <category term="cocos2d-x学习笔记" scheme="https://morimiya.github.io/morimiya/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/cocos2d-x%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="cocos" scheme="http://morimiya.me/tags/cocos/"/>
+      <category term="cocos" scheme="https://morimiya.github.io/morimiya/tags/cocos/"/>
     
-      <category term="学习笔记" scheme="http://morimiya.me/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <category term="学习笔记" scheme="https://morimiya.github.io/morimiya/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title>cocos2d-x学习笔记-第一章</title>
-    <link href="http://morimiya.me/2020/03/15/cocos2d-x%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%AC%AC%E4%B8%80%E7%AB%A0/"/>
-    <id>http://morimiya.me/2020/03/15/cocos2d-x学习笔记-第一章/</id>
+    <link href="https://morimiya.github.io/morimiya/2020/03/15/cocos2d-x%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%AC%AC%E4%B8%80%E7%AB%A0/"/>
+    <id>https://morimiya.github.io/morimiya/2020/03/15/cocos2d-x学习笔记-第一章/</id>
     <published>2020-03-15T14:18:37.000Z</published>
     <updated>2021-10-17T03:55:04.050Z</updated>
     
@@ -291,21 +316,21 @@
     
     </summary>
     
-      <category term="学习笔记" scheme="http://morimiya.me/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <category term="学习笔记" scheme="https://morimiya.github.io/morimiya/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="cocos2d-x学习笔记" scheme="http://morimiya.me/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/cocos2d-x%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <category term="cocos2d-x学习笔记" scheme="https://morimiya.github.io/morimiya/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/cocos2d-x%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="cocos" scheme="http://morimiya.me/tags/cocos/"/>
+      <category term="cocos" scheme="https://morimiya.github.io/morimiya/tags/cocos/"/>
     
-      <category term="学习笔记" scheme="http://morimiya.me/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <category term="学习笔记" scheme="https://morimiya.github.io/morimiya/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title>2019年总结</title>
-    <link href="http://morimiya.me/2020/01/05/2019%E5%B9%B4%E6%80%BB%E7%BB%93/"/>
-    <id>http://morimiya.me/2020/01/05/2019年总结/</id>
+    <link href="https://morimiya.github.io/morimiya/2020/01/05/2019%E5%B9%B4%E6%80%BB%E7%BB%93/"/>
+    <id>https://morimiya.github.io/morimiya/2020/01/05/2019年总结/</id>
     <published>2020-01-05T08:01:00.000Z</published>
     <updated>2020-01-05T08:30:43.262Z</updated>
     
@@ -317,19 +342,19 @@
     
     </summary>
     
-      <category term="2019随记" scheme="http://morimiya.me/categories/2019%E9%9A%8F%E8%AE%B0/"/>
+      <category term="2019随记" scheme="https://morimiya.github.io/morimiya/categories/2019%E9%9A%8F%E8%AE%B0/"/>
     
-      <category term="年度总结" scheme="http://morimiya.me/categories/2019%E9%9A%8F%E8%AE%B0/%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/"/>
+      <category term="年度总结" scheme="https://morimiya.github.io/morimiya/categories/2019%E9%9A%8F%E8%AE%B0/%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/"/>
     
     
-      <category term="生活" scheme="http://morimiya.me/tags/%E7%94%9F%E6%B4%BB/"/>
+      <category term="生活" scheme="https://morimiya.github.io/morimiya/tags/%E7%94%9F%E6%B4%BB/"/>
     
   </entry>
   
   <entry>
     <title>平直Alpha与预乘Alpha</title>
-    <link href="http://morimiya.me/2019/12/01/%E5%B9%B3%E7%9B%B4Alpha%E4%B8%8E%E9%A2%84%E4%B9%98Alpha/"/>
-    <id>http://morimiya.me/2019/12/01/平直Alpha与预乘Alpha/</id>
+    <link href="https://morimiya.github.io/morimiya/2019/12/01/%E5%B9%B3%E7%9B%B4Alpha%E4%B8%8E%E9%A2%84%E4%B9%98Alpha/"/>
+    <id>https://morimiya.github.io/morimiya/2019/12/01/平直Alpha与预乘Alpha/</id>
     <published>2019-12-01T09:21:44.000Z</published>
     <updated>2019-12-01T14:06:50.648Z</updated>
     
@@ -341,21 +366,21 @@
     
     </summary>
     
-      <category term="学习笔记" scheme="http://morimiya.me/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <category term="学习笔记" scheme="https://morimiya.github.io/morimiya/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="预乘Alpha" scheme="http://morimiya.me/tags/%E9%A2%84%E4%B9%98Alpha/"/>
+      <category term="预乘Alpha" scheme="https://morimiya.github.io/morimiya/tags/%E9%A2%84%E4%B9%98Alpha/"/>
     
-      <category term="平直Alpha" scheme="http://morimiya.me/tags/%E5%B9%B3%E7%9B%B4Alpha/"/>
+      <category term="平直Alpha" scheme="https://morimiya.github.io/morimiya/tags/%E5%B9%B3%E7%9B%B4Alpha/"/>
     
-      <category term="图像处理" scheme="http://morimiya.me/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="https://morimiya.github.io/morimiya/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
   </entry>
   
   <entry>
     <title>2019CGDC+CJ</title>
-    <link href="http://morimiya.me/2019/08/30/2019CGDC-CJ/"/>
-    <id>http://morimiya.me/2019/08/30/2019CGDC-CJ/</id>
+    <link href="https://morimiya.github.io/morimiya/2019/08/30/2019CGDC-CJ/"/>
+    <id>https://morimiya.github.io/morimiya/2019/08/30/2019CGDC-CJ/</id>
     <published>2019-08-29T17:50:18.000Z</published>
     <updated>2019-08-29T17:52:23.936Z</updated>
     
@@ -368,16 +393,16 @@
     </summary>
     
     
-      <category term="CGDC" scheme="http://morimiya.me/tags/CGDC/"/>
+      <category term="CGDC" scheme="https://morimiya.github.io/morimiya/tags/CGDC/"/>
     
-      <category term="CJ" scheme="http://morimiya.me/tags/CJ/"/>
+      <category term="CJ" scheme="https://morimiya.github.io/morimiya/tags/CJ/"/>
     
   </entry>
   
   <entry>
     <title>屏幕空间环境光遮蔽</title>
-    <link href="http://morimiya.me/2019/06/09/%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4%E7%8E%AF%E5%A2%83%E5%85%89%E9%81%AE%E8%94%BD/"/>
-    <id>http://morimiya.me/2019/06/09/屏幕空间环境光遮蔽/</id>
+    <link href="https://morimiya.github.io/morimiya/2019/06/09/%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4%E7%8E%AF%E5%A2%83%E5%85%89%E9%81%AE%E8%94%BD/"/>
+    <id>https://morimiya.github.io/morimiya/2019/06/09/屏幕空间环境光遮蔽/</id>
     <published>2019-06-09T11:52:34.000Z</published>
     <updated>2019-12-01T14:03:47.019Z</updated>
     
@@ -393,23 +418,23 @@
     
     </summary>
     
-      <category term="OpenGL" scheme="http://morimiya.me/categories/OpenGL/"/>
+      <category term="OpenGL" scheme="https://morimiya.github.io/morimiya/categories/OpenGL/"/>
     
-      <category term="屏幕空间环境光遮蔽" scheme="http://morimiya.me/categories/OpenGL/%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4%E7%8E%AF%E5%A2%83%E5%85%89%E9%81%AE%E8%94%BD/"/>
+      <category term="屏幕空间环境光遮蔽" scheme="https://morimiya.github.io/morimiya/categories/OpenGL/%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4%E7%8E%AF%E5%A2%83%E5%85%89%E9%81%AE%E8%94%BD/"/>
     
     
-      <category term="OpenGL" scheme="http://morimiya.me/tags/OpenGL/"/>
+      <category term="OpenGL" scheme="https://morimiya.github.io/morimiya/tags/OpenGL/"/>
     
-      <category term="屏幕空间环境光遮蔽" scheme="http://morimiya.me/tags/%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4%E7%8E%AF%E5%A2%83%E5%85%89%E9%81%AE%E8%94%BD/"/>
+      <category term="屏幕空间环境光遮蔽" scheme="https://morimiya.github.io/morimiya/tags/%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4%E7%8E%AF%E5%A2%83%E5%85%89%E9%81%AE%E8%94%BD/"/>
     
-      <category term="SSAO" scheme="http://morimiya.me/tags/SSAO/"/>
+      <category term="SSAO" scheme="https://morimiya.github.io/morimiya/tags/SSAO/"/>
     
   </entry>
   
   <entry>
     <title>延迟着色法</title>
-    <link href="http://morimiya.me/2019/06/08/%E5%BB%B6%E8%BF%9F%E7%9D%80%E8%89%B2%E6%B3%95/"/>
-    <id>http://morimiya.me/2019/06/08/延迟着色法/</id>
+    <link href="https://morimiya.github.io/morimiya/2019/06/08/%E5%BB%B6%E8%BF%9F%E7%9D%80%E8%89%B2%E6%B3%95/"/>
+    <id>https://morimiya.github.io/morimiya/2019/06/08/延迟着色法/</id>
     <published>2019-06-08T07:00:05.000Z</published>
     <updated>2019-06-09T12:30:11.464Z</updated>
     
@@ -424,21 +449,21 @@
     
     </summary>
     
-      <category term="OpenGL" scheme="http://morimiya.me/categories/OpenGL/"/>
+      <category term="OpenGL" scheme="https://morimiya.github.io/morimiya/categories/OpenGL/"/>
     
-      <category term="延迟着色法" scheme="http://morimiya.me/categories/OpenGL/%E5%BB%B6%E8%BF%9F%E7%9D%80%E8%89%B2%E6%B3%95/"/>
+      <category term="延迟着色法" scheme="https://morimiya.github.io/morimiya/categories/OpenGL/%E5%BB%B6%E8%BF%9F%E7%9D%80%E8%89%B2%E6%B3%95/"/>
     
     
-      <category term="OpenGL" scheme="http://morimiya.me/tags/OpenGL/"/>
+      <category term="OpenGL" scheme="https://morimiya.github.io/morimiya/tags/OpenGL/"/>
     
-      <category term="延迟着色法" scheme="http://morimiya.me/tags/%E5%BB%B6%E8%BF%9F%E7%9D%80%E8%89%B2%E6%B3%95/"/>
+      <category term="延迟着色法" scheme="https://morimiya.github.io/morimiya/tags/%E5%BB%B6%E8%BF%9F%E7%9D%80%E8%89%B2%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title>QCon2019广州</title>
-    <link href="http://morimiya.me/2019/06/02/QCon2019%E5%B9%BF%E5%B7%9E/"/>
-    <id>http://morimiya.me/2019/06/02/QCon2019广州/</id>
+    <link href="https://morimiya.github.io/morimiya/2019/06/02/QCon2019%E5%B9%BF%E5%B7%9E/"/>
+    <id>https://morimiya.github.io/morimiya/2019/06/02/QCon2019广州/</id>
     <published>2019-06-02T06:47:44.000Z</published>
     <updated>2019-12-01T09:21:56.797Z</updated>
     
@@ -451,14 +476,14 @@
     </summary>
     
     
-      <category term="QCon" scheme="http://morimiya.me/tags/QCon/"/>
+      <category term="QCon" scheme="https://morimiya.github.io/morimiya/tags/QCon/"/>
     
   </entry>
   
   <entry>
     <title>HDR和泛光</title>
-    <link href="http://morimiya.me/2019/05/19/HDR%E5%92%8C%E6%B3%9B%E5%85%89/"/>
-    <id>http://morimiya.me/2019/05/19/HDR和泛光/</id>
+    <link href="https://morimiya.github.io/morimiya/2019/05/19/HDR%E5%92%8C%E6%B3%9B%E5%85%89/"/>
+    <id>https://morimiya.github.io/morimiya/2019/05/19/HDR和泛光/</id>
     <published>2019-05-19T10:28:02.000Z</published>
     <updated>2019-05-19T15:14:32.696Z</updated>
     
@@ -472,23 +497,23 @@
     
     </summary>
     
-      <category term="OpenGL" scheme="http://morimiya.me/categories/OpenGL/"/>
+      <category term="OpenGL" scheme="https://morimiya.github.io/morimiya/categories/OpenGL/"/>
     
-      <category term="HDR和泛光" scheme="http://morimiya.me/categories/OpenGL/HDR%E5%92%8C%E6%B3%9B%E5%85%89/"/>
+      <category term="HDR和泛光" scheme="https://morimiya.github.io/morimiya/categories/OpenGL/HDR%E5%92%8C%E6%B3%9B%E5%85%89/"/>
     
     
-      <category term="OpenGL" scheme="http://morimiya.me/tags/OpenGL/"/>
+      <category term="OpenGL" scheme="https://morimiya.github.io/morimiya/tags/OpenGL/"/>
     
-      <category term="HDR" scheme="http://morimiya.me/tags/HDR/"/>
+      <category term="HDR" scheme="https://morimiya.github.io/morimiya/tags/HDR/"/>
     
-      <category term="泛光" scheme="http://morimiya.me/tags/%E6%B3%9B%E5%85%89/"/>
+      <category term="泛光" scheme="https://morimiya.github.io/morimiya/tags/%E6%B3%9B%E5%85%89/"/>
     
   </entry>
   
   <entry>
     <title>python笔记</title>
-    <link href="http://morimiya.me/2019/05/07/python%E7%AC%94%E8%AE%B0/"/>
-    <id>http://morimiya.me/2019/05/07/python笔记/</id>
+    <link href="https://morimiya.github.io/morimiya/2019/05/07/python%E7%AC%94%E8%AE%B0/"/>
+    <id>https://morimiya.github.io/morimiya/2019/05/07/python笔记/</id>
     <published>2019-05-07T15:35:45.000Z</published>
     <updated>2019-06-16T07:27:15.557Z</updated>
     
@@ -501,37 +526,10 @@
     
     </summary>
     
-      <category term="学习笔记" scheme="http://morimiya.me/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <category term="学习笔记" scheme="https://morimiya.github.io/morimiya/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="python" scheme="http://morimiya.me/tags/python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>视差贴图</title>
-    <link href="http://morimiya.me/2019/04/21/%E8%A7%86%E5%B7%AE%E8%B4%B4%E5%9B%BE/"/>
-    <id>http://morimiya.me/2019/04/21/视差贴图/</id>
-    <published>2019-04-21T12:53:23.000Z</published>
-    <updated>2019-04-27T13:00:43.465Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;https://learnopengl-cn.github.io&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://learnopengl-cn.github.io&lt;/a&gt; 视差学习笔记&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/2019/04/21/视差贴图/result.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="OpenGL" scheme="http://morimiya.me/categories/OpenGL/"/>
-    
-      <category term="视差贴图" scheme="http://morimiya.me/categories/OpenGL/%E8%A7%86%E5%B7%AE%E8%B4%B4%E5%9B%BE/"/>
-    
-    
-      <category term="OpenGL" scheme="http://morimiya.me/tags/OpenGL/"/>
-    
-      <category term="位移贴图" scheme="http://morimiya.me/tags/%E4%BD%8D%E7%A7%BB%E8%B4%B4%E5%9B%BE/"/>
+      <category term="python" scheme="https://morimiya.github.io/morimiya/tags/python/"/>
     
   </entry>
   
