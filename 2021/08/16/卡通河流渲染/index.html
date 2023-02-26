@@ -181,7 +181,7 @@
   
   <article class="article post card animate" itemscope="" itemtype="http://schema.org/Article">
     <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="https://morimiya.github.io/morimiya/morimiya/2021/08/16/卡通河流渲染/">
+      <link itemprop="mainEntityOfPage" href="https://morimiya.github.io/morimiya/2021/08/16/卡通河流渲染/">
       <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
        <meta itemprop="name" content="MoriMiya">
        <meta itemprop="description" content="">
@@ -215,22 +215,22 @@
     </header>
     <main class="post-main" itemprop="articleBody">
       <blockquote>
-<p>使用Unity版本为：2019.4.10f1。<br>最终效果：<img src="/morimiya/morimiya/2021/08/16/卡通河流渲染/result.gif" style="width: 36em;" alt="效果展示"><br><a id="more"></a></p>
+<p>使用Unity版本为：2019.4.10f1。<br>最终效果：<img src="/morimiya/2021/08/16/卡通河流渲染/result.gif" style="width: 36em;" alt="效果展示"><br><a id="more"></a></p>
 </blockquote>
 <h2 id="河流的组成"><a href="#河流的组成" class="headerlink" title="河流的组成"></a>河流的组成</h2><ul>
 <li>凹陷的地表。<ul>
-<li><img src="/morimiya/morimiya/2021/08/16/卡通河流渲染/ground.png" style="width: 36em;" alt="凹陷的地表"></li>
+<li><img src="/morimiya/2021/08/16/卡通河流渲染/ground.png" style="width: 36em;" alt="凹陷的地表"></li>
 </ul>
 </li>
 <li>与地面水平的一个平面用于渲染水体。<ul>
 <li>给平面赋予蓝色让其颜色接近水体。</li>
-<li><img src="/morimiya/morimiya/2021/08/16/卡通河流渲染/waterquad.png" style="width: 36em;" alt="水体平面"></li>
+<li><img src="/morimiya/2021/08/16/卡通河流渲染/waterquad.png" style="width: 36em;" alt="水体平面"></li>
 </ul>
 </li>
 </ul>
 <h2 id="河流深浅的表现"><a href="#河流深浅的表现" class="headerlink" title="河流深浅的表现"></a>河流深浅的表现</h2><h3 id="修改混合方式，让其具有透明度"><a href="#修改混合方式，让其具有透明度" class="headerlink" title="修改混合方式，让其具有透明度"></a>修改混合方式，让其具有透明度</h3><ul>
 <li>注意，Tags要加上”Queue” = “Transparent”，让其在绘制半透明的批次上。<ul>
-<li><img src="/morimiya/morimiya/2021/08/16/卡通河流渲染/usealphablend.png" style="width: 36em;" alt="修改混合方式"><figure class="hljs highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs glsl">Tags &#123; "Queue" = "Transparent" &#125;<br>Pass &#123;<br>    Blend SrcAlpha OneMinusSrcAlpha<br><br>    CGPROGRAM<br>    ...<br>    ENDCG<br>&#125;<br></code></pre></td></tr></table></figure>
+<li><img src="/morimiya/2021/08/16/卡通河流渲染/usealphablend.png" style="width: 36em;" alt="修改混合方式"><figure class="hljs highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs glsl">Tags &#123; "Queue" = "Transparent" &#125;<br>Pass &#123;<br>    Blend SrcAlpha OneMinusSrcAlpha<br><br>    CGPROGRAM<br>    ...<br>    ENDCG<br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
@@ -241,25 +241,25 @@
 </li>
 <li><p>关闭深入写入，根据水体表面与水底视线距离计算水体颜色。</p>
 <ul>
-<li><img src="/morimiya/morimiya/2021/08/16/卡通河流渲染/waterdepth.png" style="width: 36em;" alt="水面与地表的深度差"></li>
+<li><img src="/morimiya/2021/08/16/卡通河流渲染/waterdepth.png" style="width: 36em;" alt="水面与地表的深度差"></li>
 </ul>
 </li>
 <li>这里通过_CameraDepthTexture来获取深度值，由于透视摄像机下深度是非线性的，在计算深度差前，需要将深度转换为线性深度。</li>
 <li>在渲染水面时，通过获取水面点的w分量即可获得其距离摄像机的线性深度，具体原理参考：<a href="http://www.songho.ca/opengl/gl_projectionmatrix.html" target="_blank" rel="noopener">http://www.songho.ca/opengl/gl_projectionmatrix.html</a></li>
-<li><p><img src="/morimiya/morimiya/2021/08/16/卡通河流渲染/usedepth.png" style="width: 36em;" alt="根据水体表面与水底距离计算水体颜色"></p>
+<li><p><img src="/morimiya/2021/08/16/卡通河流渲染/usedepth.png" style="width: 36em;" alt="根据水体表面与水底距离计算水体颜色"></p>
 <figure class="hljs highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs glsl">Pass &#123;<br>    Blend SrcAlpha OneMinusSrcAlpha<br>    ZWrite Off<br><br>    CGPROGRAM<br>    <span class="hljs-meta">#pragma vertex vert</span><br>    <span class="hljs-meta">#pragma fragment frag</span><br><br>    <span class="hljs-meta">#include "UnityCG.cginc"</span><br><br>    <span class="hljs-type">sampler2D</span> _CameraDepthTexture;<br><br>    float4 _WaterColorDeep;<br>    float4 _WaterColorShallow;<br><br>    struct appdata &#123;<br>        float4 vertex		: POSITION;<br>        float3 normal		: NORMAL;<br>        float4 texcoord		: TEXCOORD0;<br>    &#125;;<br><br>    struct v2f &#123;<br>        float4 pos			: SV_POSITION;<br>        float4 screenPosition : TEXCOORD0;<br>    &#125;;<br><br>    v2f vert(appdata v) &#123;<br>        v2f f;<br>        f.pos = UnityObjectToClipPos(v.vertex);<br>        f.screenPosition = ComputeScreenPos(f.pos);<br><br>        <span class="hljs-keyword">return</span> f;<br>    &#125;<br><br>    float4 frag(v2f f) : SV_Target&#123;<br>        <span class="hljs-type">float</span> linearWaterDepthInView = tex2Dproj(_CameraDepthTexture, UNITY_PROJ_COORD(f.screenPosition)).r;	<span class="hljs-comment">// 从摄像机角度看过去的水深。</span><br>        linearWaterDepthInView = LinearEyeDepth(linearWaterDepthInView); <span class="hljs-comment">// 将深度转换为线性深度。</span><br>        float4 waterColor = lerp(_WaterColorShallow, _WaterColorDeep, (linearWaterDepthInView - f.screenPosition.w) / <span class="hljs-number">3.0</span>);<br><br>        <span class="hljs-keyword">return</span> waterColor;<br>    &#125;<br>    ENDCG<br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
 <li><p>可以开启castshadows，让水体具有阴影，效果会更好些。</p>
 </li>
-<li><img src="/morimiya/morimiya/2021/08/16/卡通河流渲染/castshadows.png" style="width: 36em;" alt="Cast Shadows"></li>
-<li><img src="/morimiya/morimiya/2021/08/16/卡通河流渲染/usecastshadows.png" style="width: 36em;" alt="使用Cast Shadows效果"></li>
+<li><img src="/morimiya/2021/08/16/卡通河流渲染/castshadows.png" style="width: 36em;" alt="Cast Shadows"></li>
+<li><img src="/morimiya/2021/08/16/卡通河流渲染/usecastshadows.png" style="width: 36em;" alt="使用Cast Shadows效果"></li>
 </ul>
 <h2 id="河流的流动效果"><a href="#河流的流动效果" class="headerlink" title="河流的流动效果"></a>河流的流动效果</h2><h3 id="使用噪声纹理让水面出现水纹"><a href="#使用噪声纹理让水面出现水纹" class="headerlink" title="使用噪声纹理让水面出现水纹"></a>使用噪声纹理让水面出现水纹</h3><ul>
-<li><img src="/morimiya/morimiya/2021/08/16/卡通河流渲染/noise.png" style="width: 24em;" alt="Surface Noise"></li>
+<li><img src="/morimiya/2021/08/16/卡通河流渲染/noise.png" style="width: 24em;" alt="Surface Noise"></li>
 <li>通过_SurfaceNoiseCutoff来控制噪声纹理的显示范围，达到下图效果。</li>
-<li><img src="/morimiya/morimiya/2021/08/16/卡通河流渲染/noisecutoff.gif" style="width: 36em;" alt="调整SurfaceNoiseCutoff效果"></li>
+<li><img src="/morimiya/2021/08/16/卡通河流渲染/noisecutoff.gif" style="width: 36em;" alt="调整SurfaceNoiseCutoff效果"></li>
 <li>最终将SurfaceNoiseCutoff定为0.8。</li>
-<li><img src="/morimiya/morimiya/2021/08/16/卡通河流渲染/usenoise.png" style="width: 36em;" alt="使用噪声纹理制造水纹"></li>
+<li><img src="/morimiya/2021/08/16/卡通河流渲染/usenoise.png" style="width: 36em;" alt="使用噪声纹理制造水纹"></li>
 <li>具体代码如下：<figure class="hljs highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs glsl">Properties<br>&#123;<br>    _SurfaceNoise("Surface Noise", 2D) = "white" &#123;&#125;<br>    _SurfaceNoiseCutoff("Surface Noise Cutoff", Range(0, 1)) = 0.8<br>    _SurfaceNoiseColor("Surface Noise Color", Color) = (1.0, 1.0, 1.0, 1.0)<br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
 </ul>
@@ -271,9 +271,9 @@
 </ul>
 <figure class="hljs highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs glsl">float4 frag(v2f f) : SV_Target&#123;<br>    ...<br><br>    float2 distort = (tex2D(_SurfaceDistortion, f.distortUV).xy * <span class="hljs-number">2</span> - <span class="hljs-number">1</span>) * _SurfaceDistortionAmount;<br>    float2 noiseUV = float2(f.noiseUV.x + _Time.y * _SurfaceNoiseScroll.x + distort.x, f.noiseUV.y + _Time.y * _SurfaceNoiseScroll.y + distort.y);<br>    <span class="hljs-type">float</span> surfaceNoiseSample = tex2D(_SurfaceNoise, noiseUV).r;<br>    <span class="hljs-type">float</span> surfaceNoise = <span class="hljs-built_in">smoothstep</span>(_SurfaceNoiseCutoff - <span class="hljs-number">0.01</span>, _SurfaceNoiseCutoff + <span class="hljs-number">0.01</span>, surfaceNoiseSample);<br>    float4 surfaceNoiseColor = _SurfaceNoiseColor;<br>    surfaceNoiseColor.a *= surfaceNoise;<br><br>    <span class="hljs-keyword">return</span> Blend(surfaceNoiseColor, waterColor);<br>&#125;<br></code></pre></td></tr></table></figure>
 <ul>
-<li><img src="/morimiya/morimiya/2021/08/16/卡通河流渲染/ani.gif" style="width: 36em;" alt="流动的水流"></li>
+<li><img src="/morimiya/2021/08/16/卡通河流渲染/ani.gif" style="width: 36em;" alt="流动的水流"></li>
 <li>在河流上放上小船看看效果：</li>
-<li><img src="/morimiya/morimiya/2021/08/16/卡通河流渲染/result.gif" style="width: 36em;" alt="效果展示"></li>
+<li><img src="/morimiya/2021/08/16/卡通河流渲染/result.gif" style="width: 36em;" alt="效果展示"></li>
 </ul>
 
     </main>

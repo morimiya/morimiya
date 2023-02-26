@@ -200,7 +200,7 @@
   
   <article class="article post card animate" itemscope="" itemtype="http://schema.org/Article">
     <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="https://morimiya.github.io/morimiya/morimiya/2019/04/20/法线贴图/">
+      <link itemprop="mainEntityOfPage" href="https://morimiya.github.io/morimiya/2019/04/20/法线贴图/">
       <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
        <meta itemprop="name" content="MoriMiya">
        <meta itemprop="description" content="">
@@ -235,17 +235,17 @@
     <main class="post-main" itemprop="articleBody">
       <blockquote>
 <p><a href="https://learnopengl-cn.github.io" target="_blank" rel="noopener">https://learnopengl-cn.github.io</a> 法线学习笔记</p>
-<p><img src="/morimiya/morimiya/2019/04/20/法线贴图/result.png" alt=""></p>
+<p><img src="/morimiya/2019/04/20/法线贴图/result.png" alt=""></p>
 </blockquote>
 <a id="more"></a>
 <h2 id="凹凸细节"><a href="#凹凸细节" class="headerlink" title="凹凸细节"></a>凹凸细节</h2><ul>
 <li>一面墙由2个三角形所组成。我们通过附上纹理贴图的方式来增加其细节，提升真实感，让其看上去确实像是一面墙。但靠近墙观察的时候，我们很容易发现墙的表面十分平坦，没有任何凹凸细节，缺乏凹凸细节使得这面墙缺乏真实感。</li>
-<li><p><img src="/morimiya/morimiya/2019/04/20/法线贴图/without_normal_map.png" alt=""></p>
+<li><p><img src="/morimiya/2019/04/20/法线贴图/without_normal_map.png" alt=""></p>
 </li>
 <li><p>以光的视角来看这个问题：是什么使表面被视为完全平坦的表面来照亮？答案会是表面的法线向量。以光照算法的视角考虑的话，只有一件事决定物体的形状，这就是垂直于它的法线向量。砖块表面只有一个法线向量，表面完全根据这个法线向量被以一致的方式照亮。如果每个fragment都是用自己的不同的法线会怎样？这样我们就可以根据表面细微的细节对法线向量进行改变；这样就会获得一种表面看起来要复杂得多的幻觉：</p>
 </li>
 <li>每个fragment使用了自己的法线，我们就可以让光照相信一个表面由很多微小的（垂直于法线向量的）平面所组成，物体表面的细节将会得到极大提升。这种每个fragment使用各自的法线，替代一个面上所有fragment使用同一个法线的技术叫做法线贴图（normal mapping）或凹凸贴图（bump mapping）。</li>
-<li><img src="/morimiya/morimiya/2019/04/20/法线贴图/normal_mapping_surfaces.png" alt=""></li>
+<li><img src="/morimiya/2019/04/20/法线贴图/normal_mapping_surfaces.png" alt=""></li>
 </ul>
 <h2 id="法线贴图"><a href="#法线贴图" class="headerlink" title="法线贴图"></a>法线贴图</h2><h3 id="法线贴图存储及使用"><a href="#法线贴图存储及使用" class="headerlink" title="法线贴图存储及使用"></a>法线贴图存储及使用</h3><ul>
 <li>为使法线贴图工作，我们需要为每个fragment提供一个法线。像diffuse贴图和specular贴图一样，我们可以使用一个2D纹理来储存法线数据。2D纹理不仅可以储存颜色和光照数据，还可以储存法线向量。这样我们可以从2D纹理中采样得到特定纹理的法线向量。</li>
@@ -258,9 +258,9 @@
 </ul>
 <h3 id="法线贴图的使用限制"><a href="#法线贴图的使用限制" class="headerlink" title="法线贴图的使用限制"></a>法线贴图的使用限制</h3><ul>
 <li>一般法线贴图存储着物体正朝着Z轴方向时的法线值。当被渲染物体的朝上面不再是Z轴方向时，其表现便会出现异常：</li>
-<li><img src="/morimiya/morimiya/2019/04/20/法线贴图/without_TBN.png" alt=""></li>
+<li><img src="/morimiya/2019/04/20/法线贴图/without_TBN.png" alt=""></li>
 <li>光照看起来完全不对！发生这种情况是平面的表面法线现在指向了y，而采样得到的法线仍然指向的是z。结果就是光照仍然认为表面法线和之前朝向正z方向时一样；这样光照就不对了。下面的图片展示了这个表面上采样的法线的近似情况：</li>
-<li><img src="/morimiya/morimiya/2019/04/20/法线贴图/normal_mapping_ground_normals.png" alt=""></li>
+<li><img src="/morimiya/2019/04/20/法线贴图/normal_mapping_ground_normals.png" alt=""></li>
 </ul>
 <h2 id="切线空间"><a href="#切线空间" class="headerlink" title="切线空间"></a>切线空间</h2><ul>
 <li><p>在一个不同的坐标空间中进行光照，这个坐标空间里，法线贴图向量总是指向这个坐标空间的正z方向；所有的光照向量都相对与这个正z方向进行变换。这样我们就能始终使用同样的法线贴图，不管朝向问题。这个坐标空间叫做切线空间（tangent space）。</p>
@@ -271,11 +271,11 @@
 <h3 id="TBN向量"><a href="#TBN向量" class="headerlink" title="TBN向量"></a>TBN向量</h3><ul>
 <li>这种矩阵叫做TBN矩阵这三个字母分别代表tangent、bitangent和normal向量。这是建构这个矩阵所需的向量。要建构这样一个把切线空间转变为不同空间的变换矩阵，我们需要三个相互垂直的向量，它们沿一个表面的法线贴图对齐于：上、右、前。</li>
 <li>已知上向量是表面的法线向量。右和前向量是切线(Tagent)和副切线(Bitangent)向量。</li>
-<li><img src="/morimiya/morimiya/2019/04/20/法线贴图/normal_mapping_tbn_vectors.png" style="width: 22em;"></li>
+<li><img src="/morimiya/2019/04/20/法线贴图/normal_mapping_tbn_vectors.png" style="width: 22em;"></li>
 </ul>
 <h3 id="TBN向量的计算"><a href="#TBN向量的计算" class="headerlink" title="TBN向量的计算"></a>TBN向量的计算</h3><ul>
 <li>计算出切线和副切线并不像法线向量那么容易。从图中可以看到法线贴图的切线和副切线与纹理坐标的两个方向对齐。我们就是用到这个特性计算每个表面的切线和副切线的。</li>
-<li><p><img src="/morimiya/morimiya/2019/04/20/法线贴图/normal_mapping_surface_edges.png" style="width: 22em;"></p>
+<li><p><img src="/morimiya/2019/04/20/法线贴图/normal_mapping_surface_edges.png" style="width: 22em;"></p>
 </li>
 <li><p>注意上图中边 $E_2$ 与纹理坐标的差 $\Delta U_2$、$\Delta V_2$ 构成一个三角形。 $\Delta U_2$ 与切线向量T方向相同，而 $\Delta V_2$ 与副切线向量B方向相同。这也就是说，所以我们可以将三角形的边 $E_1$ 与  $E_2$写成切线向量T和副切线向量B的线性组合：</p>
 <script type="math/tex; mode=display">\Delta U_1 = U_1 - U_2</script><script type="math/tex; mode=display">\Delta V_1 = V_1 - V_2</script><script type="math/tex; mode=display">E_1 = \Delta U_1 T + \Delta V_1 B</script></li>
@@ -309,7 +309,7 @@
 <figure class="hljs highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-built_in">vector</span>&lt;Texture&gt; specularMaps = <span class="hljs-keyword">this</span>-&gt;loadMaterialTextures(<br>    material, aiTextureType_HEIGHT, <span class="hljs-string">"texture_normal"</span><br>);<br></code></pre></td></tr></table></figure>
 <ul>
 <li>使用法线贴图也是一种提升你的场景的表现的重要方式。在使用法线贴图之前你不得不使用相当多的顶点才能表现出一个更精细的网格，但使用了法线贴图我们可以使用更少的顶点表现出同样丰富的细节。下图来自Paolo Cignoni，图中对比了两种方式：</li>
-<li><p><img src="/morimiya/morimiya/2019/04/20/法线贴图/normal_mapping_comparison.png" alt=""></p>
+<li><p><img src="/morimiya/2019/04/20/法线贴图/normal_mapping_comparison.png" alt=""></p>
 </li>
 <li><p>当在更大的网格上计算切线向量的时候，它们往往有很大数量的共享顶点，当法向贴图应用到这些表面时将切线向量平均化通常能获得更好更平滑的结果。这样做有个问题，就是TBN向量可能会不能互相垂直，这意味着TBN矩阵不再是正交矩阵了。法线贴图可能会稍稍偏移，但这仍然可以改进。</p>
 </li>

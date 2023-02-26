@@ -200,7 +200,7 @@
   
   <article class="article post card animate" itemscope="" itemtype="http://schema.org/Article">
     <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="https://morimiya.github.io/morimiya/morimiya/2022/05/03/PBR学习笔记/">
+      <link itemprop="mainEntityOfPage" href="https://morimiya.github.io/morimiya/2022/05/03/PBR学习笔记/">
       <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
        <meta itemprop="name" content="MoriMiya">
        <meta itemprop="description" content="">
@@ -244,11 +244,11 @@
 <li>PBR，即基于物理的渲染，但说是基于物理，它也只是对基于物理原理的现实世界的一种近似。</li>
 <li>区分渲染是否为基于物理的，必须满足以下三个条件：<ol>
 <li>基于微平面(Microfacet)的表面模型。<ul>
-<li><img src="/morimiya/morimiya/2022/05/03/PBR学习笔记/rought_smooth.png" alt=""></li>
+<li><img src="/morimiya/2022/05/03/PBR学习笔记/rought_smooth.png" alt=""></li>
 <li>光滑表面的微平面的法线变化较小，反射光线的方向变化也更小。 右图：粗糙表面的微平面的法线变化较大，反射光线的方向变化也更大。</li>
-<li><img src="/morimiya/morimiya/2022/05/03/PBR学习笔记/ndf.png" alt=""></li>
+<li><img src="/morimiya/2022/05/03/PBR学习笔记/ndf.png" alt=""></li>
 <li>较高的粗糙度值显示出来的镜面反射的轮廓要更大一些。与之相反地，较小的粗糙值显示出的镜面反射轮廓则更小更锐利。</li>
-<li><img src="/morimiya/morimiya/2022/05/03/PBR学习笔记/surface.png" alt=""></li>
+<li><img src="/morimiya/2022/05/03/PBR学习笔记/surface.png" alt=""></li>
 <li>由微表面反射的光可以被认为是该点上一些方向变化不大的反射光，如上图的橙线。</li>
 <li>对于散射光，需要考虑两种情况：<ol>
 <li>如散射光线的出射位置离入射位置较远（大于像素距离），如左图所示，就需要考虑次表面散射渲染技术，如光线在皮肤、玉器上照射的效果。</li>
@@ -282,9 +282,9 @@
 </ul>
 <h2 id="渲染方程"><a href="#渲染方程" class="headerlink" title="渲染方程"></a>渲染方程</h2><ul>
 <li>在学习PBR之前，我们先看下渲染方程。</li>
-<li><img src="/morimiya/morimiya/2022/05/03/PBR学习笔记/渲染方程参数的通俗理解.jpg" alt=""></li>
+<li><img src="/morimiya/2022/05/03/PBR学习笔记/渲染方程参数的通俗理解.jpg" alt=""></li>
 <li>去掉自发光部分，我们便能得到反射率方程，要正确的理解PBR很重要的一点就是要首先透彻的理解反射率方程：</li>
-<li><img src="/morimiya/morimiya/2022/05/03/PBR学习笔记/反射率方程.png" alt=""></li>
+<li><img src="/morimiya/2022/05/03/PBR学习笔记/反射率方程.png" alt=""></li>
 <li>反射率方程将在后面逐点讲解。</li>
 </ul>
 <h1 id="辐射度量学"><a href="#辐射度量学" class="headerlink" title="辐射度量学"></a>辐射度量学</h1><div class="table-container">
@@ -322,7 +322,7 @@
 <td>立体弧度，球面度($sr$)</td>
 <td>$ ω=\frac{S}{r^2} $</td>
 <td>二维弧度的三维拓展，按照球的表面积为$4πr^2$，那整个球的立体角为$4π$。</td>
-<td><img src="/morimiya/morimiya/2022/05/03/PBR学习笔记/solid_angle.png" alt=""></td>
+<td><img src="/morimiya/2022/05/03/PBR学习笔记/solid_angle.png" alt=""></td>
 </tr>
 <tr>
 <td>辐射强度</td>
@@ -338,7 +338,7 @@
 <td>瓦/平方米立体角($W/m^2sr$)</td>
 <td>$ L=\frac{d^2Φ}{dωdAcosθ} $</td>
 <td>通过单位面积单位立体角的辐射通量。</td>
-<td><img src="/morimiya/morimiya/2022/05/03/PBR学习笔记/面积计算.png" alt=""> <img src="/morimiya/morimiya/2022/05/03/PBR学习笔记/辐射率.jpg" alt=""></td>
+<td><img src="/morimiya/2022/05/03/PBR学习笔记/面积计算.png" alt=""> <img src="/morimiya/2022/05/03/PBR学习笔记/辐射率.jpg" alt=""></td>
 </tr>
 </tbody>
 </table>
@@ -348,7 +348,7 @@
 <li>辐射率方程很有用，因为它把大部分我们感兴趣的物理量都包含了进去。如果我们把立体角ω和面积A看作是无穷小的，那么我们就能用辐射率来表示单束光线穿过空间中的一个点的通量。这就使我们可以计算得出作用于单个（片段）点上的单束光线的辐射率，我们实际上把立体角ω转变为方向向量ω然后把面A转换为点p。这样我们就能直接在我们的着色器中使用辐射率来计算单束光线对每个片段的作用了。</li>
 </ul>
 <h1 id="反射率方程"><a href="#反射率方程" class="headerlink" title="反射率方程"></a>反射率方程</h1><h2 id="方程解读"><a href="#方程解读" class="headerlink" title="方程解读"></a>方程解读</h2><ul>
-<li><img src="/morimiya/morimiya/2022/05/03/PBR学习笔记/反射率方程.png" alt=""></li>
+<li><img src="/morimiya/2022/05/03/PBR学习笔记/反射率方程.png" alt=""></li>
 </ul>
 <div class="table-container">
 <table>
@@ -388,7 +388,7 @@
 </div>
 <ul>
 <li>基于反射率公式是围绕所有入射辐射率的总和，也就是辐照度来计算的，所以我们需要计算的就不只是单一的一个方向上的入射光，而是一个以点$p$为球心的半球领域$Ω$内所有方向上的入射光。一个半球领域(Hemisphere)可以描述为以平面法线$n$为轴所环绕的半个球体：<ul>
-<li><img src="/morimiya/morimiya/2022/05/03/PBR学习笔记/hemisphere.png" alt=""></li>
+<li><img src="/morimiya/2022/05/03/PBR学习笔记/hemisphere.png" alt=""></li>
 </ul>
 </li>
 <li><p>计算半球的入射辐射率总和需要用到积分，而渲染方程和反射率方程没有解析解，我们使用离散求和的方式来求得积分的数值解。这个问题就转化为，在半球领域Ω中按一定的步长将反射率方程分散求解，然后再按照步长大小将所得到的结果平均化。这种方法被称为黎曼和(Riemann sum)。</p>
@@ -399,10 +399,10 @@
 </ul>
 <h2 id="Cook-Torrance-BRDF"><a href="#Cook-Torrance-BRDF" class="headerlink" title="Cook-Torrance BRDF"></a>Cook-Torrance BRDF</h2><ul>
 <li>在本文中将学习使用到的是Cook-Torrance反射率方程：</li>
-<li><img src="/morimiya/morimiya/2022/05/03/PBR学习笔记/Cook-Torrance反射率方程.png" alt=""></li>
-<li><img src="/morimiya/morimiya/2022/05/03/PBR学习笔记/Cook-Torrance反射率方程文字描述.png" alt=""></li>
+<li><img src="/morimiya/2022/05/03/PBR学习笔记/Cook-Torrance反射率方程.png" alt=""></li>
+<li><img src="/morimiya/2022/05/03/PBR学习笔记/Cook-Torrance反射率方程文字描述.png" alt=""></li>
 <li>BRDF可以分成两部分来查看，漫反射部分和镜面反射部分。</li>
-<li><img src="/morimiya/morimiya/2022/05/03/PBR学习笔记/brdf.png" alt=""></li>
+<li><img src="/morimiya/2022/05/03/PBR学习笔记/brdf.png" alt=""></li>
 </ul>
 <h3 id="漫反射部分"><a href="#漫反射部分" class="headerlink" title="漫反射部分"></a>漫反射部分</h3><ul>
 <li>不看$k_d$，漫反射部分则为$\frac{c}{π}$，这即为大家熟知的Lambert模型。</li>
@@ -411,7 +411,7 @@
 </ul>
 <h3 id="镜面反射部分"><a href="#镜面反射部分" class="headerlink" title="镜面反射部分"></a>镜面反射部分</h3><ul>
 <li>$ f_{specular}(I,v)=\frac{D(h)G(I,v,h)F(I,h)}{4(v·n)(I·n)} $</li>
-<li><img src="/morimiya/morimiya/2022/05/03/PBR学习笔记/m_h.png" alt=""></li>
+<li><img src="/morimiya/2022/05/03/PBR学习笔记/m_h.png" alt=""></li>
 </ul>
 <div class="table-container">
 <table>
@@ -442,15 +442,15 @@
 </table>
 </div>
 <h4 id="法线分布函数-D-h"><a href="#法线分布函数-D-h" class="headerlink" title="法线分布函数$D(h)$"></a>法线分布函数$D(h)$</h4><ul>
-<li><img src="/morimiya/morimiya/2022/05/03/PBR学习笔记/法线分布函数.jpg" alt=""></li>
+<li><img src="/morimiya/2022/05/03/PBR学习笔记/法线分布函数.jpg" alt=""></li>
 <li>在这里$h$表示用来与平面上微平面做比较用的中间向量，而$α$表示表面粗糙度。</li>
 <li>如果我们把$h$当成是不同粗糙度参数下，平面法向量和光线方向向量之间的中间向量的话，我们可以得到如下图示的效果：</li>
-<li><img src="/morimiya/morimiya/2022/05/03/PBR学习笔记/ndf.png" alt=""></li>
+<li><img src="/morimiya/2022/05/03/PBR学习笔记/ndf.png" alt=""></li>
 </ul>
 <h4 id="阴影-遮掩函数-G-I-v-h"><a href="#阴影-遮掩函数-G-I-v-h" class="headerlink" title="阴影-遮掩函数$G(I,v,h)$"></a>阴影-遮掩函数$G(I,v,h)$</h4><ul>
 <li>这里介绍的阴影-遮掩函数是GGX与Schlick-Beckmann近似的结合体，因此又称为Schlick-GGX：</li>
-<li><img src="/morimiya/morimiya/2022/05/03/PBR学习笔记/阴影-遮蔽函数.jpg" alt=""></li>
-<li><img src="/morimiya/morimiya/2022/05/03/PBR学习笔记/geometry_shadowing.png" alt=""></li>
+<li><img src="/morimiya/2022/05/03/PBR学习笔记/阴影-遮蔽函数.jpg" alt=""></li>
+<li><img src="/morimiya/2022/05/03/PBR学习笔记/geometry_shadowing.png" alt=""></li>
 <li>从统计学上近似的求得了微平面间相互遮蔽的比率，这种相互遮蔽会损耗光线的能量。</li>
 <li>这里的$k$是$α$基于几何函数是针对直接光照还是针对IBL光照的重映射(Remapping) :<ul>
 <li>$ α=roughness $</li>
@@ -459,9 +459,9 @@
 </ul>
 </li>
 <li>由于遮蔽在入射方向和出射方向都会产生，需要将观察方向（几何遮蔽(Geometry Obstruction)）和光线方向向量（几何阴影(Geometry Shadowing)）都考虑进去。我们可以使用史密斯法(Smith’s method)来把两者都纳入其中：</li>
-<li><img src="/morimiya/morimiya/2022/05/03/PBR学习笔记/smith_ggx.jpg" alt=""></li>
+<li><img src="/morimiya/2022/05/03/PBR学习笔记/smith_ggx.jpg" alt=""></li>
 <li>使用史密斯法与Schlick-GGX作为$G_{sub}$可以得到如下所示不同粗糙度的视觉效果：</li>
-<li><p><img src="/morimiya/morimiya/2022/05/03/PBR学习笔记/geometry.png" alt=""></p>
+<li><p><img src="/morimiya/2022/05/03/PBR学习笔记/geometry.png" alt=""></p>
 </li>
 <li><p>在Unity中使用的阴影-遮蔽函数$G(I,v,h)$则使用了一种由GGX衍生出来的 Smith-Schlick 模型：</p>
 <ul>
@@ -477,7 +477,7 @@
 <h1 id="PBR材质"><a href="#PBR材质" class="headerlink" title="PBR材质"></a>PBR材质</h1><ul>
 <li>上面提及到的粗糙度可通过贴图指定，菲涅尔$F_0$值可通过查表得到。</li>
 <li>PBR材质一般包含下面的纹理：</li>
-<li><img src="/morimiya/morimiya/2022/05/03/PBR学习笔记/textures.png" alt=""></li>
+<li><img src="/morimiya/2022/05/03/PBR学习笔记/textures.png" alt=""></li>
 <li>反照率：反照率(Albedo)纹理为每一个金属的纹素(Texel)（纹理像素）指定表面颜色或者基础反射率。漫反射纹理的图像当中常常包含一些细小的阴影或者深色的裂纹，而反照率纹理中是不会有这些东西的。它应该只包含表面的颜色（或者折射吸收系数）。</li>
 <li>法线：法线贴图使我们可以逐片段的指定独特的法线，来为表面制造出起伏不平的假象。</li>
 <li>金属度：金属(Metallic)贴图逐个纹素的指定该纹素是不是金属质地的。根据PBR引擎设置的不同，美术师们既可以将金属度编写为灰度值又可以编写为1或0这样的二元值。</li>

@@ -200,7 +200,7 @@
   
   <article class="article post card animate" itemscope="" itemtype="http://schema.org/Article">
     <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="https://morimiya.github.io/morimiya/morimiya/2019/02/19/游戏角色染色实现/">
+      <link itemprop="mainEntityOfPage" href="https://morimiya.github.io/morimiya/2019/02/19/游戏角色染色实现/">
       <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
        <meta itemprop="name" content="MoriMiya">
        <meta itemprop="description" content="">
@@ -240,17 +240,17 @@
 <li>我所理解的染色是通过改变游戏角色衣着、饰品、头发、皮肤的颜色来达到不同的视觉效果。</li>
 <li><p>以下分别为DNF、楚留香和奇迹暖暖的染色功能。</p>
 </li>
-<li><p><img src="/morimiya/morimiya/2019/02/19/游戏角色染色实现/DNF染色.png" alt="DNF效果"></p>
+<li><p><img src="/morimiya/2019/02/19/游戏角色染色实现/DNF染色.png" alt="DNF效果"></p>
 </li>
-<li><img src="/morimiya/morimiya/2019/02/19/游戏角色染色实现/楚留香染色.png" alt="楚留香效果"></li>
-<li><img src="/morimiya/morimiya/2019/02/19/游戏角色染色实现/奇迹暖暖染色.png" alt="奇迹暖暖效果"></li>
+<li><img src="/morimiya/2019/02/19/游戏角色染色实现/楚留香染色.png" alt="楚留香效果"></li>
+<li><img src="/morimiya/2019/02/19/游戏角色染色实现/奇迹暖暖染色.png" alt="奇迹暖暖效果"></li>
 </ul>
 <h2 id="常用的染色方式"><a href="#常用的染色方式" class="headerlink" title="常用的染色方式"></a>常用的染色方式</h2><ul>
 <li>染色，在程序角度而言，其本质为一个颜色映射关系，即给予源色和一定参数，输出目标颜色的过程。</li>
 <li>用式子来表达便是：DestColor = func(BaseColor, Params)</li>
 </ul>
 <h3 id="LookupTable查表染色"><a href="#LookupTable查表染色" class="headerlink" title="LookupTable查表染色"></a>LookupTable查表染色</h3><ul>
-<li><img src="/morimiya/morimiya/2019/02/19/游戏角色染色实现/LookupTable.png" alt="LookupTable"></li>
+<li><img src="/morimiya/2019/02/19/游戏角色染色实现/LookupTable.png" alt="LookupTable"></li>
 <li>DyeColor = LookupTable(BaseColor.r, BaseColor.g, BaseColor.b)</li>
 <li>简单而言，就是根据颜色值进行查表，得到目标颜色值。由于显存限制等原因，LookupTable的大小一般会比256<em>256</em>256小，如64<em>64</em>64的大小，此时，在计算颜色时，会做一定的线性插值。以一维的情况为例，用数组a[64]来缓存256种颜色的映射结果。假设某点取值为123，那么有123/4=30.75，映射结果为a[30] <em> 0.25+a[31] </em> 0.75。</li>
 <li><p>优点：</p>
@@ -282,8 +282,8 @@
 <li>针对第二个缺陷，可以用类似HDR的方式，在计算中允许超过1.0的值，后续使用时再进行约束。</li>
 </ul>
 <h3 id="HSV染色方式"><a href="#HSV染色方式" class="headerlink" title="HSV染色方式"></a>HSV染色方式</h3><ul>
-<li><img src="/morimiya/morimiya/2019/02/19/游戏角色染色实现/HSV.png" alt="HSV"></li>
-<li><img src="/morimiya/morimiya/2019/02/19/游戏角色染色实现/HSV_cone.png" alt="HSV"></li>
+<li><img src="/morimiya/2019/02/19/游戏角色染色实现/HSV.png" alt="HSV"></li>
+<li><img src="/morimiya/2019/02/19/游戏角色染色实现/HSV_cone.png" alt="HSV"></li>
 <li>HSV，即色相（Hue），饱和度（Saturation），亮度（Value）。</li>
 <li>HSV表示颜色的方式与人直观感受更为接近，我们在形容一个物体颜色的时候，经常会不知不觉的说出类似这样的话：“这个苹果好红，红得很深”，“这个黄色很亮眼”等。HSV形容颜色的方式与这种口头描述很相似，色相表示了物体的总体颜色，饱和度则为颜色的深浅，亮度则表示物体的明暗程度。</li>
 <li>楚留香中给出的染色方式便是HSV染色，其能通过调整色相，饱和度和亮度来决定染色结果。</li>

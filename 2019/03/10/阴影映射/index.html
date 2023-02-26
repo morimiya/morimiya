@@ -181,7 +181,7 @@
   
   <article class="article post card animate" itemscope="" itemtype="http://schema.org/Article">
     <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="https://morimiya.github.io/morimiya/morimiya/2019/03/10/阴影映射/">
+      <link itemprop="mainEntityOfPage" href="https://morimiya.github.io/morimiya/2019/03/10/阴影映射/">
       <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
        <meta itemprop="name" content="MoriMiya">
        <meta itemprop="description" content="">
@@ -216,7 +216,7 @@
     <main class="post-main" itemprop="articleBody">
       <blockquote>
 <p><a href="https://learnopengl-cn.github.io" target="_blank" rel="noopener">https://learnopengl-cn.github.io</a> 阴影映射学习笔记</p>
-<p><img src="/morimiya/morimiya/2019/03/10/阴影映射/result.png" alt=""></p>
+<p><img src="/morimiya/2019/03/10/阴影映射/result.png" alt=""></p>
 </blockquote>
 <a id="more"></a>
 <ul>
@@ -225,11 +225,11 @@
 <h2 id="阴影映射-Shadow-Mapping"><a href="#阴影映射-Shadow-Mapping" class="headerlink" title="阴影映射(Shadow Mapping)"></a>阴影映射(Shadow Mapping)</h2><ul>
 <li><p>在物理上，产生阴影的原因是由于发射至阴影处的光中途被其他物体截断了导致。从这种想法触发，对阴影映射的计算思路便顺势出来了。从光的位置及方向观测物体，所有看不见的部分都将被置于阴影中。</p>
 </li>
-<li><p><img src="/morimiya/morimiya/2019/03/10/阴影映射/shadow_mapping_theory.png" alt="阴影原理"></p>
+<li><p><img src="/morimiya/2019/03/10/阴影映射/shadow_mapping_theory.png" alt="阴影原理"></p>
 </li>
 <li><p>上图用来展示阴影映射的思路，蓝线部分表示会被光照射到，不会产生阴影，黑线部分光由于被挡住而无法到达，从而形成阴影。</p>
 </li>
-<li><p><img src="/morimiya/morimiya/2019/03/10/阴影映射/shadow_mapping_theory_spaces.png" alt=""></p>
+<li><p><img src="/morimiya/2019/03/10/阴影映射/shadow_mapping_theory_spaces.png" alt=""></p>
 </li>
 <li>在绘制物体的时候，想要知道其上某一像素点是否在阴影当中，我们需要知道其是否有被什么东西遮挡住，是否是与光源连线中离光源最近的点。因此，我们较容易想到的方式便是，在判断某点A是否处于阴影中时，将观测点转移至光源所在点处来观测该点A，若从该视角下看不到点A，则表示点A在阴影之中。而要判断在某视角下某点是否能被看到，即为判断是否能被渲染，即为判断其能否通过深度测试。</li>
 <li>因此，我们只需要生成一张存储着从光源视角所获得的各个点的最大深度值的纹理，便能判断一个点是否能在该视角下通过深度测试，从而获知其是否在阴影之中。</li>
@@ -249,7 +249,7 @@
 <li>这个lightSpaceMatrix正是前面我们称为T的那个变换矩阵。有了lightSpaceMatrix只要给shader提供光空间的投影和视图矩阵，我们就能像往常那样渲染场景了。</li>
 </ul>
 <h3 id="渲染至深度贴图"><a href="#渲染至深度贴图" class="headerlink" title="渲染至深度贴图"></a>渲染至深度贴图</h3><ul>
-<li><img src="/morimiya/morimiya/2019/03/10/阴影映射/shadow_mapping_depth_map.png" alt="深度贴图"></li>
+<li><img src="/morimiya/2019/03/10/阴影映射/shadow_mapping_depth_map.png" alt="深度贴图"></li>
 <li>对于深度贴图，只需要把顶点变换到光空间即可，故顶点着色器只需做空间变换即可。由于底层无论如何都会默认去设置深度缓冲，所以片段着色器不需要做什么额外操作。<figure class="hljs highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs glsl"><span class="hljs-comment">// vertex.vs</span><br><span class="hljs-meta">#version 330 core</span><br><span class="hljs-keyword">layout</span> (<span class="hljs-keyword">location</span> = <span class="hljs-number">0</span>) <span class="hljs-keyword">in</span> <span class="hljs-type">vec3</span> position;<br><br><span class="hljs-keyword">uniform</span> <span class="hljs-type">mat4</span> lightSpaceMatrix;<br><span class="hljs-keyword">uniform</span> <span class="hljs-type">mat4</span> model;<br><br><span class="hljs-type">void</span> main()<br>&#123;<br>    <span class="hljs-built_in">gl_Position</span> = lightSpaceMatrix * model * <span class="hljs-type">vec4</span>(position, <span class="hljs-number">1.0</span>f);<br>&#125;<br><br><span class="hljs-comment">// fragment.fs</span><br><span class="hljs-meta">#version 330 core</span><br><br><span class="hljs-type">void</span> main()<br>&#123;             <br>    <span class="hljs-comment">// gl_FragDepth = gl_FragCoord.z;</span><br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
 </ul>
@@ -261,7 +261,7 @@
 </li>
 <li>projCoords目前属于NDC坐标，其取值范围为[-1, 1]，为了能从纹理从采样以及与采样结果中的z值进行比较，需要将其转换至[0, 1]范围中。</li>
 <li>最后，我们对处于阴影中的像素点只保留环境光，去掉漫反射光和镜面反射光，得到效果如下图：</li>
-<li><img src="/morimiya/morimiya/2019/03/10/阴影映射/render_shadow.png" alt="渲染阴影"></li>
+<li><img src="/morimiya/2019/03/10/阴影映射/render_shadow.png" alt="渲染阴影"></li>
 </ul>
 <h2 id="改进阴影贴图"><a href="#改进阴影贴图" class="headerlink" title="改进阴影贴图"></a>改进阴影贴图</h2><ul>
 <li>渲染阴影中存在着大量肉眼可见且不可接受的问题，我们需要对其进行一定改进。</li>
@@ -269,11 +269,11 @@
 <h3 id="阴影失真-Shadow-Acne"><a href="#阴影失真-Shadow-Acne" class="headerlink" title="阴影失真(Shadow Acne)"></a>阴影失真(Shadow Acne)</h3><ul>
 <li><p>渲染阴影图中明显交替出现的黑色阴影便是阴影失真。</p>
 </li>
-<li><p><img src="/morimiya/morimiya/2019/03/10/阴影映射/shadow_mapping_acne_diagram.png" alt="阴影失真成因"></p>
+<li><p><img src="/morimiya/2019/03/10/阴影映射/shadow_mapping_acne_diagram.png" alt="阴影失真成因"></p>
 </li>
 <li><p>图中蓝色线段表示在阴影贴图中的一个像素，由于解析度的问题，存在多个像素从阴影贴图中同一个点采样的情况。如在生成阴影贴图时，由于光源视角较高，导致较低视角下的两个像素点（A和B）在光源视角下只能保留一个（A），又由于视角与平面形成一定的角度，导致平面上每个点的z值不完全一样，于是深度贴图便只保留下了A点的z值。A点的z值相比B点的z值较小，在判断B点是否在阴影中时，在深度贴图中采样到的是A点的结果，由于z值比A点的大，故认为其处于阴影中。</p>
 </li>
-<li><p><img src="/morimiya/morimiya/2019/03/10/阴影映射/shadow_mapping_acne_bias.png" alt="阴影偏移"></p>
+<li><p><img src="/morimiya/2019/03/10/阴影映射/shadow_mapping_acne_bias.png" alt="阴影偏移"></p>
 </li>
 <li>针对阴影失真，可以使用阴影偏移（shadow bias）的技巧来解决这个问题，我们简单的对表面的深度（或深度贴图）应用一个偏移量，这样片元就不会被错误地认为在表面之下了。</li>
 <li>光照方向与表面法线夹角越大，偏移量越大。<figure class="hljs highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs glsl"><span class="hljs-type">float</span> bias = <span class="hljs-built_in">max</span>(<span class="hljs-number">0.05</span> * (<span class="hljs-number">1.0</span> - <span class="hljs-built_in">dot</span>(normal, lightDir)), <span class="hljs-number">0.005</span>);<br><span class="hljs-type">float</span> shadow = currentDepth - bias &gt; closestDepth  ? <span class="hljs-number">1.0</span> : <span class="hljs-number">0.0</span>;<br></code></pre></td></tr></table></figure>
@@ -282,15 +282,15 @@
 <h3 id="悬浮-Peter-Panning"><a href="#悬浮-Peter-Panning" class="headerlink" title="悬浮(Peter Panning)"></a>悬浮(Peter Panning)</h3><ul>
 <li>不懂，尚不理解，以及在贴地物体如果用正面剔除，悬浮更严重。用正面剔除能消除彼得潘问题尚未理解，实验结果也未能看出能消除。</li>
 <li>在不添加阴影偏移时，阴影紧贴着物体。</li>
-<li><p><img src="/morimiya/morimiya/2019/03/10/阴影映射/without_bias.png" alt="不添加阴影偏移"></p>
+<li><p><img src="/morimiya/2019/03/10/阴影映射/without_bias.png" alt="不添加阴影偏移"></p>
 </li>
 <li><p>添加了阴影偏移后，阴影相对物体出现了一定的位移，这是因为减去bias后，使得较小的currentDepth不再大于closestDepth，从而其被判断为非阴影，从而出现悬浮。</p>
 </li>
-<li><p><img src="/morimiya/morimiya/2019/03/10/阴影映射/peter_panning.png" alt="悬浮"></p>
+<li><p><img src="/morimiya/2019/03/10/阴影映射/peter_panning.png" alt="悬浮"></p>
 </li>
 <li><p>使用正面剔除后再来生成阴影贴图，发现箱子边缘出现非阴影带，这是因为剔除正面后，改用背面来生成阴影贴图，底部贴图由于太靠近场景面板，在减去bias后，不再认为其处于阴影之中，而两个背对光源的面的底下部分，也由于减去bias后，不再大于cloestDepth，从而造成非阴影带。</p>
 </li>
-<li><img src="/morimiya/morimiya/2019/03/10/阴影映射/front_cull.png" alt="使用正面剔除"></li>
+<li><img src="/morimiya/2019/03/10/阴影映射/front_cull.png" alt="使用正面剔除"></li>
 </ul>
 <h3 id="采样过多"><a href="#采样过多" class="headerlink" title="采样过多"></a>采样过多</h3><ul>
 <li>光的视锥不可见的区域一律被认为是处于阴影中，不管它真的处于阴影之中。出现这个状况是因为超出光的视锥的投影坐标比1.0大，这样采样的深度纹理就会超出他默认的0到1的范围。根据纹理环绕方式为GL_REPEAT，我们将会得到不正确的深度结果，它不是基于真实的来自光源的深度值。即，同一个阴影会由于设置了纹理环绕方式，而多次出现。</li>
@@ -302,7 +302,7 @@
 <li><p>如果投影向量的z坐标大于1.0，我们就把shadow的值强制设为0.0：</p>
 <figure class="hljs highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs glsl"><span class="hljs-type">float</span> ShadowCalculation(<span class="hljs-type">vec4</span> fragPosLightSpace)<br>&#123;<br>    [...]<br>    <span class="hljs-keyword">if</span>(projCoords.z &gt; <span class="hljs-number">1.0</span>)<br>        shadow = <span class="hljs-number">0.0</span>;<br><br>    <span class="hljs-keyword">return</span> shadow;<br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
-<li><p><img src="/morimiya/morimiya/2019/03/10/阴影映射/over_sampling_fixed.png" alt="修正过度采样"></p>
+<li><p><img src="/morimiya/2019/03/10/阴影映射/over_sampling_fixed.png" alt="修正过度采样"></p>
 </li>
 </ul>
 <h2 id="PCF"><a href="#PCF" class="headerlink" title="PCF"></a>PCF</h2><ul>
@@ -310,7 +310,7 @@
 <li><p>采用类似于抗锯齿中多次采样的方式，一个简化版的PCF核心思想是从深度贴图中多次采样，每一次采样的纹理坐标都稍有不同。每个独立的样本可能在也可能不再阴影中。所有的次生结果接着结合在一起，进行平均化，我们就得到了柔和阴影。</p>
 <figure class="hljs highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs glsl"><span class="hljs-type">float</span> shadow = <span class="hljs-number">0.0</span>;<br><span class="hljs-comment">// 这个textureSize返回一个给定采样器纹理的0级mipmap的vec2类型的宽和高。</span><br><span class="hljs-comment">// 用1除以它返回一个单独纹理像素的大小</span><br><span class="hljs-type">vec2</span> texelSize = <span class="hljs-number">1.0</span> / <span class="hljs-built_in">textureSize</span>(shadowMap, <span class="hljs-number">0</span>);<br><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> x = <span class="hljs-number">-1</span>; x &lt;= <span class="hljs-number">1</span>; ++x)<br>&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> y = <span class="hljs-number">-1</span>; y &lt;= <span class="hljs-number">1</span>; ++y)<br>    &#123;<br>        <span class="hljs-type">float</span> pcfDepth = <span class="hljs-built_in">texture</span>(shadowMap, projCoords.xy + <span class="hljs-type">vec2</span>(x, y) * texelSize).r;<br>        shadow += currentDepth - bias &gt; pcfDepth ? <span class="hljs-number">1.0</span> : <span class="hljs-number">0.0</span>;        <br>    &#125;    <br>&#125;<br>shadow /= <span class="hljs-number">9.0</span>;<br></code></pre></td></tr></table></figure>
 </li>
-<li><p><img src="/morimiya/morimiya/2019/03/10/阴影映射/pcf.png" alt="PCF"></p>
+<li><p><img src="/morimiya/2019/03/10/阴影映射/pcf.png" alt="PCF"></p>
 </li>
 </ul>
 

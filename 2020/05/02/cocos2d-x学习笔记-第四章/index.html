@@ -181,7 +181,7 @@
   
   <article class="article post card animate" itemscope="" itemtype="http://schema.org/Article">
     <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="https://morimiya.github.io/morimiya/morimiya/2020/05/02/cocos2d-x学习笔记-第四章/">
+      <link itemprop="mainEntityOfPage" href="https://morimiya.github.io/morimiya/2020/05/02/cocos2d-x学习笔记-第四章/">
       <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
        <meta itemprop="name" content="MoriMiya">
        <meta itemprop="description" content="">
@@ -230,7 +230,7 @@
 </ul>
 <p>_</p>
 <ul>
-<li><img src="/morimiya/morimiya/2020/05/02/cocos2d-x学习笔记-第四章/将绘制指令发送至绘制栈.png" alt="将绘制指令发送至绘制栈.png"></li>
+<li><img src="/morimiya/2020/05/02/cocos2d-x学习笔记-第四章/将绘制指令发送至绘制栈.png" alt="将绘制指令发送至绘制栈.png"></li>
 <li>绘制流程的第二个阶段是将绘制命令进行排序。待场景中的UI元素被全部遍历完后，renderer线对栈上的绘制命令进行排序，然后再执行它们。排序顺序是，先按globalZOrderuxu，再根据元素遍历顺序排序。</li>
 <li>最后，renderer对经过排序的绘制命令执行绘制。对于一般的RenderCommand，按顺序执行。对于Sprite使用的QuadCommand，如果两个QuadCommand相邻且使用相同的纹理、着色器等，renderer会将它们组合成一个QuadCommand，这便是自动批绘制（Auto Batch）。</li>
 </ul>
@@ -266,7 +266,7 @@
 <p>_</p>
 <ul>
 <li>在添加GroupCommand的时候有一个约定操作：在创建一个GroupCommand并将其作为一个普通的RenderCommand发送到当前的RenderQueue上，GroupCommand会在Renderer上创建一个新的RenderQueue，并调用pushGroup方法将其renderQueueID添加到_commandGroupStack栈中。这样，后续所有的RenderCommand都会被添加到新创建的RenderQueue中，在结束的时候再调用popGroup()方法。</li>
-<li><img src="/morimiya/morimiya/2020/05/02/cocos2d-x学习笔记-第四章/嵌套的GroupCommand.png" alt="嵌套的GroupCommand.png"></li>
+<li><img src="/morimiya/2020/05/02/cocos2d-x学习笔记-第四章/嵌套的GroupCommand.png" alt="嵌套的GroupCommand.png"></li>
 </ul>
 <h2 id="Render"><a href="#Render" class="headerlink" title="Render"></a>Render</h2><ul>
 <li>在主线程遍历完UI树，并将每个UI元素的绘制发送到绘制栈上之后，绘制线程开始执行全部绘制命令。此时，Renderer需现对RenderCommand进行排序，然后再按照排序后的顺序分别执行绘制命令。</li>
